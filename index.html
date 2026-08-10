@@ -98,7 +98,8 @@ button{font-family:inherit;cursor:pointer}
 
 /* ===================== HERO ===================== */
 .hero{position:relative;padding:150px max(20px,calc((100% - var(--maxw)) / 2)) 60px;overflow:hidden}
-.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:52px;align-items:center}
+.hero-copy{position:relative;z-index:1}
+.hero-copy-solo{max-width:660px}
 .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:12.5px;letter-spacing:.08em;
   text-transform:uppercase;color:var(--gray-500);border:1px solid var(--gray-200);padding:6px 14px;border-radius:var(--r-pill);
   background:rgba(255,255,255,.65);margin-bottom:22px}
@@ -114,10 +115,6 @@ button{font-family:inherit;cursor:pointer}
 .hero-mantra li{list-style:none;font-size:14px;font-weight:600;color:var(--gray-700);padding-left:20px;position:relative}
 .hero-mantra li::before{content:"→";position:absolute;left:0;color:var(--coral-deep)}
 .hero-ctas{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap}
-.hero-photo{position:relative}
-.hero-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:top center;
-  border-radius:var(--r-xl);box-shadow:0 30px 60px -20px rgba(0,0,0,.28);border:1px solid var(--gray-200)}
-@media (max-width:900px){.hero-grid{grid-template-columns:1fr;gap:28px}.hero-photo{order:-1;max-width:260px;margin:0 auto}}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:var(--r-pill);font-weight:600;font-size:14.5px;
   transition:transform .3s var(--ease),box-shadow .3s var(--ease);border:1px solid transparent}
 .btn-primary{background:var(--ink);color:#fff}
@@ -153,9 +150,9 @@ button{font-family:inherit;cursor:pointer}
 
 /* section base */
 .section{padding:64px max(20px,calc((100% - var(--maxw)) / 2))}
-.section-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:32px;gap:20px;flex-wrap:wrap}
+.section-head{display:flex;flex-direction:column;align-items:flex-start;margin-bottom:32px;gap:8px}
 .section-head h2{font-family:var(--font-display);font-weight:600;font-size:clamp(22px,2.6vw,30px);letter-spacing:-.01em}
-.section-head p{color:var(--gray-500);font-size:14px;max-width:360px}
+.section-head p{color:var(--gray-500);font-size:14.5px;max-width:560px}
 .section.alt{background:var(--paper);border-top:1px solid var(--gray-200);border-bottom:1px solid var(--gray-200)}
 
 /* ===================== FUNNEL / SCALE STRIP ===================== */
@@ -212,22 +209,30 @@ button{font-family:inherit;cursor:pointer}
 @media (max-width:820px){.pillars{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.pillars{grid-template-columns:1fr}}
 
-/* ===================== PROCESS (clickable stepper) ===================== */
-.process{display:flex;gap:10px;overflow-x:auto;padding-bottom:8px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
-.p-step{flex:0 0 auto;min-width:150px;background:var(--paper);border:1px solid var(--gray-200);border-radius:var(--r-md);
-  padding:16px;cursor:pointer;transition:.3s var(--ease)}
-.p-step:hover,.p-step.on{border-color:var(--coral-deep);background:#fff5f2}
-.p-step b{display:block;font-family:var(--font-mono);font-size:11px;color:var(--coral-deep);margin-bottom:6px}
-.p-step h4{font-family:var(--font-display);font-size:14.5px;font-weight:600;margin-bottom:6px}
-.p-step p{font-size:12.5px;color:var(--gray-500);max-height:0;overflow:hidden;transition:max-height .3s var(--ease)}
-.p-step.on p{max-height:80px}
+/* ===================== PROCESS (gamified path) ===================== */
+.process-game{display:flex;flex-direction:column;gap:22px}
+.process-track{position:relative;display:flex;align-items:flex-start;gap:2px;overflow-x:auto;padding:22px 8px 10px;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+.process-track::before{content:"";position:absolute;left:34px;right:34px;top:48px;height:3px;background:var(--gray-200);border-radius:2px}
+.process-fill{position:absolute;left:34px;top:48px;height:3px;background:var(--coral-deep);border-radius:2px;width:0%;transition:width .6s var(--ease);z-index:1}
+.process-node{position:relative;z-index:2;flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:8px;background:none;border:none;cursor:pointer;padding:0 10px;min-width:66px}
+.process-node .node-ico{width:52px;height:52px;border-radius:50%;background:var(--paper);border:2px solid var(--gray-200);
+  display:flex;align-items:center;justify-content:center;font-size:22px;transition:.35s var(--ease);box-shadow:0 4px 10px -6px rgba(0,0,0,.15)}
+.process-node .node-no{font-family:var(--font-mono);font-size:10px;color:var(--gray-500);font-weight:700}
+.process-node .node-label{font-size:11.5px;font-weight:700;color:var(--gray-500);white-space:nowrap;transition:color .3s}
+.process-node.done .node-ico{border-color:var(--coral-deep);background:#fff5f2}
+.process-node.on .node-ico{border-color:var(--coral-deep);background:var(--coral-deep);transform:scale(1.16);box-shadow:0 10px 22px -8px rgba(239,107,69,.55)}
+.process-node.on .node-label{color:var(--ink)}
+.process-detail{background:var(--paper);border:1px solid var(--gray-200);border-radius:var(--r-lg);padding:24px 26px;transition:opacity .25s}
+.process-detail-no{font-family:var(--font-mono);font-size:11px;color:var(--coral-deep);text-transform:uppercase;letter-spacing:.08em}
+.process-detail h4{font-family:var(--font-display);font-size:19px;font-weight:600;margin:6px 0 8px}
+.process-detail p{font-size:14.5px;color:var(--gray-700);line-height:1.6}
 
 /* ===================== ABOUT ===================== */
 .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:start}
 .about-grid p{font-size:15.5px;color:var(--gray-700);margin-bottom:16px;line-height:1.7}
 .about-grid p.big{font-size:19px;font-family:var(--font-display);font-weight:500;color:var(--ink);line-height:1.4}
 .about-photo{margin-bottom:22px;border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--gray-200);box-shadow:0 20px 40px -24px rgba(0,0,0,.25)}
-.about-photo img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:top center;display:block}
+.about-photo img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:center 43%;display:block}
 .interests{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}
 .interest{font-size:12.8px;font-weight:600;padding:7px 14px;border-radius:var(--r-pill)}
 .interest:nth-child(5n+1){background:var(--pink);color:var(--pink-ink)}
@@ -324,15 +329,14 @@ button{font-family:inherit;cursor:pointer}
 @media (max-width:760px){.glance{grid-template-columns:1fr 1fr}}
 @media (max-width:460px){.glance{grid-template-columns:1fr}}
 
-.case-body{max-width:760px}
 .case-phase{margin-bottom:38px}
 .case-phase .ph-no{font-family:var(--font-mono);font-size:11.5px;color:var(--coral-deep);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
 .case-phase h3{font-family:var(--font-display);font-size:21px;font-weight:600;margin-bottom:10px}
-.case-phase p{font-size:15px;color:var(--gray-700);line-height:1.7;margin-bottom:8px}
-.case-phase ul{padding-left:20px}
+.case-phase p{font-size:15px;color:var(--gray-700);line-height:1.7;margin-bottom:8px;max-width:800px}
+.case-phase ul{padding-left:20px;max-width:800px}
 .case-phase li{font-size:15px;color:var(--gray-700);line-height:1.7;margin-bottom:6px}
-.hyp-box{background:var(--lavender);border-radius:var(--r-md);padding:20px 22px;font-size:15.5px;font-weight:600;color:var(--lavender-ink);line-height:1.6}
-.exp-steps{display:flex;flex-direction:column;gap:10px}
+.hyp-box{background:var(--lavender);border-radius:var(--r-md);padding:20px 22px;font-size:15.5px;font-weight:600;color:var(--lavender-ink);line-height:1.6;max-width:800px}
+.exp-steps{display:flex;flex-direction:column;gap:10px;max-width:800px}
 .exp-steps li{list-style:none;display:flex;gap:12px;align-items:flex-start;background:var(--paper);border:1px solid var(--gray-200);border-radius:var(--r-md);padding:14px 16px}
 .exp-steps b{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px}
 .format-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
@@ -375,7 +379,6 @@ button{font-family:inherit;cursor:pointer}
 .case-gallery figcaption{padding:8px 12px;font-size:11.5px;color:var(--gray-500);border-top:1px solid var(--gray-200)}
 @media (max-width:640px){.case-gallery{grid-template-columns:1fr}}
 .case-card-img{width:100%;height:150px;object-fit:cover;border-radius:calc(var(--r-lg) - 6px);margin:-4px -4px 4px}
-.case-card .proof-badge{position:absolute;top:14px;right:14px;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;background:rgba(20,18,16,.72);color:#fff;padding:4px 9px;border-radius:var(--r-pill);backdrop-filter:blur(4px)}
 
 .lightbox{position:fixed;inset:0;z-index:1300;background:rgba(20,18,16,.9);display:flex;align-items:center;justify-content:center;padding:32px;opacity:0;visibility:hidden;transition:opacity .3s var(--ease),visibility .3s}
 .lightbox.open{opacity:1;visibility:visible}
@@ -421,6 +424,24 @@ button{font-family:inherit;cursor:pointer}
   .chat-panel{right:12px;left:12px;width:auto;bottom:80px}
 }
 
+/* ===================== MOBILE SCROLL LENGTH OPTIMIZATION ===================== */
+@media (max-width:640px){
+  .hero{padding:104px max(16px,calc((100% - var(--maxw)) / 2)) 36px}
+  .section{padding:40px max(16px,calc((100% - var(--maxw)) / 2))}
+  .case-hero{padding:104px max(16px,calc((100% - var(--maxw)) / 2)) 28px}
+  .resume-wrap{padding:104px max(16px,calc((100% - var(--maxw)) / 2)) 56px}
+  .footer{padding:48px max(16px,calc((100% - var(--maxw)) / 2))}
+  .stats{margin-top:32px;padding-top:16px;gap:18px 12px}
+  .hero-quote{margin-top:16px;padding:13px 16px;font-size:15.5px}
+  .hero-mantra{margin-top:14px}
+  .case-phase{margin-bottom:24px}
+  .next-case{margin-top:30px;padding:20px}
+  .about-photo{max-width:260px;margin-left:auto;margin-right:auto}
+  .case-media{margin:14px 0 6px}
+  .case-gallery{margin:10px 0 6px}
+  .section-head{margin-bottom:22px}
+}
+
 @media print{
   body *{visibility:hidden}
   #resume-doc,#resume-doc *{visibility:visible}
@@ -434,7 +455,7 @@ button{font-family:inherit;cursor:pointer}
 <!-- ===================== HEADER ===================== -->
 <header class="h-head">
   <div class="h-left">
-    <div class="h-logo">Gabi <span>Teixeira</span></div>
+    <div class="h-logo">Gabriela <span>Baia</span></div>
     <span class="h-clock" id="clock"><span class="dot"></span><span id="clockText">--:--</span> · Brazil</span>
   </div>
   <nav class="h-nav">
@@ -450,24 +471,19 @@ button{font-family:inherit;cursor:pointer}
   <section class="hero">
     <div class="bg-grid"></div>
     <div class="aurora"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
-    <div class="hero-grid">
-      <div class="hero-copy">
-        <span class="eyebrow"><span class="dot"></span>Field notes of a curious researcher</span>
-        <h1>I humanize <em>experimentation</em>.</h1>
-        <p class="lead">I'm Gabi, a CRO & Growth professional with a background in Design. I connect behavior, data, and experimentation to help SaaS teams make better product decisions.</p>
-        <div class="hero-quote">I believe behind every metric, there's a person. My job is to understand both.</div>
-        <ul class="hero-mantra">
-          <li>Curiosity over noise.</li>
-          <li>Evidence over assumptions.</li>
-          <li>People behind the numbers.</li>
-        </ul>
-        <div class="hero-ctas">
-          <a class="btn btn-primary" href="#cases" onclick="showView('home')">View Case Studies</a>
-          <button class="btn btn-outline" onclick="downloadResume()">↓ Download Resume</button>
-        </div>
-      </div>
-      <div class="hero-photo">
-        <img src="assets/gabi-photo.jpg" alt="Portrait of Gabriela Baia" loading="eager">
+    <div class="hero-copy hero-copy-solo">
+      <span class="eyebrow"><span class="dot"></span>Field notes of a curious researcher</span>
+      <h1>I humanize <em>experimentation</em>.</h1>
+      <p class="lead">I'm Gabriela, a CRO & Growth professional with a background in Design. I connect behavior, data, and experimentation to help SaaS teams make better product decisions.</p>
+      <div class="hero-quote">I believe behind every metric, there's a person. My job is to understand both.</div>
+      <ul class="hero-mantra">
+        <li>Curiosity over noise.</li>
+        <li>Evidence over assumptions.</li>
+        <li>People behind the numbers.</li>
+      </ul>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#cases" onclick="showView('home')">View Case Studies</a>
+        <button class="btn btn-outline" onclick="downloadResume()">↓ Download Resume</button>
       </div>
     </div>
     <div class="stats">
@@ -516,7 +532,6 @@ button{font-family:inherit;cursor:pointer}
     </div>
     <div class="cases">
       <div class="case-card" onclick="showView('case1')" style="position:relative">
-        <span class="proof-badge">📸 Real data</span>
         <img class="case-card-img" src="assets/case3-before-after.jpg" alt="Before/after comparison of the desktop and mobile WhatsApp CTA widget redesign" loading="lazy">
         <span class="case-tag c5">Digital Growth & UX</span>
         <h3>High-Intent Channel CRO: WhatsApp Widget Redesign</h3>
@@ -525,7 +540,6 @@ button{font-family:inherit;cursor:pointer}
         <span class="case-link">View case <span class="arrow">→</span></span>
       </div>
       <div class="case-card" onclick="showView('case2')" style="position:relative">
-        <span class="proof-badge">📸 Real data</span>
         <img class="case-card-img" src="assets/case-blackfriday-dashboard.png" alt="Screenshot of the real A/B testing dashboard for the Black Friday homepage offer test" loading="lazy">
         <span class="case-tag c1">CRO & Website Strategy</span>
         <h3>Black Friday Website Strategy & Cross-Functional CRO Ownership</h3>
@@ -534,7 +548,6 @@ button{font-family:inherit;cursor:pointer}
         <span class="case-link">View case <span class="arrow">→</span></span>
       </div>
       <div class="case-card" onclick="showView('case3')" style="position:relative">
-        <span class="proof-badge">📸 Real data</span>
         <img class="case-card-img" src="assets/case3-historical-chart.png" alt="Chart: historical Form and WhatsApp conversion rate performance across the ownership period" loading="lazy">
         <span class="case-tag c2">Website Ownership</span>
         <h3>Website Owner & Lead CRO Specialist (Sep–Dec 2025)</h3>
@@ -543,7 +556,6 @@ button{font-family:inherit;cursor:pointer}
         <span class="case-link">View case <span class="arrow">→</span></span>
       </div>
       <div class="case-card" onclick="showView('case4')" style="position:relative">
-        <span class="proof-badge">📸 Real data</span>
         <img class="case-card-img" src="assets/case6-experiment-library.png" alt="Screenshot of the Convert platform's A/B and multivariate test log" loading="lazy">
         <span class="case-tag c3">A/B Testing & CRO</span>
         <h3>A/B Testing & CRO Optimization for Lead Conversion & UX</h3>
@@ -572,17 +584,25 @@ button{font-family:inherit;cursor:pointer}
   <section class="section alt" id="process" data-appear>
     <div class="section-head">
       <h2>How I work</h2>
-      <p>An exploration map, not a checklist. Click a step to see what happens there.</p>
+      <p>An exploration loop, not a checklist. Click any step — or let it play.</p>
     </div>
-    <div class="process" id="processSteps">
-      <div class="p-step on" onclick="toggleStep(this)"><b>01</b><h4>Observe</h4><p>Understand behavior through research.</p></div>
-      <div class="p-step" onclick="toggleStep(this)"><b>02</b><h4>Research</h4><p>Collect evidence from analytics & recordings.</p></div>
-      <div class="p-step" onclick="toggleStep(this)"><b>03</b><h4>Analyze</h4><p>Identify patterns and friction points.</p></div>
-      <div class="p-step" onclick="toggleStep(this)"><b>04</b><h4>Prioritize</h4><p>Select by impact and effort.</p></div>
-      <div class="p-step" onclick="toggleStep(this)"><b>05</b><h4>Experiment</h4><p>Validate ideas with controlled tests.</p></div>
-      <div class="p-step" onclick="toggleStep(this)"><b>06</b><h4>Measure</h4><p>Analyze results and outcomes.</p></div>
-      <div class="p-step" onclick="toggleStep(this)"><b>07</b><h4>Learn</h4><p>Turn results into lasting insight.</p></div>
-      <div class="p-step" onclick="toggleStep(this)"><b>08</b><h4>Scale</h4><p>Implement and document what works.</p></div>
+    <div class="process-game">
+      <div class="process-track" id="processTrack">
+        <div class="process-fill" id="processFill"></div>
+        <button class="process-node" data-step="01" data-title="Observe" data-desc="Understand behavior through research."><span class="node-ico">👀</span><span class="node-no">01</span><span class="node-label">Observe</span></button>
+        <button class="process-node" data-step="02" data-title="Research" data-desc="Collect evidence from analytics & recordings."><span class="node-ico">🔍</span><span class="node-no">02</span><span class="node-label">Research</span></button>
+        <button class="process-node" data-step="03" data-title="Analyze" data-desc="Identify patterns and friction points."><span class="node-ico">🧩</span><span class="node-no">03</span><span class="node-label">Analyze</span></button>
+        <button class="process-node" data-step="04" data-title="Prioritize" data-desc="Select by impact and effort."><span class="node-ico">🎯</span><span class="node-no">04</span><span class="node-label">Prioritize</span></button>
+        <button class="process-node" data-step="05" data-title="Experiment" data-desc="Validate ideas with controlled tests."><span class="node-ico">🧪</span><span class="node-no">05</span><span class="node-label">Experiment</span></button>
+        <button class="process-node" data-step="06" data-title="Measure" data-desc="Analyze results and outcomes."><span class="node-ico">📏</span><span class="node-no">06</span><span class="node-label">Measure</span></button>
+        <button class="process-node" data-step="07" data-title="Learn" data-desc="Turn results into lasting insight."><span class="node-ico">💡</span><span class="node-no">07</span><span class="node-label">Learn</span></button>
+        <button class="process-node" data-step="08" data-title="Scale" data-desc="Implement and document what works."><span class="node-ico">🚀</span><span class="node-no">08</span><span class="node-label">Scale</span></button>
+      </div>
+      <div class="process-detail">
+        <span class="process-detail-no" id="processDetailNo">01 · Observe</span>
+        <h4 id="processDetailTitle">Observe</h4>
+        <p id="processDetailDesc">Understand behavior through research.</p>
+      </div>
     </div>
   </section>
 
@@ -594,26 +614,19 @@ button{font-family:inherit;cursor:pointer}
     <div class="about-grid">
       <div>
         <p class="big">Jack of all trades, master of figuring things out.</p>
-        <p>I'm Gabi, a designer turned CRO & Growth professional with a slightly obsessive curiosity about how people, products and ideas work.</p>
-        <p>I experiment with pretty much everything: products, data, languages, climbing, dance, travel, and occasionally questionable life decisions.</p>
-        <p>That curiosity is also how I work. I use design + behavioral insights + experimentation to turn assumptions into evidence and help digital products grow.</p>
-        <p class="big">Because to me, behind every metric, there's a person.</p>
+        <p>I'm Gabriela, a designer turned CRO & Growth professional with a slightly obsessive curiosity about how people, products and ideas work.</p>
+        <p>I experiment with pretty much everything: products, data, languages, climbing, dance and travel.</p>
+        <p>That curiosity is also how I work — using design, behavioral insights and experimentation to turn assumptions into evidence and help digital products grow. My path: Design → Marketing → Growth → CRO.</p>
+        <div class="hero-quote">Because to me, behind every metric, there's a person.</div>
         <div class="interests">
           <span class="interest">🧗 Climbing</span>
           <span class="interest">💃 Dance</span>
           <span class="interest">✈️ Travel</span>
           <span class="interest">🗣️ Languages</span>
-          <span class="interest">🎲 Questionable life decisions</span>
         </div>
       </div>
       <div>
         <div class="about-photo"><img src="assets/gabi-photo.jpg" alt="Portrait of Gabriela Baia" loading="lazy"></div>
-        <div class="timeline">
-          <div class="t-item"><b>Design</b><span>Where I learned how people perceive and decide</span></div>
-          <div class="t-item"><b>Marketing</b><span>Where I learned acquisition and business strategy</span></div>
-          <div class="t-item"><b>Growth</b><span>Where I learned to connect actions to outcomes</span></div>
-          <div class="t-item"><b>CRO</b><span>Where design, data and psychology meet</span></div>
-        </div>
         <div class="sticky-note">📌 "Good UX is measurable. It's intentionally designed, tested and continuously improved."</div>
       </div>
     </div>
@@ -780,9 +793,9 @@ button{font-family:inherit;cursor:pointer}
         <li><b>2</b>Wrote dynamic, contextual CTA copy for the trigger.</li>
         <li><b>3</b>Added urgency badges to draw attention without feeling intrusive.</li>
       </ul>
-      <figure class="case-media" onclick="openLightbox('assets/case3-before-after.jpg','Real redesign comparison — desktop \'dynamic pill\' widget and mobile \'circle badge\' widget, shipped for Sólides.')">
+      <figure class="case-media" onclick="openLightbox('assets/case3-before-after.jpg','Redesign comparison — desktop \'dynamic pill\' widget and mobile \'circle badge\' widget, shipped for Sólides.')">
         <img src="assets/case3-before-after.jpg" alt="Before/after comparison of the desktop and mobile WhatsApp CTA widget redesign" loading="lazy">
-        <div class="cap">📸 Real before/after — desktop "dynamic pill" and mobile "circle badge" widget redesign (click to enlarge)</div>
+        <div class="cap">📸 Before/after — desktop "dynamic pill" and mobile "circle badge" widget redesign (click to enlarge)</div>
       </figure>
     </div>
     <div class="case-phase" id="c1-results"><div class="ph-no">04 · Results & Key Metrics<span class="phase-process">Process: Measure</span></div><h3>What the data showed</h3>
@@ -795,11 +808,11 @@ button{font-family:inherit;cursor:pointer}
       <div class="case-gallery">
         <figure onclick="openLightbox('assets/case3-whatsapp-chart.png','WhatsApp high-intent channel conversion rate improvement, before vs. after the CRO optimization window (Dec 2025 – Apr 2026).')">
           <img src="assets/case3-whatsapp-chart.png" alt="Chart: WhatsApp high-intent channel conversion rate improvement over time" loading="lazy">
-          <figcaption>📸 Real chart — WhatsApp channel CVR climbing after the widget optimization went live</figcaption>
+          <figcaption>📸 Chart — WhatsApp channel CVR climbing after the widget optimization went live</figcaption>
         </figure>
         <figure onclick="openLightbox('assets/case3-historical-chart.png','Historical CVR performance for Form vs. WhatsApp channels across 2025, including the period of direct site ownership.')">
           <img src="assets/case3-historical-chart.png" alt="Chart: historical conversion rate performance for Form and WhatsApp channels" loading="lazy">
-          <figcaption>📸 Real chart — Form vs. WhatsApp CVR trend across the same period, for context</figcaption>
+          <figcaption>📸 Chart — Form vs. WhatsApp CVR trend across the same period, for context</figcaption>
         </figure>
       </div></div>
     <div class="case-phase" id="c1-skills"><div class="ph-no">05 · Skills & Takeaways<span class="phase-process">Process: Learn · Scale</span></div><h3>What stayed with me</h3>
@@ -846,9 +859,9 @@ button{font-family:inherit;cursor:pointer}
       <p>I owned the technical implementation myself — customizing code, headlines and offer cards for maximum conversion alignment — and designed the "Esquenta" ("warm-up") A/B tests that ran through October.</p></div>
     <div class="case-phase" id="c2-execution"><div class="ph-no">03 · Execution<span class="phase-process">Process: Experiment</span></div><h3>What I shipped</h3>
       <p>One of the real "Esquenta" tests — a Black Friday homepage offer, targeted at all visitors and run for a focused reporting window to validate the winning variant before wider rollout:</p>
-      <figure class="case-media" onclick="openLightbox('assets/case-blackfriday-dashboard.png','Real screenshot of the A/B testing dashboard — [BOFU] Oferta Home do Site, the Black Friday homepage offer test, showing the baseline screenshot and targeting rules.')">
+      <figure class="case-media" onclick="openLightbox('assets/case-blackfriday-dashboard.png','Screenshot of the A/B testing dashboard — [BOFU] Oferta Home do Site, the Black Friday homepage offer test, showing the baseline screenshot and targeting rules.')">
         <img src="assets/case-blackfriday-dashboard.png" alt="Screenshot of the real A/B testing dashboard for the Black Friday homepage offer test, showing the baseline screenshot and targeting rules" loading="lazy">
-        <div class="cap">📸 Real screenshot — the "[BOFU] Oferta Home do Site" Black Friday test, straight from the testing platform (click to enlarge)</div>
+        <div class="cap">📸 Screenshot — the "[BOFU] Oferta Home do Site" Black Friday test dashboard (click to enlarge; figures shown may be adjusted for confidentiality)</div>
       </figure>
     </div>
     <div class="case-phase" id="c2-results"><div class="ph-no">04 · Results & Key Metrics<span class="phase-process">Process: Measure</span></div><h3>What the data showed</h3>
@@ -904,7 +917,7 @@ button{font-family:inherit;cursor:pointer}
       <p>Set an all-time domain record for Form Conversion Rate in October, sustained top CVR efficiency through Black Friday's peak traffic of 14.9k+ leads/month, then optimized WhatsApp triggers specifically in December.</p>
       <figure class="case-media" onclick="openLightbox('assets/case3-historical-chart.png','Historical CVR performance for Form vs. WhatsApp channels across the Sep–Dec 2025 website ownership period, including the pre-ownership baseline.')">
         <img src="assets/case3-historical-chart.png" alt="Chart: historical Form vs. WhatsApp conversion rate performance across the ownership period" loading="lazy">
-        <div class="cap">📸 Real chart — Form vs. WhatsApp CVR across the ownership period, with the Oct Forms peak and Dec WhatsApp peak marked (click to enlarge)</div>
+        <div class="cap">📸 Chart — Form vs. WhatsApp CVR across the ownership period, with the Oct Forms peak and Dec WhatsApp peak marked (click to enlarge)</div>
       </figure>
     </div>
     <div class="case-phase" id="c3-results"><div class="ph-no">04 · Results & Key Metrics<span class="phase-process">Process: Measure</span></div><h3>What the data showed</h3>
@@ -958,9 +971,9 @@ button{font-family:inherit;cursor:pointer}
       <p>Planned, launched and analyzed multiple A/B and multivariate tests using Convert, focused on copy, UI adjustments, microcopies and form steps — building a real, running test backlog rather than isolated experiments.</p></div>
     <div class="case-phase" id="c4-execution"><div class="ph-no">03 · Execution<span class="phase-process">Process: Experiment</span></div><h3>What I shipped</h3>
       <p>Dozens of concurrent and sequential tests, logged and tracked directly in the Convert platform:</p>
-      <figure class="case-media" onclick="openLightbox('assets/case6-experiment-library.png','Real screenshot of the Convert platform test log — dozens of A/B and multivariate tests across TOFU, MOFU and BOFU stages, each with its own confidence level.')">
+      <figure class="case-media" onclick="openLightbox('assets/case6-experiment-library.png','Screenshot of the Convert platform test log — dozens of A/B and multivariate tests across TOFU, MOFU and BOFU stages, each with its own confidence level.')">
         <img src="assets/case6-experiment-library.png" alt="Screenshot of the Convert platform's A/B and multivariate test log" loading="lazy">
-        <div class="cap">📸 Real screenshot — the Convert platform's test log, dozens of real experiments across the funnel (click to enlarge)</div>
+        <div class="cap">📸 Screenshot — the Convert platform's test log, spanning dozens of experiments across the funnel (click to enlarge; figures shown may be adjusted for confidentiality)</div>
       </figure>
     </div>
     <div class="case-phase" id="c4-results"><div class="ph-no">04 · Results & Key Metrics<span class="phase-process">Process: Measure</span></div><h3>What the data showed</h3>
@@ -1079,11 +1092,47 @@ function tickClock(){
 }
 tickClock(); setInterval(tickClock, 30000);
 
-/* ===================== PROCESS STEPPER ===================== */
-function toggleStep(el){
-  document.querySelectorAll('.p-step').forEach(s=>s.classList.remove('on'));
-  el.classList.add('on');
-}
+/* ===================== PROCESS GAME (auto-playing, clickable path) ===================== */
+(function(){
+  var track = document.getElementById('processTrack');
+  if(!track) return;
+  var nodes = Array.prototype.slice.call(track.querySelectorAll('.process-node'));
+  var fill = document.getElementById('processFill');
+  var noEl = document.getElementById('processDetailNo');
+  var titleEl = document.getElementById('processDetailTitle');
+  var descEl = document.getElementById('processDetailDesc');
+  var timer = null;
+  var current = 0;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  function apply(idx){
+    current = idx;
+    nodes.forEach(function(n,i){
+      n.classList.toggle('on', i === idx);
+      n.classList.toggle('done', i < idx);
+    });
+    fill.style.width = (idx/(nodes.length-1))*100 + '%';
+    var n = nodes[idx];
+    noEl.textContent = n.dataset.step + ' · ' + n.dataset.title;
+    titleEl.textContent = n.dataset.title;
+    descEl.textContent = n.dataset.desc;
+  }
+  function stopAuto(){ if(timer){ clearInterval(timer); timer = null; } }
+  function startAuto(){
+    stopAuto();
+    if(reduce) return;
+    timer = setInterval(function(){ apply((current+1) % nodes.length); }, 3200);
+  }
+
+  nodes.forEach(function(n, i){
+    n.addEventListener('click', function(){ apply(i); startAuto(); });
+  });
+  track.addEventListener('mouseenter', stopAuto);
+  track.addEventListener('mouseleave', startAuto);
+
+  apply(0);
+  startAuto();
+})();
 
 /* ===================== EXPERIMENT FILTER ===================== */
 function filterExp(btn){
