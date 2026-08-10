@@ -340,6 +340,38 @@ button{font-family:inherit;cursor:pointer}
 .next-case span.label{font-size:12px;color:var(--gray-500);text-transform:uppercase;letter-spacing:.05em}
 .next-case h4{font-family:var(--font-display);font-size:18px;font-weight:600;margin-top:4px}
 
+/* ===================== CASE IN-PAGE NAV + PROGRESS ===================== */
+.case-progress{position:fixed;top:0;left:0;height:3px;background:var(--coral-deep);z-index:970;width:0%;transition:width .12s linear}
+.case-nav{position:sticky;top:64px;z-index:80;display:flex;gap:6px;overflow-x:auto;padding:12px max(20px,calc((100% - var(--maxw)) / 2));background:rgba(251,250,246,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--gray-200);-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.case-nav::-webkit-scrollbar{display:none}
+.case-nav a{flex:0 0 auto;font-size:12.5px;font-weight:600;color:var(--gray-500);padding:7px 13px;border-radius:var(--r-pill);border:1px solid var(--gray-200);background:var(--paper);white-space:nowrap;transition:.25s}
+.case-nav a:hover{color:var(--ink);border-color:var(--gray-300)}
+.case-nav a.results{background:var(--ink);color:#fff;border-color:var(--ink)}
+.case-phase{scroll-margin-top:128px}
+.phase-process{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--gray-500);background:var(--gray-100);padding:3px 9px;border-radius:var(--r-pill);margin-left:8px;vertical-align:middle}
+
+/* ===================== CASE MEDIA / GALLERY / LIGHTBOX ===================== */
+.case-media{margin:20px 0 8px;border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--gray-200);cursor:zoom-in;background:var(--paper)}
+.case-media img{width:100%;display:block;transition:transform .4s var(--ease)}
+.case-media:hover img{transform:scale(1.015)}
+.case-media .cap{padding:10px 16px;font-size:12px;color:var(--gray-500);border-top:1px solid var(--gray-200);background:var(--paper)}
+.case-gallery{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0 8px}
+.case-gallery figure{border:1px solid var(--gray-200);border-radius:var(--r-md);overflow:hidden;cursor:zoom-in;background:var(--paper)}
+.case-gallery img{width:100%;display:block;transition:transform .4s var(--ease)}
+.case-gallery figure:hover img{transform:scale(1.03)}
+.case-gallery figcaption{padding:8px 12px;font-size:11.5px;color:var(--gray-500);border-top:1px solid var(--gray-200)}
+@media (max-width:640px){.case-gallery{grid-template-columns:1fr}}
+.case-card-img{width:100%;height:150px;object-fit:cover;border-radius:calc(var(--r-lg) - 6px);margin:-4px -4px 4px}
+.case-card .proof-badge{position:absolute;top:14px;right:14px;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;background:rgba(20,18,16,.72);color:#fff;padding:4px 9px;border-radius:var(--r-pill);backdrop-filter:blur(4px)}
+
+.lightbox{position:fixed;inset:0;z-index:1300;background:rgba(20,18,16,.9);display:flex;align-items:center;justify-content:center;padding:32px;opacity:0;visibility:hidden;transition:opacity .3s var(--ease),visibility .3s}
+.lightbox.open{opacity:1;visibility:visible}
+.lightbox img{max-width:min(100%,1100px);max-height:82vh;border-radius:var(--r-md);box-shadow:0 30px 80px -20px rgba(0,0,0,.6)}
+.lightbox-cap{position:absolute;bottom:26px;left:0;right:0;text-align:center;color:rgba(255,255,255,.78);font-size:13px;padding:0 24px}
+.lightbox-close{position:absolute;top:20px;right:24px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;border:none;font-size:18px;cursor:pointer}
+.lightbox-close:hover{background:rgba(255,255,255,.22)}
+@media (max-width:480px){.case-nav{top:0}}
+
 /* ===================== CHATBOT ===================== */
 .chat-btn{position:fixed;right:24px;bottom:24px;z-index:950;display:flex;align-items:center;gap:9px;
   background:var(--ink);color:#fff;border:none;padding:14px 20px;border-radius:var(--r-pill);font-weight:600;font-size:14px;
@@ -407,7 +439,7 @@ button{font-family:inherit;cursor:pointer}
     <div class="aurora"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
     <span class="eyebrow"><span class="dot"></span>Field notes of a curious researcher</span>
     <h1>Turning user behavior into <em>measurable growth</em>.</h1>
-    <p class="lead">CRO Analyst with a background in Graphic Design and Growth Marketing. I combine behavioral research, experimentation and analytics to find opportunities that improve digital experiences and move the full funnel — from MQL to SAL, SHOW and final conversion.</p>
+    <p class="lead">I've driven results like +94% form conversion, +192% channel engagement and +15.6% landing-page conversion by running one repeatable process — <strong>Observe → Research → Analyze → Prioritize → Experiment → Measure → Learn → Scale</strong> — across ~1.1M sessions/month, from first click (MQL) to signed deal (SAL → SHOW → CR).</p>
     <div class="hero-ctas">
       <a class="btn btn-primary" href="#cases" onclick="showView('home')">View Case Studies</a>
       <button class="btn btn-outline" onclick="downloadResume()">↓ Download Resume</button>
@@ -427,13 +459,13 @@ button{font-family:inherit;cursor:pointer}
       <span class="tchip c5">📱 +7.04% SALs (WhatsApp Desktop Button)</span>
       <span class="tchip c3">🎯 +11% SALs (Get Demo Chatbot)</span>
       <span class="tchip c4">✅ +12.5% SHOW Rate (CNPJ Qualification)</span>
-      <span class="tchip c6">🔥 +28.1% CR (Trending Tag, 99.9% conf.)</span>
+      <span class="tchip c6">🔥 +15.6% CR (Trending Tag, ~99% conf.)</span>
       <span class="tchip c1">📈 +94% Form Conversion (Payroll Copy)</span>
       <span class="tchip c2">💬 +83% Conversion (DP Argumentation)</span>
       <span class="tchip c5">📱 +7.04% SALs (WhatsApp Desktop Button)</span>
       <span class="tchip c3">🎯 +11% SALs (Get Demo Chatbot)</span>
       <span class="tchip c4">✅ +12.5% SHOW Rate (CNPJ Qualification)</span>
-      <span class="tchip c6">🔥 +28.1% CR (Trending Tag, 99.9% conf.)</span>
+      <span class="tchip c6">🔥 +15.6% CR (Trending Tag, ~99% conf.)</span>
     </div>
   </div>
 
@@ -446,7 +478,7 @@ button{font-family:inherit;cursor:pointer}
       <div class="funnel-step"><span class="fn-tag">MQL</span><h3>Copy & Messaging</h3><p>Pain- and comparison-led H2 rewrites lifted top-of-funnel form conversion by up to 94%.</p></div>
       <div class="funnel-step"><span class="fn-tag">SAL</span><h3>Channel & UX</h3><p>WhatsApp entry points and a chatbot-guided demo grew sales-accepted leads by 7–11%.</p></div>
       <div class="funnel-step"><span class="fn-tag">SHOW</span><h3>Qualification</h3><p>Requiring CNPJ at the point of intent lifted meeting show-rate by 12.5%.</p></div>
-      <div class="funnel-step"><span class="fn-tag">CR</span><h3>Trust & Proof</h3><p>Social-proof tags on landing pages lifted conversion 28.1% with 99.9% statistical confidence.</p></div>
+      <div class="funnel-step"><span class="fn-tag">CR</span><h3>Trust & Proof</h3><p>Social-proof tags on landing pages lifted conversion 15.6% with ~99% statistical confidence.</p></div>
     </div>
     <p class="funnel-note">Every stage below is one of the <strong>6 featured experiments</strong> — click any card to open the full breakdown: hypothesis, strategy and results.</p>
   </section>
@@ -460,43 +492,47 @@ button{font-family:inherit;cursor:pointer}
       <div class="case-card" onclick="showView('case1')">
         <span class="case-tag c1">Copy · A/B Test</span>
         <h3>Reframing Copy Around Legal Risk for Digital Payroll</h3>
-        <p>Rewrote homepage H2s to lead with the pain and legal/compliance risk of manual payroll instead of generic feature messaging.</p>
+        <p>Hypothesis-driven rewrite: swapped feature-led H2s for pain- and legal-risk-led copy, validated with an A/B test.</p>
         <div><span class="case-stat">+94%</span><span>Form Submissions (CR 3.43% → 7.43%)</span></div>
         <span class="case-link">View case <span class="arrow">→</span></span>
       </div>
       <div class="case-card" onclick="showView('case2')">
         <span class="case-tag c2">Copy · A/B Test</span>
         <h3>Manual vs. Automated: Comparative Copy for HR (DP)</h3>
-        <p>Rewrote headlines to contrast the manual HR process against automation, making the value instantly legible.</p>
+        <p>Reframed HR messaging as a direct manual-vs-automated comparison and validated the lift with an A/B test.</p>
         <div><span class="case-stat">+83%</span><span>Form Conversion</span></div>
         <span class="case-link">View case <span class="arrow">→</span></span>
       </div>
-      <div class="case-card" onclick="showView('case3')">
+      <div class="case-card" onclick="showView('case3')" style="position:relative">
+        <span class="proof-badge">📸 Real data</span>
+        <img class="case-card-img" src="assets/case3-before-after.jpg" alt="Before/after comparison of the desktop and mobile WhatsApp button redesign" loading="lazy">
         <span class="case-tag c5">Wpp · Direct Ship</span>
         <h3>Expanding the Desktop WhatsApp Button</h3>
-        <p>Delayed, expanding WhatsApp button on desktop to draw attention without being intrusive — shipped directly.</p>
+        <p>Diagnosed low visibility, redesigned the button to expand with a delay, and shipped directly on strong signal.</p>
         <div><span class="case-stat">+7.04%</span><span>SALs Originated from Site</span></div>
         <span class="case-link">View case <span class="arrow">→</span></span>
       </div>
       <div class="case-card" onclick="showView('case4')">
         <span class="case-tag c3">UX · Split URL</span>
         <h3>A Chatbot-Guided, Self-Serve Get Demo Experience</h3>
-        <p>Replaced the static demo request with a free interactive demo guided by a chatbot flow.</p>
+        <p>Replaced a cold demo-request form with a self-serve, chatbot-guided walkthrough — validated via split URL.</p>
         <div><span class="case-stat">+11%</span><span>SALs</span></div>
         <span class="case-link">View case <span class="arrow">→</span></span>
       </div>
       <div class="case-card" onclick="showView('case5')">
         <span class="case-tag c4">Forms · Split URL</span>
         <h3>Mandatory CNPJ, Minus 10 Columns</h3>
-        <p>Made CNPJ mandatory while trimming ~10 non-predictive fields — leaner form, better-qualified leads.</p>
+        <p>Cut ~10 low-signal fields and made CNPJ mandatory, then validated the qualification lift via split URL.</p>
         <div><span class="case-stat">+12.5%</span><span>SHOW Rate</span></div>
         <span class="case-link">View case <span class="arrow">→</span></span>
       </div>
-      <div class="case-card" onclick="showView('case6')">
+      <div class="case-card" onclick="showView('case6')" style="position:relative">
+        <span class="proof-badge">📸 Real data</span>
+        <img class="case-card-img" src="assets/case6-experiment-library.png" alt="Screenshot of the internal A/B testing dashboard showing the Trending tag experiment" loading="lazy">
         <span class="case-tag c6">Trust · A/B Test</span>
         <h3>A "Trending" Social-Proof Tag on Rich Materials</h3>
-        <p>Added a social-proof badge above the fold on gated-content LPs, tested at 99.9% confidence and rolled out to the top 10 LPs.</p>
-        <div><span class="case-stat">+28.1%</span><span>CR (48.79% → 56.24%)</span></div>
+        <p>Added an above-the-fold social-proof badge, validated at ~99% confidence, then rolled out to the top 10 LPs.</p>
+        <div><span class="case-stat">+15.6%</span><span>CR Lift (A/B Test)</span></div>
         <span class="case-link">View case <span class="arrow">→</span></span>
       </div>
     </div>
@@ -586,7 +622,7 @@ button{font-family:inherit;cursor:pointer}
         <tr data-cat="Wpp" onclick="showView('case3')" style="cursor:pointer"><td data-label="Experiment">Desktop WhatsApp button, expanded + delay</td><td data-label="Category">Wpp</td><td data-label="Method">Direct ship</td><td data-label="Status"><span class="pill-status winner">Winner</span></td><td data-label="Impact">+7.04% SALs (site)</td></tr>
         <tr data-cat="UX" onclick="showView('case4')" style="cursor:pointer"><td data-label="Experiment">Get Demo — chatbot-guided self-serve flow</td><td data-label="Category">UX</td><td data-label="Method">Split URL</td><td data-label="Status"><span class="pill-status winner">Winner</span></td><td data-label="Impact">+11% SALs</td></tr>
         <tr data-cat="Forms" onclick="showView('case5')" style="cursor:pointer"><td data-label="Experiment">Mandatory CNPJ, -10 columns</td><td data-label="Category">Forms</td><td data-label="Method">Split URL</td><td data-label="Status"><span class="pill-status winner">Winner</span></td><td data-label="Impact">+12.5% SHOW rate</td></tr>
-        <tr data-cat="Trust" onclick="showView('case6')" style="cursor:pointer"><td data-label="Experiment">"Em Alta" trending tag on rich materials</td><td data-label="Category">Trust</td><td data-label="Method">A/B test (99.9% conf.)</td><td data-label="Status"><span class="pill-status winner">Winner</span></td><td data-label="Impact">+28.1% CR, +17.36% engagement</td></tr>
+        <tr data-cat="Trust" onclick="showView('case6')" style="cursor:pointer"><td data-label="Experiment">"Em Alta" trending tag on rich materials</td><td data-label="Category">Trust</td><td data-label="Method">A/B test (~99% conf.)</td><td data-label="Status"><span class="pill-status winner">Winner</span></td><td data-label="Impact">+15.6% CR, +17.36% engagement</td></tr>
       </tbody>
     </table>
   </section>
@@ -693,8 +729,8 @@ button{font-family:inherit;cursor:pointer}
     <div class="bg-grid"></div>
     <button class="case-back" onclick="showView('home');scrollToId('cases')">← All expeditions</button>
     <span class="case-tag c1">Expedition #01 · Copy</span>
-    <h1>Reframing Copy Around Legal Risk to Lift Digital Payroll Signups</h1>
-    <p class="lead">Rewriting homepage messaging to lead with the pain and legal/compliance risk of manual payroll, instead of generic feature language.</p>
+    <h1>+94% Form Submissions: Reframing Payroll Copy Around Legal Risk</h1>
+    <p class="lead">Digital payroll form conversion nearly doubled (3.43% → 7.43%) after H2s were rewritten to lead with the pain and legal/compliance risk of manual payroll, instead of generic feature language.</p>
     <div class="big-stat"><b>+94%</b><span>Form Submissions</span></div>
     <div class="glance">
       <div><b>Role</b><span>CRO Analyst — copy strategy, testing, analysis</span></div>
@@ -703,12 +739,19 @@ button{font-family:inherit;cursor:pointer}
       <div><b>Funnel stage</b><span>MQL</span></div>
     </div>
   </section>
+  <nav class="case-nav">
+    <a href="#c1-challenge">Challenge</a>
+    <a href="#c1-hypothesis">Hypothesis</a>
+    <a href="#c1-strategy">Strategy</a>
+    <a href="#c1-results" class="results">Results →</a>
+    <a href="#c1-learnings">Learnings</a>
+  </nav>
   <section class="section case-body">
-    <div class="case-phase"><div class="ph-no">01 · Challenge</div><h3>The challenge</h3>
+    <div class="case-phase" id="c1-challenge"><div class="ph-no">01 · Challenge<span class="phase-process">Process: Observe · Research</span></div><h3>The challenge</h3>
       <p>The digital payroll landing page communicated features and convenience, but visitors evaluating a payroll switch weren't primarily worried about convenience — they were worried about getting compliance wrong. Generic, benefit-led H2s weren't giving that concern anywhere to land, and form conversion sat around 3.43%.</p></div>
-    <div class="case-phase"><div class="ph-no">02 · Hypothesis</div><h3>Hypothesis</h3>
+    <div class="case-phase" id="c1-hypothesis"><div class="ph-no">02 · Hypothesis<span class="phase-process">Process: Analyze · Prioritize</span></div><h3>Hypothesis</h3>
       <div class="hyp-box">If we rewrite the page's H2s to foreground the pain and legal/compliance risk of manual payroll instead of feature benefits, then visitors will feel the cost of inaction more concretely and submit the form at a higher rate.</div></div>
-    <div class="case-phase"><div class="ph-no">03 · Strategy & Application</div><h3>Strategy & application</h3>
+    <div class="case-phase" id="c1-strategy"><div class="ph-no">03 · Strategy & Application<span class="phase-process">Process: Experiment</span></div><h3>Strategy & application</h3>
       <ul class="exp-steps">
         <li><b>1</b>Audited existing H2s and identified where messaging stayed abstract instead of naming a real, specific risk.</li>
         <li><b>2</b>Rewrote H2s around the pain of manual payroll errors and the legal exposure of non-compliance.</li>
@@ -716,14 +759,14 @@ button{font-family:inherit;cursor:pointer}
       </ul>
       <div class="format-tags"><span class="format-tag">Format: A/B Test</span><span class="format-tag">Category: Copy</span></div>
     </div>
-    <div class="case-phase"><div class="ph-no">04 · Results & Key Metrics</div><h3>What the data showed</h3>
+    <div class="case-phase" id="c1-results"><div class="ph-no">04 · Results & Key Metrics<span class="phase-process">Process: Measure</span></div><h3>What the data showed</h3>
       <div class="result-strip">
         <div><b>+94%</b><span>Form submissions</span></div>
         <div><b>3.43%</b><span>Baseline conversion rate</span></div>
         <div><b>7.43%</b><span>Winning variant conversion rate</span></div>
       </div>
       <p><strong>Business impact:</strong> more than doubling the form conversion rate meaningfully increased qualified top-of-funnel volume without any additional media spend.</p></div>
-    <div class="case-phase"><div class="ph-no">05 · Learnings & Next Steps</div><h3>What stayed with me</h3>
+    <div class="case-phase" id="c1-learnings"><div class="ph-no">05 · Learnings & Next Steps<span class="phase-process">Process: Learn · Scale</span></div><h3>What stayed with me</h3>
       <div class="notes-grid">
         <div class="note">Risk-based framing outperforms feature framing for compliance-driven products.</div>
         <div class="note">Naming the cost of inaction can beat listing the benefits of action.</div>
@@ -742,8 +785,8 @@ button{font-family:inherit;cursor:pointer}
     <div class="bg-grid"></div>
     <button class="case-back" onclick="showView('home');scrollToId('cases')">← All expeditions</button>
     <span class="case-tag c2">Expedition #02 · Copy</span>
-    <h1>Manual vs. Automated: Comparative Copy That Lifted HR Conversion</h1>
-    <p class="lead">Rewriting headlines to explicitly contrast the manual "Departamento Pessoal" (HR/payroll admin) process against automation.</p>
+    <h1>+83% Form Conversion: Manual vs. Automated Comparative Copy</h1>
+    <p class="lead">HR (Departamento Pessoal) form conversion grew 83% after headlines were rewritten to explicitly contrast the manual process visitors already live with the automated alternative.</p>
     <div class="big-stat"><b>+83%</b><span>Form Conversion</span></div>
     <div class="glance">
       <div><b>Role</b><span>CRO Analyst — copy strategy, testing, analysis</span></div>
@@ -752,12 +795,19 @@ button{font-family:inherit;cursor:pointer}
       <div><b>Funnel stage</b><span>MQL</span></div>
     </div>
   </section>
+  <nav class="case-nav">
+    <a href="#c2-challenge">Challenge</a>
+    <a href="#c2-hypothesis">Hypothesis</a>
+    <a href="#c2-strategy">Strategy</a>
+    <a href="#c2-results" class="results">Results →</a>
+    <a href="#c2-learnings">Learnings</a>
+  </nav>
   <section class="section case-body">
-    <div class="case-phase"><div class="ph-no">01 · Challenge</div><h3>The challenge</h3>
+    <div class="case-phase" id="c2-challenge"><div class="ph-no">01 · Challenge<span class="phase-process">Process: Observe · Research</span></div><h3>The challenge</h3>
       <p>Visitors landing on the HR/DP page already understood their current process was manual and slow — the page just wasn't making that gap visible. Abstract value statements ("more efficient," "streamlined") didn't connect the dots to their day-to-day reality clearly enough to convert.</p></div>
-    <div class="case-phase"><div class="ph-no">02 · Hypothesis</div><h3>Hypothesis</h3>
+    <div class="case-phase" id="c2-hypothesis"><div class="ph-no">02 · Hypothesis<span class="phase-process">Process: Analyze · Prioritize</span></div><h3>Hypothesis</h3>
       <div class="hyp-box">If H2s explicitly contrast the manual process the visitor already lives with the automated alternative, then the value will be immediately legible and more visitors will submit the form.</div></div>
-    <div class="case-phase"><div class="ph-no">03 · Strategy & Application</div><h3>Strategy & application</h3>
+    <div class="case-phase" id="c2-strategy"><div class="ph-no">03 · Strategy & Application<span class="phase-process">Process: Experiment</span></div><h3>Strategy & application</h3>
       <ul class="exp-steps">
         <li><b>1</b>Mapped the manual DP process step by step to find the most painful, relatable moments.</li>
         <li><b>2</b>Rewrote H2s as direct manual-vs-automated comparisons instead of abstract benefit claims.</li>
@@ -765,14 +815,14 @@ button{font-family:inherit;cursor:pointer}
       </ul>
       <div class="format-tags"><span class="format-tag">Format: A/B Test</span><span class="format-tag">Category: Copy</span></div>
     </div>
-    <div class="case-phase"><div class="ph-no">04 · Results & Key Metrics</div><h3>What the data showed</h3>
+    <div class="case-phase" id="c2-results"><div class="ph-no">04 · Results & Key Metrics<span class="phase-process">Process: Measure</span></div><h3>What the data showed</h3>
       <div class="result-strip">
         <div><b>+83%</b><span>Form conversion</span></div>
         <div><b>Before/After</b><span>Comparative framing</span></div>
         <div><b>Winner</b><span>Statistically significant</span></div>
       </div>
       <p><strong>Business impact:</strong> the comparative narrative became the go-to copy pattern for other HR-admin pages, since it reliably outperformed abstract value statements.</p></div>
-    <div class="case-phase"><div class="ph-no">05 · Learnings & Next Steps</div><h3>What stayed with me</h3>
+    <div class="case-phase" id="c2-learnings"><div class="ph-no">05 · Learnings & Next Steps<span class="phase-process">Process: Learn · Scale</span></div><h3>What stayed with me</h3>
       <div class="notes-grid">
         <div class="note">Contrast is persuasive when the audience is already living the "before" state.</div>
         <div class="note">Comparative framing clarifies value faster than abstract benefit statements.</div>
@@ -791,8 +841,8 @@ button{font-family:inherit;cursor:pointer}
     <div class="bg-grid"></div>
     <button class="case-back" onclick="showView('home');scrollToId('cases')">← All expeditions</button>
     <span class="case-tag c5">Expedition #03 · Wpp</span>
-    <h1>Expanding the Desktop WhatsApp Button to Lift Site SALs</h1>
-    <p class="lead">A delayed, expanding WhatsApp entry point on desktop, designed to draw attention without feeling intrusive.</p>
+    <h1>+7.04% Site SALs: Expanding the Desktop WhatsApp Button</h1>
+    <p class="lead">Sales-accepted leads originated from the site grew 7.04% after the desktop WhatsApp entry point was redesigned to expand with a short delay, drawing attention without feeling intrusive.</p>
     <div class="big-stat"><b>+7.04%</b><span>SALs Originated from Site</span></div>
     <div class="glance">
       <div><b>Role</b><span>CRO Analyst — UX design, rollout, analysis</span></div>
@@ -801,27 +851,48 @@ button{font-family:inherit;cursor:pointer}
       <div><b>Funnel stage</b><span>SAL</span></div>
     </div>
   </section>
+  <nav class="case-nav">
+    <a href="#c3-challenge">Challenge</a>
+    <a href="#c3-hypothesis">Hypothesis</a>
+    <a href="#c3-strategy">Strategy</a>
+    <a href="#c3-results" class="results">Results →</a>
+    <a href="#c3-learnings">Learnings</a>
+  </nav>
   <section class="section case-body">
-    <div class="case-phase"><div class="ph-no">01 · Challenge</div><h3>The challenge</h3>
+    <figure class="case-media" onclick="openLightbox('assets/case3-before-after.jpg','Real redesign comparison — desktop \'dynamic pill\' button and mobile \'circle badge\' button, shipped for Sólides.')">
+      <img src="assets/case3-before-after.jpg" alt="Before/after comparison of the desktop and mobile WhatsApp button redesign" loading="lazy">
+      <div class="cap">📸 Real before/after — desktop "dynamic pill" and mobile "circle badge" button redesign (click to enlarge)</div>
+    </figure>
+    <div class="case-phase" id="c3-challenge"><div class="ph-no">01 · Challenge<span class="phase-process">Process: Observe · Research</span></div><h3>The challenge</h3>
       <p>On desktop, the WhatsApp entry point was a small, static icon easy to miss — especially compared to how naturally visible it felt on mobile. Desktop visitors with real intent to talk to the team were passing right by it.</p></div>
-    <div class="case-phase"><div class="ph-no">02 · Hypothesis</div><h3>Hypothesis</h3>
+    <div class="case-phase" id="c3-hypothesis"><div class="ph-no">02 · Hypothesis<span class="phase-process">Process: Analyze · Prioritize</span></div><h3>Hypothesis</h3>
       <div class="hyp-box">If the desktop WhatsApp button visually expands with a short delay after page load, then more desktop visitors will notice it and start a qualified conversation, increasing SALs originated from the site.</div></div>
-    <div class="case-phase"><div class="ph-no">03 · Strategy & Application</div><h3>Strategy & application</h3>
+    <div class="case-phase" id="c3-strategy"><div class="ph-no">03 · Strategy & Application<span class="phase-process">Process: Experiment</span></div><h3>Strategy & application</h3>
       <ul class="exp-steps">
-        <li><b>1</b>Redesigned the desktop button to expand into a labeled pill after a short delay instead of staying a static icon.</li>
+        <li><b>1</b>Redesigned the desktop button into a "dynamic pill" with CTA text that expands after a short delay instead of staying a static icon, and the mobile button into a minimal "circle badge" to avoid obstructing small screens.</li>
         <li><b>2</b>Tuned the delay and animation so the expansion felt like a helpful nudge, not a pop-up interruption.</li>
         <li><b>3</b>Shipped directly to desktop given the strong directional signal and low downside risk, then monitored SAL volume by source.</li>
       </ul>
       <div class="format-tags"><span class="format-tag">Format: Direct Implementation</span><span class="format-tag">Category: Wpp</span></div>
     </div>
-    <div class="case-phase"><div class="ph-no">04 · Results & Key Metrics</div><h3>What the data showed</h3>
+    <div class="case-phase" id="c3-results"><div class="ph-no">04 · Results & Key Metrics<span class="phase-process">Process: Measure</span></div><h3>What the data showed</h3>
       <div class="result-strip">
         <div><b>+7.04%</b><span>SALs from site</span></div>
         <div><b>Desktop</b><span>Channel scope</span></div>
         <div><b>Low-risk</b><span>Ship without full A/B</span></div>
       </div>
-      <p><strong>Business impact:</strong> a small, contained UI change turned an under-noticed channel into a measurably larger source of sales-accepted leads.</p></div>
-    <div class="case-phase"><div class="ph-no">05 · Learnings & Next Steps</div><h3>What stayed with me</h3>
+      <p><strong>Business impact:</strong> a small, contained UI change turned an under-noticed channel into a measurably larger source of sales-accepted leads.</p>
+      <div class="case-gallery">
+        <figure onclick="openLightbox('assets/case3-whatsapp-chart.png','WhatsApp high-intent channel conversion rate improvement, before vs. after the CRO optimization window (Dec 2025 – Apr 2026).')">
+          <img src="assets/case3-whatsapp-chart.png" alt="Chart: WhatsApp high-intent channel conversion rate improvement over time" loading="lazy">
+          <figcaption>📸 Real chart — WhatsApp channel CVR climbing after the widget optimization went live</figcaption>
+        </figure>
+        <figure onclick="openLightbox('assets/case3-historical-chart.png','Historical CVR performance for Form vs. WhatsApp channels across 2025, including the period of direct site ownership.')">
+          <img src="assets/case3-historical-chart.png" alt="Chart: historical conversion rate performance for Form and WhatsApp channels" loading="lazy">
+          <figcaption>📸 Real chart — Form vs. WhatsApp CVR trend across the same period, for context</figcaption>
+        </figure>
+      </div></div>
+    <div class="case-phase" id="c3-learnings"><div class="ph-no">05 · Learnings & Next Steps<span class="phase-process">Process: Learn · Scale</span></div><h3>What stayed with me</h3>
       <div class="notes-grid">
         <div class="note">Desktop users respond well to delayed, low-friction attention cues.</div>
         <div class="note">Not every improvement needs a full A/B test when directional risk is low and evidence is strong.</div>
@@ -840,8 +911,8 @@ button{font-family:inherit;cursor:pointer}
     <div class="bg-grid"></div>
     <button class="case-back" onclick="showView('home');scrollToId('cases')">← All expeditions</button>
     <span class="case-tag c3">Expedition #04 · UX</span>
-    <h1>A Chatbot-Guided, Self-Serve Get Demo Experience</h1>
-    <p class="lead">Replacing the static "request a demo" form with a free interactive demo, guided end-to-end by a conversational chatbot flow.</p>
+    <h1>+11% SALs: A Chatbot-Guided, Self-Serve Get Demo Experience</h1>
+    <p class="lead">Sales-accepted leads grew 11% after the static "request a demo" form was replaced with a free interactive demo, guided end-to-end by a conversational chatbot flow.</p>
     <div class="big-stat"><b>+11%</b><span>SALs</span></div>
     <div class="glance">
       <div><b>Role</b><span>CRO Analyst — UX flow, chatbot logic, testing</span></div>
@@ -850,12 +921,19 @@ button{font-family:inherit;cursor:pointer}
       <div><b>Funnel stage</b><span>SAL</span></div>
     </div>
   </section>
+  <nav class="case-nav">
+    <a href="#c4-challenge">Challenge</a>
+    <a href="#c4-hypothesis">Hypothesis</a>
+    <a href="#c4-strategy">Strategy</a>
+    <a href="#c4-results" class="results">Results →</a>
+    <a href="#c4-learnings">Learnings</a>
+  </nav>
   <section class="section case-body">
-    <div class="case-phase"><div class="ph-no">01 · Challenge</div><h3>The challenge</h3>
+    <div class="case-phase" id="c4-challenge"><div class="ph-no">01 · Challenge<span class="phase-process">Process: Observe · Research</span></div><h3>The challenge</h3>
       <p>The original "Get Demo" flow was a form gate: fill in your details, wait for a sales rep to reach out, then see the product for the first time. Many visitors weren't ready to talk to sales before experiencing any value, and dropped off at the gate.</p></div>
-    <div class="case-phase"><div class="ph-no">02 · Hypothesis</div><h3>Hypothesis</h3>
+    <div class="case-phase" id="c4-hypothesis"><div class="ph-no">02 · Hypothesis<span class="phase-process">Process: Analyze · Prioritize</span></div><h3>Hypothesis</h3>
       <div class="hyp-box">If we replace the static demo request with a free, interactive demo guided by a chatbot, then more visitors will experience the product's value before talking to sales — increasing both engagement and the number of sales-accepted leads.</div></div>
-    <div class="case-phase"><div class="ph-no">03 · Strategy & Application</div><h3>Strategy & application</h3>
+    <div class="case-phase" id="c4-strategy"><div class="ph-no">03 · Strategy & Application<span class="phase-process">Process: Experiment</span></div><h3>Strategy & application</h3>
       <ul class="exp-steps">
         <li><b>1</b>Designed a self-serve interactive demo that let visitors explore key use cases hands-on.</li>
         <li><b>2</b>Built a chatbot flow to guide users step by step through the demo, answering questions along the way.</li>
@@ -863,14 +941,14 @@ button{font-family:inherit;cursor:pointer}
       </ul>
       <div class="format-tags"><span class="format-tag">Format: Split URL</span><span class="format-tag">Category: UX / Wpp</span></div>
     </div>
-    <div class="case-phase"><div class="ph-no">04 · Results & Key Metrics</div><h3>What the data showed</h3>
+    <div class="case-phase" id="c4-results"><div class="ph-no">04 · Results & Key Metrics<span class="phase-process">Process: Measure</span></div><h3>What the data showed</h3>
       <div class="result-strip">
         <div><b>+11%</b><span>SALs</span></div>
         <div><b>Chatbot</b><span>Guided flow</span></div>
         <div><b>Self-serve</b><span>Before sales contact</span></div>
       </div>
       <p><strong>Business impact:</strong> leads reaching sales had already experienced the product, arriving warmer and better informed — improving both quantity and quality of the handoff.</p></div>
-    <div class="case-phase"><div class="ph-no">05 · Learnings & Next Steps</div><h3>What stayed with me</h3>
+    <div class="case-phase" id="c4-learnings"><div class="ph-no">05 · Learnings & Next Steps<span class="phase-process">Process: Learn · Scale</span></div><h3>What stayed with me</h3>
       <div class="notes-grid">
         <div class="note">Letting users experience value before a sales call improves lead quality, not just volume.</div>
         <div class="note">Conversational guidance reduces the intimidation of a "cold" product tour.</div>
@@ -889,8 +967,8 @@ button{font-family:inherit;cursor:pointer}
     <div class="bg-grid"></div>
     <button class="case-back" onclick="showView('home');scrollToId('cases')">← All expeditions</button>
     <span class="case-tag c4">Expedition #05 · Forms</span>
-    <h1>Mandatory CNPJ, Minus 10 Columns: A Leaner, Better-Qualified Form</h1>
-    <p class="lead">Requiring a company tax ID (CNPJ) at the point of submission while trimming ~10 non-predictive fields from the qualification form.</p>
+    <h1>+12.5% SHOW Rate: Mandatory CNPJ, Minus 10 Columns</h1>
+    <p class="lead">Meeting show-rate grew 12.5% after making the company tax ID (CNPJ) mandatory at the point of submission, while trimming ~10 non-predictive fields from the qualification form.</p>
     <div class="big-stat"><b>+12.5%</b><span>SHOW Rate</span></div>
     <div class="glance">
       <div><b>Role</b><span>CRO Analyst — form strategy, testing, analysis</span></div>
@@ -899,12 +977,19 @@ button{font-family:inherit;cursor:pointer}
       <div><b>Funnel stage</b><span>SHOW</span></div>
     </div>
   </section>
+  <nav class="case-nav">
+    <a href="#c5-challenge">Challenge</a>
+    <a href="#c5-hypothesis">Hypothesis</a>
+    <a href="#c5-strategy">Strategy</a>
+    <a href="#c5-results" class="results">Results →</a>
+    <a href="#c5-learnings">Learnings</a>
+  </nav>
   <section class="section case-body">
-    <div class="case-phase"><div class="ph-no">01 · Challenge</div><h3>The challenge</h3>
+    <div class="case-phase" id="c5-challenge"><div class="ph-no">01 · Challenge<span class="phase-process">Process: Observe · Research</span></div><h3>The challenge</h3>
       <p>The form generated volume, but a meaningful share of scheduled calls ended in no-shows — leads that looked qualified on paper weren't showing enough real buying intent to book time and keep it.</p></div>
-    <div class="case-phase"><div class="ph-no">02 · Hypothesis</div><h3>Hypothesis</h3>
+    <div class="case-phase" id="c5-hypothesis"><div class="ph-no">02 · Hypothesis<span class="phase-process">Process: Analyze · Prioritize</span></div><h3>Hypothesis</h3>
       <div class="hyp-box">If we require a CNPJ at the point of submission — while removing other fields that don't actually predict fit — then leads will be better qualified and more likely to show up for the scheduled call.</div></div>
-    <div class="case-phase"><div class="ph-no">03 · Strategy & Application</div><h3>Strategy & application</h3>
+    <div class="case-phase" id="c5-strategy"><div class="ph-no">03 · Strategy & Application<span class="phase-process">Process: Experiment</span></div><h3>Strategy & application</h3>
       <ul class="exp-steps">
         <li><b>1</b>Reviewed which of the existing ~10+ fields actually correlated with show-rate versus which just added friction.</li>
         <li><b>2</b>Removed the non-predictive fields and made CNPJ mandatory as the single strongest qualification signal.</li>
@@ -912,14 +997,14 @@ button{font-family:inherit;cursor:pointer}
       </ul>
       <div class="format-tags"><span class="format-tag">Format: Split URL</span><span class="format-tag">Category: Forms</span></div>
     </div>
-    <div class="case-phase"><div class="ph-no">04 · Results & Key Metrics</div><h3>What the data showed</h3>
+    <div class="case-phase" id="c5-results"><div class="ph-no">04 · Results & Key Metrics<span class="phase-process">Process: Measure</span></div><h3>What the data showed</h3>
       <div class="result-strip">
         <div><b>+12.5%</b><span>Show rate</span></div>
         <div><b>-10 cols</b><span>Fields removed</span></div>
         <div><b>1 field</b><span>Added: CNPJ (required)</span></div>
       </div>
       <p><strong>Business impact:</strong> a leaner form both reduced friction and improved the odds that a booked meeting actually happened — a lagging but critical funnel metric.</p></div>
-    <div class="case-phase"><div class="ph-no">05 · Learnings & Next Steps</div><h3>What stayed with me</h3>
+    <div class="case-phase" id="c5-learnings"><div class="ph-no">05 · Learnings & Next Steps<span class="phase-process">Process: Learn · Scale</span></div><h3>What stayed with me</h3>
       <div class="notes-grid">
         <div class="note">One well-chosen qualifying field can outperform many soft ones.</div>
         <div class="note">Show-rate is a lagging indicator of lead fit, not just of volume.</div>
@@ -938,37 +1023,49 @@ button{font-family:inherit;cursor:pointer}
     <div class="bg-grid"></div>
     <button class="case-back" onclick="showView('home');scrollToId('cases')">← All expeditions</button>
     <span class="case-tag c6">Expedition #06 · Trust</span>
-    <h1>A "Trending" Social-Proof Tag That Lifted Landing Page Conversion</h1>
-    <p class="lead">A lightweight "🔥 Trending" badge placed above the fold on gated-content landing pages, validated at 99.9% statistical confidence.</p>
-    <div class="big-stat"><b>+28.1%</b><span>Conversion Rate (48.79% → 56.24%)</span></div>
+    <h1>+15.6% Conversion: A "Trending" Social-Proof Tag on Rich Materials</h1>
+    <p class="lead">Landing page conversion lifted 15.6% at ~99% statistical confidence after adding a lightweight "🔥 Trending" badge above the fold on gated-content landing pages.</p>
+    <div class="big-stat"><b>+15.6%</b><span>Conversion Rate Lift</span></div>
     <div class="glance">
       <div><b>Role</b><span>CRO Analyst — UX, testing, rollout</span></div>
-      <div><b>Format</b><span>A/B Test (99.9% conf.)</span></div>
+      <div><b>Format</b><span>A/B Test (~99% conf.)</span></div>
       <div><b>Category</b><span>Trust / UX</span></div>
       <div><b>Funnel stage</b><span>CR</span></div>
     </div>
   </section>
+  <nav class="case-nav">
+    <a href="#c6-challenge">Challenge</a>
+    <a href="#c6-hypothesis">Hypothesis</a>
+    <a href="#c6-strategy">Strategy</a>
+    <a href="#c6-results" class="results">Results →</a>
+    <a href="#c6-learnings">Learnings</a>
+  </nav>
   <section class="section case-body">
-    <div class="case-phase"><div class="ph-no">01 · Challenge</div><h3>The challenge</h3>
+    <div class="case-phase" id="c6-challenge"><div class="ph-no">01 · Challenge<span class="phase-process">Process: Observe · Research</span></div><h3>The challenge</h3>
       <p>Landing pages for gated rich materials (ebooks, templates, reports) relied entirely on the content's own appeal. Nothing on the page signaled that other people had already found this specific material valuable — a missing layer of social proof right where visitors decide whether to convert.</p></div>
-    <div class="case-phase"><div class="ph-no">02 · Hypothesis</div><h3>Hypothesis</h3>
+    <div class="case-phase" id="c6-hypothesis"><div class="ph-no">02 · Hypothesis<span class="phase-process">Process: Analyze · Prioritize</span></div><h3>Hypothesis</h3>
       <div class="hyp-box">If we add a visible social-proof "Trending" tag in the first fold of the landing page, then visitors will trust the material more and both convert and engage with it at a higher rate.</div></div>
-    <div class="case-phase"><div class="ph-no">03 · Strategy & Application</div><h3>Strategy & application</h3>
+    <div class="case-phase" id="c6-strategy"><div class="ph-no">03 · Strategy & Application<span class="phase-process">Process: Experiment</span></div><h3>Strategy & application</h3>
       <ul class="exp-steps">
         <li><b>1</b>Designed a small "🔥 Em Alta / Trending" badge for the first fold of the LP template.</li>
-        <li><b>2</b>A/B tested the badge against the original layout, running until reaching 99.9% statistical confidence.</li>
+        <li><b>2</b>A/B tested the badge against the original layout, running until reaching ~99% statistical confidence.</li>
         <li><b>3</b>Rolled the winning variant out to the top 10 highest-traffic landing pages.</li>
       </ul>
       <div class="format-tags"><span class="format-tag">Format: A/B Test</span><span class="format-tag">Category: Trust</span></div>
     </div>
-    <div class="case-phase"><div class="ph-no">04 · Results & Key Metrics</div><h3>What the data showed</h3>
+    <div class="case-phase" id="c6-results"><div class="ph-no">04 · Results & Key Metrics<span class="phase-process">Process: Measure</span></div><h3>What the data showed</h3>
       <div class="result-strip">
-        <div><b>+28.1%</b><span>Conversion (48.79% → 56.24%)</span></div>
+        <div><b>+15.6%</b><span>Conversion Lift (A/B)</span></div>
         <div><b>+17.36%</b><span>Engagement</span></div>
         <div><b>Top 10 LPs</b><span>Rolled out</span></div>
       </div>
-      <p><strong>Business impact:</strong> a single, lightweight UI element moved both conversion and downstream engagement, and the statistical confidence was strong enough to justify an immediate roll-out beyond the original test pages.</p></div>
-    <div class="case-phase"><div class="ph-no">05 · Learnings & Next Steps</div><h3>What stayed with me</h3>
+      <p><strong>Business impact:</strong> a single, lightweight UI element moved both conversion and downstream engagement, and the statistical confidence was strong enough to justify an immediate roll-out beyond the original test pages.</p>
+      <figure class="case-media" onclick="openLightbox('assets/case6-experiment-library.png','Real screenshot of the internal A/B testing dashboard — the highlighted row shows the &quot;Em alta&quot; trending tag experiment, +15.6% lift at high confidence, among dozens of other real tests run.')">
+        <img src="assets/case6-experiment-library.png" alt="Screenshot of the internal A/B testing dashboard's experiment list, showing the Trending tag test and its real result" loading="lazy">
+        <div class="cap">📸 Real screenshot — the experimentation dashboard's test log, with this experiment's actual +15.6% / ~99% confidence result (click to enlarge)</div>
+      </figure>
+    </div>
+    <div class="case-phase" id="c6-learnings"><div class="ph-no">05 · Learnings & Next Steps<span class="phase-process">Process: Learn · Scale</span></div><h3>What stayed with me</h3>
       <div class="notes-grid">
         <div class="note">Lightweight social proof can move both conversion and engagement at once.</div>
         <div class="note">High statistical confidence justifies fast roll-out beyond the original test set.</div>
@@ -1004,6 +1101,13 @@ button{font-family:inherit;cursor:pointer}
 
 <div class="toast" id="toast">Copied!</div>
 
+<div class="case-progress" id="caseProgress"></div>
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
+  <img id="lightboxImg" src="" alt="">
+  <div class="lightbox-cap" id="lightboxCap"></div>
+</div>
+
 <script>
 /* ===================== VIEW SWITCHING ===================== */
 function showView(name, btn){
@@ -1020,6 +1124,44 @@ function scrollToId(id){
     if(el) el.scrollIntoView({behavior:'smooth'});
   }, 50);
 }
+
+/* ===================== LIGHTBOX ===================== */
+function openLightbox(src, caption){
+  var lb = document.getElementById('lightbox');
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('lightboxCap').textContent = caption || '';
+  lb.classList.add('open');
+}
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('open');
+}
+(function(){
+  var lb = document.getElementById('lightbox');
+  document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+  lb.addEventListener('click', function(e){ if(e.target === lb) closeLightbox(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLightbox(); });
+})();
+
+/* ===================== CASE READING PROGRESS ===================== */
+(function(){
+  var bar = document.getElementById('caseProgress');
+  function update(){
+    var active = document.querySelector('.view.active .case-body');
+    if(!active){ bar.style.width = '0%'; return; }
+    var rect = active.getBoundingClientRect();
+    var total = rect.height - window.innerHeight;
+    var scrolled = -rect.top;
+    var pct = total > 0 ? Math.min(Math.max(scrolled / total, 0), 1) * 100 : 0;
+    bar.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', update, {passive:true});
+  window.addEventListener('resize', update);
+  var origShowView = showView;
+  showView = function(name, btn){
+    origShowView(name, btn);
+    setTimeout(update, 60);
+  };
+})();
 
 /* ===================== LIVE CLOCK (Brazil / BRT) ===================== */
 function tickClock(){
@@ -1193,10 +1335,10 @@ function downloadResume(){
     { test: /whatsapp|wpp/, reply: "Case #3 redesigned the desktop WhatsApp button (expanded label + short delay) and lifted site-originated SALs by +7.04%, shipped as a direct implementation. Case #4 also used a chatbot-guided demo flow, which is exactly the pattern powering this widget!" },
     { test: /demo|chatbot/, reply: "Case #4 replaced a static 'request a demo' form with a free, self-serve interactive demo guided by a chatbot flow, tested via split URL. It lifted SALs by +11% because visitors experienced value before talking to sales." },
     { test: /cnpj|form|forms|lead quality|qualif/, reply: "Case #5 made CNPJ mandatory on the qualification form while trimming ~10 non-predictive fields. Net result: a leaner form and a +12.5% lift in SHOW rate for scheduled calls." },
-    { test: /trending|tag|social proof|trust/, reply: "Case #6 added a lightweight 'Trending' social-proof badge above the fold on landing pages for rich materials. A/B tested at 99.9% confidence, it lifted conversion +28.1% (48.79% → 56.24%) and engagement +17.36%, then rolled out to the top 10 LPs." },
+    { test: /trending|tag|social proof|trust/, reply: "Case #6 added a lightweight 'Trending' social-proof badge above the fold on landing pages for rich materials. A/B tested at ~99% confidence, it lifted conversion +15.6% and engagement +17.36%, then rolled out to the top 10 LPs." },
     { test: /payroll|folha/, reply: "Case #1 rewrote homepage H2s to lead with the pain and legal/compliance risk of manual payroll instead of generic feature copy. Form submissions grew +94% (conversion rate 3.43% → 7.43%)." },
     { test: /\bdp\b|departamento pessoal|manual vs|automat/, reply: "Case #2 rewrote HR (DP) headlines to explicitly contrast the manual process against automation. That comparative framing lifted form conversion by +83%." },
-    { test: /case|study|studies|experiment|project/, reply: "Gabi has 6 featured CRO case studies: (1) Payroll copy reframing, +94% form submissions. (2) DP manual-vs-automated copy, +83% conversion. (3) WhatsApp desktop button, +7.04% SALs. (4) Chatbot-guided demo, +11% SALs. (5) CNPJ qualification, +12.5% SHOW rate. (6) 'Trending' social-proof tag, +28.1% CR. Ask me about any one by name!" },
+    { test: /case|study|studies|experiment|project/, reply: "Gabi has 6 featured CRO case studies: (1) Payroll copy reframing, +94% form submissions. (2) DP manual-vs-automated copy, +83% conversion. (3) WhatsApp desktop button, +7.04% SALs. (4) Chatbot-guided demo, +11% SALs. (5) CNPJ qualification, +12.5% SHOW rate. (6) 'Trending' social-proof tag, +15.6% CR. Ask me about any one by name!" },
     { test: /process|method|how.*work|approach/, reply: "Her process is Observe → Research → Analyze → Prioritize → Experiment → Measure → Learn → Scale — an iterative loop she reuses across every experiment on this site. Check the 'How I work' section for the full breakdown." },
     { test: /experience|role|job|solides|s[oó]lides|work history|background/, reply: "Gabi is a CRO Analyst at Sólides (Sep 2024–present), running A/B tests end-to-end across funnel analysis, GA4 analytics and UX optimization. Before that, she worked in B2B marketing (AugeApp) and visual communication (UEMG), and holds a degree in Graphic Design." },
     { test: /skill|tool|ga4|figma|stack/, reply: "Core skills: A/B Testing, Hypothesis Development, GA4, Wireframing/Figma, Rapid Prototyping, Product Analytics, Funnel Analysis, UX Research and Cross-functional Collaboration." },

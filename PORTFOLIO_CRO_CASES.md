@@ -18,7 +18,7 @@ Os 6 cases abaixo resumem experimentos reais, com hipótese, estratégia de apli
 | 3 | Botão WhatsApp Desktop | Wpp | Implementação Direta | +7,04% SALs origem site |
 | 4 | Experiência Get Demo (Chatbot) | UX | Split URL | +11% SALs |
 | 5 | Qualificação com CNPJ (-10 colunas) | Forms | Split URL | +12,50% taxa de SHOW |
-| 6 | Tag "Em Alta" em Materiais Ricos | Trust | Teste A/B (99,9% conf.) | +28,1% CR (48,79% → 56,24%) e +17,36% engajamento |
+| 6 | Tag "Em Alta" em Materiais Ricos | Trust | Teste A/B (~99% conf.) | +15,6% CR e +17,36% engajamento |
 
 ---
 
@@ -145,14 +145,14 @@ LPs de materiais ricos (ebooks, templates, relatórios) dependiam inteiramente d
 Se adicionarmos uma tag visível de prova social "Em Alta" na primeira dobra da LP, então os visitantes confiarão mais no material e vão converter e engajar mais.
 
 ### 🧪 Estratégia e Aplicação
-- **Formato:** Teste A/B (99,9% de confiança)
+- **Formato:** Teste A/B (~99% de confiança)
 - **Categoria:** Trust / UX
 - Badge "🔥 Em Alta" desenhado para a primeira dobra do template de LP.
-- Teste A/B rodado até atingir 99,9% de confiança estatística.
+- Teste A/B rodado até atingir ~99% de confiança estatística.
 - Rollout da variante vencedora para as top 10 LPs de maior tráfego.
 
 ### 📊 Resultados e Métricas Chave
-- **+28,1%** na CR (48,79% → 56,24%)
+- **+15,6%** na CR (lift do teste A/B)
 - **+17,36%** de engajamento
 - Rollout nas **top 10 LPs**
 
