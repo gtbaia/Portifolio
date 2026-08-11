@@ -27,11 +27,11 @@
   --coral-rgb:255,157,131;
   --coral-deep:#ef6b45;
 
-  --pink:#ffd9e6;      --pink-ink:#a24d72;
-  --lavender:#e6d9ff;  --lavender-ink:#6a51a8;
-  --butter:#fff2b8;    --butter-ink:#8a6d10;
-  --sage:#dcefd8;      --sage-ink:#3f7d4f;
-  --sky:#ddeeff;       --sky-ink:#3969a8;
+  --pink:#f7dcd2;      --pink-ink:#a8543a;
+  --lavender:#e6dcf0;  --lavender-ink:#71588f;
+  --butter:#fbe8bf;    --butter-ink:#93650f;
+  --sage:#dcebd9;      --sage-ink:#3f7d4f;
+  --sky:#dde6ee;       --sky-ink:#456278;
 
   --font-display:"Bricolage Grotesque",sans-serif;
   --font-body:"Public Sans",Inter,sans-serif;
@@ -180,13 +180,10 @@ button{font-family:inherit;cursor:pointer}
 .ticker{display:flex;gap:14px;width:max-content;animation:tickerScroll 34s linear infinite}
 .ticker-wrap:hover .ticker{animation-play-state:paused}
 @keyframes tickerScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.tchip{display:inline-flex;align-items:center;gap:7px;padding:7px 15px;border-radius:6px;font-size:12.5px;font-weight:600;white-space:nowrap;cursor:default}
-.tchip.c1{background:var(--butter)}
-.tchip.c2{background:var(--sky)}
-.tchip.c3{background:var(--pink)}
-.tchip.c4{background:var(--sage)}
-.tchip.c5{background:var(--lavender)}
-.tchip.c6{background:var(--coral)}
+.tchip{display:inline-flex;align-items:center;gap:7px;padding:8px 16px;border-radius:var(--r-pill);font-size:12.5px;font-weight:500;
+  white-space:nowrap;cursor:default;background:var(--paper);border:1px solid var(--gray-200);color:var(--gray-700)}
+.tchip b{color:var(--coral-deep);font-weight:700}
+@media (max-width:480px){.tchip{padding:7px 13px;font-size:11.5px}}
 
 /* section base */
 .section{padding:64px max(20px,calc((100% - var(--maxw)) / 2))}
@@ -266,6 +263,12 @@ button{font-family:inherit;cursor:pointer}
 .process-detail-no{font-family:var(--font-mono);font-size:11px;color:var(--coral-deep);text-transform:uppercase;letter-spacing:.08em}
 .process-detail h4{font-family:var(--font-display);font-size:19px;font-weight:600;margin:6px 0 8px}
 .process-detail p{font-size:14.5px;color:var(--gray-700);line-height:1.6}
+@media (max-width:700px){
+  .process-track{overflow-x:visible;flex-wrap:wrap;justify-content:center;row-gap:16px;padding:6px 0 4px}
+  .process-track::before,.process-fill{display:none}
+  .process-node{min-width:58px;padding:0 6px}
+  .process-node .node-ico{width:44px;height:44px;font-size:18px}
+}
 
 /* ===================== ABOUT ===================== */
 .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:start}
@@ -316,7 +319,9 @@ button{font-family:inherit;cursor:pointer}
 .pill-status.winner{background:var(--sage);color:var(--sage-ink)}
 .pill-status.learning{background:var(--butter);color:var(--butter-ink)}
 .pill-status.progress{background:var(--sky);color:var(--sky-ink)}
-@media (max-width:700px){.exp-table thead{display:none}.exp-table td{display:block;border-bottom:none;padding:4px 16px}.exp-table tr{display:block;padding:12px 0;border-bottom:1px solid var(--gray-200)}.exp-table td::before{content:attr(data-label);display:block;font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--gray-500);margin-bottom:2px}}
+.exp-case-tag{font-size:11.5px;font-weight:700;color:var(--coral-deep)}
+.exp-log-only{font-size:11.5px;font-weight:600;color:var(--gray-500)}
+@media (max-width:700px){.exp-table thead{display:none}.exp-table td{display:block;border-bottom:none;padding:3px 16px}.exp-table tr{display:block;padding:10px 0;border-bottom:1px solid var(--gray-200)}.exp-table td::before{content:attr(data-label);display:block;font-size:10px;text-transform:uppercase;letter-spacing:.04em;color:var(--gray-500);margin-bottom:1px}.exp-table td[data-label="Category"],.exp-table td[data-label="Method"]{display:none}}
 
 /* ===================== FOOTER ===================== */
 .footer{background:var(--ink);color:#fff;padding:70px max(20px,calc((100% - var(--maxw)) / 2));text-align:center;position:relative;overflow:hidden}
@@ -326,9 +331,6 @@ button{font-family:inherit;cursor:pointer}
 .footer-links button, .footer-links a{border:1px solid rgba(255,255,255,.2);padding:11px 22px;border-radius:var(--r-pill);font-size:14px;font-weight:600;transition:.3s;background:none;color:#fff}
 .footer-links a:hover, .footer-links button:hover{background:#fff;color:var(--ink)}
 .footer .copy{position:relative;margin-top:50px;font-size:12.5px;color:rgba(255,255,255,.35)}
-.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;
-  padding:11px 20px;border-radius:var(--r-pill);font-size:13.5px;font-weight:600;opacity:0;pointer-events:none;transition:.3s var(--ease);z-index:1200;max-width:calc(100vw - 32px);text-align:center}
-.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
 /* ===================== RESUME VIEW ===================== */
 .resume-wrap{padding:150px max(20px,calc((100% - var(--maxw)) / 2)) 90px}
@@ -352,7 +354,7 @@ button{font-family:inherit;cursor:pointer}
 @media (max-width:640px){.r-cols{grid-template-columns:1fr}#resume-doc{padding:26px}}
 
 /* ===================== CASE DETAIL VIEW ===================== */
-.case-hero{position:relative;padding:150px max(20px,calc((100% - var(--maxw)) / 2)) 50px;overflow:hidden}
+.case-hero{position:relative;padding:150px max(20px,calc((100% - var(--maxw)) / 2)) 34px;overflow:hidden}
 .case-back{position:relative;z-index:1;display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:600;color:var(--gray-500);margin-bottom:24px;background:none;border:none}
 .case-back:hover{color:var(--ink)}
 .case-hero .case-tag{position:relative;z-index:1;margin-bottom:18px;font-size:12px;padding:6px 13px}
@@ -369,7 +371,8 @@ button{font-family:inherit;cursor:pointer}
 @media (max-width:760px){.glance{grid-template-columns:1fr 1fr}}
 @media (max-width:460px){.glance{grid-template-columns:1fr}}
 
-.case-phase{margin-bottom:38px}
+.section.case-body{padding-top:34px;padding-bottom:44px}
+.case-phase{margin-bottom:30px}
 .case-phase .ph-no{font-family:var(--font-mono);font-size:11.5px;color:var(--coral-deep);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
 .case-phase h3{font-family:var(--font-display);font-size:21px;font-weight:600;margin-bottom:10px}
 .case-phase p{font-size:15px;color:var(--gray-700);line-height:1.7;margin-bottom:8px;max-width:800px}
@@ -392,7 +395,7 @@ button{font-family:inherit;cursor:pointer}
 .note:nth-child(2){background:var(--butter);color:var(--butter-ink);transform:rotate(.8deg)}
 .note:nth-child(3){background:var(--sky);color:var(--sky-ink);transform:rotate(-.5deg)}
 @media (max-width:640px){.notes-grid{grid-template-columns:1fr}.note{transform:none!important}}
-.next-case{margin-top:50px;padding:26px;border:1px solid var(--gray-200);border-radius:var(--r-lg);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;cursor:pointer;transition:.3s}
+.next-case{margin-top:36px;padding:26px;border:1px solid var(--gray-200);border-radius:var(--r-lg);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;cursor:pointer;transition:.3s}
 .next-case:hover{background:var(--paper);transform:translateY(-2px)}
 .next-case span.label{font-size:12px;color:var(--gray-500);text-transform:uppercase;letter-spacing:.05em}
 .next-case h4{font-family:var(--font-display);font-size:18px;font-weight:600;margin-top:4px}
@@ -480,6 +483,21 @@ button{font-family:inherit;cursor:pointer}
   .case-media{margin:14px 0 6px}
   .case-gallery{margin:10px 0 6px}
   .section-head{margin-bottom:22px}
+  .section.case-body{padding-top:24px;padding-bottom:32px}
+  .hero-grid{gap:24px}
+  .hv-card{padding:16px 16px 14px}
+  .hv-chart{max-height:120px}
+  .hv-stats{margin-top:12px;gap:8px}
+  .hv-stat{padding:8px 10px}
+  .hv-top{margin-bottom:10px}
+  .about-grid{gap:24px}
+  .pillars,.learned{gap:10px}
+  .funnel{gap:10px}
+  .pillar,.funnel-step{padding:16px}
+  .learn-card{padding:15px}
+  .cases{gap:14px}
+  .case-card{padding:18px}
+  .section-head p{font-size:13.5px}
 }
 
 @media print{
@@ -564,18 +582,18 @@ button{font-family:inherit;cursor:pointer}
 
   <div class="ticker-wrap">
     <div class="ticker">
-      <span class="tchip c1">📈 +40.6% Form CVR (All-Time Record)</span>
-      <span class="tchip c5">💬 +157.0% WhatsApp CVR (Peak, Apr)</span>
-      <span class="tchip c2">🔥 +109.3% WhatsApp CVR (Dec Pivot)</span>
-      <span class="tchip c3">🎯 +57.2% Product Cards UI (93% conf.)</span>
-      <span class="tchip c4">🧪 +56.6% SPAM Microcopy (95% conf.)</span>
-      <span class="tchip c6">✅ +15.6% Blog Tagging Strategy (99% conf.)</span>
-      <span class="tchip c1">📈 +40.6% Form CVR (All-Time Record)</span>
-      <span class="tchip c5">💬 +157.0% WhatsApp CVR (Peak, Apr)</span>
-      <span class="tchip c2">🔥 +109.3% WhatsApp CVR (Dec Pivot)</span>
-      <span class="tchip c3">🎯 +57.2% Product Cards UI (93% conf.)</span>
-      <span class="tchip c4">🧪 +56.6% SPAM Microcopy (95% conf.)</span>
-      <span class="tchip c6">✅ +15.6% Blog Tagging Strategy (99% conf.)</span>
+      <span class="tchip">📈 <b>+40.6%</b> Form CVR (All-Time Record)</span>
+      <span class="tchip">💬 <b>+157.0%</b> WhatsApp CVR (Peak, Apr)</span>
+      <span class="tchip">🔥 <b>+109.3%</b> WhatsApp CVR (Dec Pivot)</span>
+      <span class="tchip">🎯 <b>+57.2%</b> Product Cards UI (93% conf.)</span>
+      <span class="tchip">🧪 <b>+56.6%</b> SPAM Microcopy (95% conf.)</span>
+      <span class="tchip">✅ <b>+15.6%</b> Blog Tagging Strategy (99% conf.)</span>
+      <span class="tchip">📈 <b>+40.6%</b> Form CVR (All-Time Record)</span>
+      <span class="tchip">💬 <b>+157.0%</b> WhatsApp CVR (Peak, Apr)</span>
+      <span class="tchip">🔥 <b>+109.3%</b> WhatsApp CVR (Dec Pivot)</span>
+      <span class="tchip">🎯 <b>+57.2%</b> Product Cards UI (93% conf.)</span>
+      <span class="tchip">🧪 <b>+56.6%</b> SPAM Microcopy (95% conf.)</span>
+      <span class="tchip">✅ <b>+15.6%</b> Blog Tagging Strategy (99% conf.)</span>
     </div>
   </div>
 
@@ -693,17 +711,14 @@ button{font-family:inherit;cursor:pointer}
           <span class="interest">🗣️ Languages</span>
         </div>
       </div>
-      <div>
-        <div class="about-photo"><img src="assets/gabi-photo.jpg" alt="Portrait of Gabriela Baia" loading="lazy"></div>
-        <div class="sticky-note">📌 "Good UX is measurable. It's intentionally designed, tested and continuously improved."</div>
-      </div>
+      <div class="about-photo"><img src="assets/gabi-photo.jpg" alt="Portrait of Gabriela Baia" loading="lazy"></div>
     </div>
   </section>
 
   <section class="section alt" id="library" data-appear>
     <div class="section-head">
       <h2>Experiment library</h2>
-      <p>The full test log — rows linked to a case study open the full write-up; the rest are additional experiments from the same testing program.</p>
+      <p>Every test behind the numbers above — the 7 that anchor the 4 featured case studies, plus 4 more from the same testing program. Rows with a case tag open the full write-up.</p>
     </div>
     <div class="filters" id="filters">
       <button class="filter-chip on" data-cat="all" onclick="filterExp(this)">All</button>
@@ -714,19 +729,19 @@ button{font-family:inherit;cursor:pointer}
       <button class="filter-chip" data-cat="Trust" onclick="filterExp(this)">Trust</button>
     </div>
     <table class="exp-table" id="expTable">
-      <thead><tr><th>Experiment</th><th>Category</th><th>Method</th><th>Status</th><th>Impact</th></tr></thead>
+      <thead><tr><th>Experiment</th><th>Category</th><th>Method</th><th>Status</th><th>Impact</th><th>Case</th></tr></thead>
       <tbody>
-        <tr data-cat="Wpp" onclick="showView('case1')" style="cursor:pointer"><td data-label="Experiment">WhatsApp CTA widget redesign (pill triggers + badges) — Case #1</td><td data-label="Category">Wpp</td><td data-label="Method">Direct ship</td><td data-label="Status"><span class="pill-status winner">Winner</span></td><td data-label="Impact">+157.0% peak CVR</td></tr>
-        <tr data-cat="Copy" onclick="showView('case2')" style="cursor:pointer"><td data-label="Experiment">"Esquenta" Black Friday homepage offer test — Case #2</td><td data-label="Category">Copy</td><td data-label="Method">A/B test</td><td data-label="Status"><span class="pill-status winner">Winner</span></td><td data-label="Impact">+40.6% Form CVR (record)</td></tr>
-        <tr data-cat="Wpp" onclick="showView('case3')" style="cursor:pointer"><td data-label="Experiment">Dec WhatsApp trigger optimization — Case #3</td><td data-label="Category">Wpp</td><td data-label="Method">A/B test</td><td data-label="Status"><span class="pill-status winner">Winner</span></td><td data-label="Impact">+109.3% CVR (record)</td></tr>
-        <tr data-cat="UX" onclick="showView('case4')" style="cursor:pointer"><td data-label="Experiment">Product Cards UI optimization — Case #4</td><td data-label="Category">UX</td><td data-label="Method">A/B test</td><td data-label="Status"><span class="pill-status winner">Winner</span></td><td data-label="Impact">+57.2% (93% conf.)</td></tr>
-        <tr data-cat="Forms" onclick="showView('case4')" style="cursor:pointer"><td data-label="Experiment">SPAM microcopy adjustments — Case #4</td><td data-label="Category">Forms</td><td data-label="Method">A/B test</td><td data-label="Status"><span class="pill-status winner">Winner</span></td><td data-label="Impact">+56.6% (95% conf.)</td></tr>
-        <tr data-cat="Copy" onclick="showView('case4')" style="cursor:pointer"><td data-label="Experiment">H1 copy — Recruitment & Selection — Case #4</td><td data-label="Category">Copy</td><td data-label="Method">A/B test</td><td data-label="Status"><span class="pill-status winner">Winner</span></td><td data-label="Impact">+35.6% (91% conf.)</td></tr>
-        <tr data-cat="Trust" onclick="showView('case4')" style="cursor:pointer"><td data-label="Experiment">High-traffic blog tagging strategy — Case #4</td><td data-label="Category">Trust</td><td data-label="Method">A/B test</td><td data-label="Status"><span class="pill-status winner">Winner</span></td><td data-label="Impact">+15.6% (99% conf.)</td></tr>
-        <tr data-cat="Copy"><td data-label="Experiment">Payroll copy — pain & legal risk H2s</td><td data-label="Category">Copy</td><td data-label="Method">A/B test</td><td data-label="Status"><span class="pill-status winner">Winner</span></td><td data-label="Impact">+94% form submissions</td></tr>
-        <tr data-cat="Copy"><td data-label="Experiment">DP argumentation — manual vs. automated</td><td data-label="Category">Copy</td><td data-label="Method">A/B test</td><td data-label="Status"><span class="pill-status winner">Winner</span></td><td data-label="Impact">+83% form conversion</td></tr>
-        <tr data-cat="UX"><td data-label="Experiment">Get Demo — chatbot-guided self-serve flow</td><td data-label="Category">UX</td><td data-label="Method">Split URL</td><td data-label="Status"><span class="pill-status winner">Winner</span></td><td data-label="Impact">+11% SALs</td></tr>
-        <tr data-cat="Forms"><td data-label="Experiment">Mandatory CNPJ, -10 columns</td><td data-label="Category">Forms</td><td data-label="Method">Split URL</td><td data-label="Status"><span class="pill-status winner">Winner</span></td><td data-label="Impact">+12.5% SHOW rate</td></tr>
+        <tr data-cat="Wpp" onclick="showView('case1')" style="cursor:pointer"><td data-label="Experiment">WhatsApp CTA widget redesign</td><td data-label="Category">Wpp</td><td data-label="Method">Direct ship</td><td data-label="Status"><span class="pill-status winner">Winner</span></td><td data-label="Impact">+157.0% peak CVR</td><td data-label="Case"><span class="exp-case-tag">Case #1 →</span></td></tr>
+        <tr data-cat="Copy" onclick="showView('case2')" style="cursor:pointer"><td data-label="Experiment">"Esquenta" Black Friday homepage test</td><td data-label="Category">Copy</td><td data-label="Method">A/B test</td><td data-label="Status"><span class="pill-status winner">Winner</span></td><td data-label="Impact">+40.6% Form CVR (record)</td><td data-label="Case"><span class="exp-case-tag">Case #2 →</span></td></tr>
+        <tr data-cat="Wpp" onclick="showView('case3')" style="cursor:pointer"><td data-label="Experiment">December WhatsApp trigger optimization</td><td data-label="Category">Wpp</td><td data-label="Method">A/B test</td><td data-label="Status"><span class="pill-status winner">Winner</span></td><td data-label="Impact">+109.3% CVR (record)</td><td data-label="Case"><span class="exp-case-tag">Case #3 →</span></td></tr>
+        <tr data-cat="UX" onclick="showView('case4')" style="cursor:pointer"><td data-label="Experiment">Product Cards UI optimization</td><td data-label="Category">UX</td><td data-label="Method">A/B test</td><td data-label="Status"><span class="pill-status winner">Winner</span></td><td data-label="Impact">+57.2% (93% conf.)</td><td data-label="Case"><span class="exp-case-tag">Case #4 →</span></td></tr>
+        <tr data-cat="Forms" onclick="showView('case4')" style="cursor:pointer"><td data-label="Experiment">SPAM microcopy adjustments</td><td data-label="Category">Forms</td><td data-label="Method">A/B test</td><td data-label="Status"><span class="pill-status winner">Winner</span></td><td data-label="Impact">+56.6% (95% conf.)</td><td data-label="Case"><span class="exp-case-tag">Case #4 →</span></td></tr>
+        <tr data-cat="Copy" onclick="showView('case4')" style="cursor:pointer"><td data-label="Experiment">Recruitment & Selection H1 copy</td><td data-label="Category">Copy</td><td data-label="Method">A/B test</td><td data-label="Status"><span class="pill-status winner">Winner</span></td><td data-label="Impact">+35.6% (91% conf.)</td><td data-label="Case"><span class="exp-case-tag">Case #4 →</span></td></tr>
+        <tr data-cat="Trust" onclick="showView('case4')" style="cursor:pointer"><td data-label="Experiment">High-traffic blog tagging strategy</td><td data-label="Category">Trust</td><td data-label="Method">A/B test</td><td data-label="Status"><span class="pill-status winner">Winner</span></td><td data-label="Impact">+15.6% (99% conf.)</td><td data-label="Case"><span class="exp-case-tag">Case #4 →</span></td></tr>
+        <tr data-cat="Copy"><td data-label="Experiment">Payroll copy — pain & legal risk H2s</td><td data-label="Category">Copy</td><td data-label="Method">A/B test</td><td data-label="Status"><span class="pill-status winner">Winner</span></td><td data-label="Impact">+94% form submissions</td><td data-label="Case"><span class="exp-log-only">Log only</span></td></tr>
+        <tr data-cat="Copy"><td data-label="Experiment">DP argumentation — manual vs. automated</td><td data-label="Category">Copy</td><td data-label="Method">A/B test</td><td data-label="Status"><span class="pill-status winner">Winner</span></td><td data-label="Impact">+83% form conversion</td><td data-label="Case"><span class="exp-log-only">Log only</span></td></tr>
+        <tr data-cat="UX"><td data-label="Experiment">Get Demo — chatbot-guided flow</td><td data-label="Category">UX</td><td data-label="Method">Split URL</td><td data-label="Status"><span class="pill-status winner">Winner</span></td><td data-label="Impact">+11% SALs</td><td data-label="Case"><span class="exp-log-only">Log only</span></td></tr>
+        <tr data-cat="Forms"><td data-label="Experiment">Mandatory CNPJ, -10 columns</td><td data-label="Category">Forms</td><td data-label="Method">Split URL</td><td data-label="Status"><span class="pill-status winner">Winner</span></td><td data-label="Impact">+12.5% SHOW rate</td><td data-label="Case"><span class="exp-log-only">Log only</span></td></tr>
       </tbody>
     </table>
   </section>
@@ -748,8 +763,7 @@ button{font-family:inherit;cursor:pointer}
     <h2>Let's build experiences people actually enjoy.</h2>
     <p class="sub">Whether you're looking for someone to optimize digital experiences, design better experiments, or uncover growth opportunities — I'd love to connect.</p>
     <div class="footer-links">
-      <a href="mailto:gteixeirab3@gmail.com" id="emailLink">Email</a>
-      <button onclick="copyEmail()">Copy Email</button>
+      <a href="mailto:gteixeirab3@gmail.com?subject=Let%27s%20connect%20%E2%80%94%20from%20your%20portfolio" id="emailLink">Email</a>
       <a href="https://www.linkedin.com/in/gabriela-baia" target="_blank" rel="noopener">LinkedIn</a>
       <button onclick="downloadResume()">Download Resume</button>
     </div>
@@ -1086,8 +1100,6 @@ button{font-family:inherit;cursor:pointer}
   </form>
 </div>
 
-<div class="toast" id="toast">Copied!</div>
-
 <div class="case-progress" id="caseProgress"></div>
 <div class="lightbox" id="lightbox">
   <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
@@ -1249,17 +1261,6 @@ function filterExp(btn){
   io.observe(document.querySelector('.stats'));
 })();
 
-/* ===================== COPY EMAIL ===================== */
-function copyEmail(){
-  var email = "gteixeirab3@gmail.com";
-  var toast = document.getElementById('toast');
-  function showToast(msg){ toast.textContent = msg; toast.classList.add('show'); setTimeout(function(){toast.classList.remove('show')}, 2200); }
-  if(navigator.clipboard && navigator.clipboard.writeText){
-    navigator.clipboard.writeText(email).then(function(){ showToast('Email copied: ' + email); })
-      .catch(function(){ showToast(email); });
-  } else { showToast(email); }
-}
-
 /* ===================== RESUME PDF DOWNLOAD ===================== */
 function downloadResume(){
   try{
@@ -1353,7 +1354,11 @@ function downloadResume(){
   toggle.addEventListener('click', function(){ panel.classList.toggle('open'); if(panel.classList.contains('open')) input.focus(); });
   closeBtn.addEventListener('click', function(){ panel.classList.remove('open'); });
 
-  /* Knowledge base: ordered list of {test, reply}. First match wins. */
+  /* Knowledge base: ordered list of {test, reply}. First match wins.
+     Every reply is a fixed string written from the content actually on this
+     page — the bot can only ever return one of these, so it can't invent
+     facts. Anything not covered falls through to FALLBACK, which always
+     points to contacting Gabi directly. */
   var KB = [
     { test: /whatsapp|wpp/, reply: "Case #1 redesigned the WhatsApp CTA widget (expanded pill triggers, dynamic copy, badges) and lifted channel CVR by +109.3% right after launch, peaking at +157.0% — that's the same conversational-UX thinking behind this chat widget!" },
     { test: /black ?friday|esquenta|cross.?functional/, reply: "Case #2 was end-to-end Black Friday website ownership — uniting Content, Design and Media across 10 pages, including the real 'Esquenta' A/B tests. It hit an all-time Form CVR record of +40.6%." },
@@ -1363,19 +1368,27 @@ function downloadResume(){
     { test: /payroll|folha/, reply: "One of Gabi's logged experiments rewrote payroll page H2s to lead with legal/compliance risk instead of generic features — form submissions grew +94% (3.43% → 7.43% conversion)." },
     { test: /\bdp\b|departamento pessoal|manual vs|automat/, reply: "Another logged experiment rewrote HR (DP) headlines to contrast the manual process against automation, lifting form conversion by +83%." },
     { test: /demo|chatbot/, reply: "One of Gabi's logged experiments replaced a static 'request a demo' form with a chatbot-guided self-serve demo, lifting SALs by +11%." },
+    { test: /library|log\b|full list|all tests|how many (test|experiment)/, reply: "The 'Experiment library' section lists every test: the 7 that anchor the 4 featured case studies, plus 4 more from the same testing program. Rows tagged with a case number open the full write-up." },
     { test: /case|study|studies|experiment|project/, reply: "Gabi has 4 featured, Upwork-verified case studies: (1) WhatsApp widget redesign, +157% peak CVR. (2) Black Friday website strategy, +40.6% Form CVR record. (3) Full website ownership (Sep–Dec), +109.3% WhatsApp uplift. (4) Ongoing A/B testing program, +57.2% peak single-test uplift. There's also a broader experiment log in the 'Experiment library' section. Ask me about any one by name!" },
-    { test: /process|method|how.*work|approach/, reply: "Her process is Observe → Research → Analyze → Prioritize → Experiment → Measure → Learn → Scale — an iterative loop she reuses across every case study on this site. Check the 'How I work' section for the full breakdown." },
-    { test: /experience|role|job|solides|s[oó]lides|work history|background/, reply: "Gabi is a CRO Analyst at Sólides (Sep 2024–present), running A/B tests end-to-end across funnel analysis, GA4 analytics and UX optimization. Before that, she worked in B2B marketing (AugeApp) and visual communication (UEMG), and holds a degree in Graphic Design." },
-    { test: /skill|tool|ga4|figma|stack/, reply: "Core skills: A/B Testing, Conversion Rate Optimization, Funnel Testing, Data Analysis, GA4, Copywriting, UX & UI Design, Website Optimization and Cross-functional Collaboration." },
-    { test: /education|degree|university|uemg|study/, reply: "Gabriela holds a Bachelor's Degree in Graphic Design from Universidade do Estado de Minas Gerais (UEMG), 2020–2024." },
-    { test: /sessions|scale|traffic|volume|leads|funnel/, reply: "Across her featured work, Gabi sustained CVR through 14.9k+ leads/month at Black Friday peak traffic, with measurable lifts at every funnel stage — MQL (copy/messaging), SAL (channel/UX), SHOW (qualification) and CR (trust/proof)." },
-    { test: /resume|cv|pdf|download/, reply: "You can view or download her full resume from the 'Resume' tab at the top, or click the 'Download Resume' button — it exports straight to PDF." },
-    { test: /contact|email|reach|hire|linkedin|connect/, reply: "You can reach Gabi directly at gteixeirab3@gmail.com or on LinkedIn at linkedin.com/in/gabriela-baia — the footer below has one-click Email and LinkedIn buttons too." },
+    { test: /process|method|how.*work|approach|framework/, reply: "Her process is Observe → Research → Analyze → Prioritize → Experiment → Measure → Learn → Scale — an iterative loop she reuses across every case study on this site. Check the 'How I work' section for the full breakdown." },
+    { test: /bring|strength|pillar|behavior analysis|product analytics|prototyp|stakeholder/, reply: "The 'What I bring' section lists six strengths: Behavior Analysis, Experimentation, Product Analytics, Sketches & Prototyping, Growth Thinking, and Stakeholder Alignment." },
+    { test: /learn(ed|ing)?\b|takeaway|note[s]?\b/, reply: "From 'What I've learned': good UX is measurable and continuously tested; behavior explains what metrics alone can't; small experiments compound over time; and the best optimization is the one that creates lasting learning." },
+    { test: /about|who (are|is)|hobby|hobbies|interest|climb|dance|travel|design background|jack of all trades/, reply: "Gabi is a designer turned CRO & Growth professional — background in Graphic Design, now working where design, data and psychology meet. Outside work: climbing, dance, travel and learning languages. See the 'About me' section for more." },
+    { test: /experience|role|job|solides|s[oó]lides|work history|background|career/, reply: "Gabi is a CRO Analyst at Sólides (Sep 2024–present), running A/B tests end-to-end across funnel analysis, GA4 analytics and UX optimization. Before that, she worked in B2B marketing (AugeApp) and visual communication (UEMG), and holds a degree in Graphic Design." },
+    { test: /skill|tool|ga4|figma|stack/, reply: "Core skills: A/B Testing, Conversion Rate Optimization, Funnel Testing, Data Analysis, GA4, Copywriting, UX & UI Design, Website Optimization and Cross-functional Collaboration. She also runs experiments in Convert." },
+    { test: /certif/, reply: "Certifications on her resume: Conversion Optimization Certification, UX Research Bootcamp, Digital Marketing, Content Marketing, and Intro to Artificial Intelligence." },
+    { test: /language|portuguese|spanish|english|fluent/, reply: "Gabi is a native Portuguese speaker, fluent in English, and fluent in Spanish." },
+    { test: /education|degree|university|uemg|graduat/, reply: "Gabriela holds a Bachelor's Degree in Graphic Design from Universidade do Estado de Minas Gerais (UEMG), 2020–2024." },
+    { test: /location|based|brazil|time ?zone|remote/, reply: "Gabi is based in Brazil (Brazil time zone, shown live in the header) and open to remote work." },
+    { test: /sessions|scale|traffic|volume|leads|funnel|mql|sal\b|show rate/, reply: "Across her featured work, Gabi sustained CVR through 14.9k+ leads/month at Black Friday peak traffic, with measurable lifts at every funnel stage — MQL (copy/messaging), SAL (channel/UX), SHOW (qualification) and CR (trust/proof)." },
+    { test: /resume|cv\b|pdf|download/, reply: "You can view or download her full resume from the 'Resume' tab at the top, or click the 'Download Resume' button — it exports straight to PDF." },
+    { test: /hire|freelance|available|rate|price|pricing|budget|salary/, reply: "For availability, rates or scoping a project, that's best answered by Gabi directly — email her at gteixeirab3@gmail.com or connect on LinkedIn (linkedin.com/in/gabriela-baia)." },
+    { test: /contact|email|reach|linkedin|connect/, reply: "You can reach Gabi directly at gteixeirab3@gmail.com or on LinkedIn at linkedin.com/in/gabriela-baia — the footer below has a one-click Email button too." },
     { test: /hi|hello|hey|ol[aá]/, reply: "Hi there! Ask me about Gabi's case studies, her process, her background, or how to get in touch." },
     { test: /thank/, reply: "You're welcome! Feel free to ask about any other part of Gabi's work, or reach her directly at gteixeirab3@gmail.com." }
   ];
 
-  var FALLBACK = "I can only help with questions about Gabi's professional background and work — her case studies, process, skills or contact info. Try asking about one of those, or email her directly at gteixeirab3@gmail.com.";
+  var FALLBACK = "I don't have that on file — I only answer from what's actually on this portfolio, so I won't guess. For anything else, please contact Gabi directly at gteixeirab3@gmail.com or on LinkedIn (linkedin.com/in/gabriela-baia) and she'll get back to you.";
 
   function findReply(text){
     var lower = text.toLowerCase();
