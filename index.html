@@ -75,7 +75,7 @@ button{font-family:inherit;cursor:pointer}
   padding:14px max(20px,calc((100% - var(--maxw)) / 2));background:rgba(255,253,249,.85);
   backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--gray-200)}
 .h-left{display:flex;align-items:center;gap:12px}
-.h-logo{font-family:var(--font-display);font-weight:700;font-size:17.5px;letter-spacing:-.01em}
+.h-logo{font-family:var(--font-display);font-weight:700;font-size:17.5px;letter-spacing:-.01em;background:none;border:none;padding:0;cursor:pointer;color:var(--ink)}
 .h-logo span{color:var(--coral-deep)}
 .h-clock{font-family:var(--font-mono);font-size:11px;letter-spacing:.05em;color:var(--gray-500);
   padding:5px 11px;border:1px solid var(--gray-200);border-radius:var(--r-pill);white-space:nowrap;display:none}
@@ -126,6 +126,7 @@ button{font-family:inherit;cursor:pointer}
   text-transform:uppercase;letter-spacing:.05em;color:var(--sage-ink)}
 .hv-dot{width:7px;height:7px;border-radius:50%;background:var(--sage-ink);animation:hvBlink 1.6s ease-in-out infinite}
 .hv-badge{font-size:11px;font-weight:700;color:var(--coral-deep);background:var(--butter);padding:4px 10px;border-radius:var(--r-pill)}
+.hv-chart-wrap{position:relative}
 .hv-chart{display:block;width:100%;height:auto;overflow:visible}
 .hv-area{fill:url(#hvGrad);opacity:0;animation:hvFade .6s ease .9s forwards}
 .hv-line{fill:none;stroke:var(--coral-deep);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;
@@ -133,10 +134,18 @@ button{font-family:inherit;cursor:pointer}
 .hv-dot-end{fill:var(--coral-deep);opacity:0;animation:hvFade .4s ease 1.9s forwards}
 .hv-dot-pulse{fill:none;stroke:var(--coral-deep);stroke-width:2;opacity:0;
   animation:hvFade .4s ease 1.9s forwards,hvPulse 2.2s ease-out 2.2s infinite}
+.hv-human{position:absolute;width:22px;height:22px;border-radius:50%;background:#fff;border:1.5px solid var(--coral-deep);
+  display:flex;align-items:center;justify-content:center;font-size:11.5px;line-height:1;box-shadow:0 4px 10px -4px rgba(0,0,0,.3);
+  opacity:0;transform:translate(-50%,-50%) scale(.3);animation:hvHumanIn .45s var(--ease) forwards}
+.hv-human-1{left:27.5%;top:65.3%;animation-delay:.85s}
+.hv-human-2{left:58.1%;top:36%;animation-delay:1.3s}
 .hv-stats{display:flex;gap:10px;margin-top:16px;opacity:0;animation:hvFade .5s ease 2s forwards}
 .hv-stat{flex:1;background:var(--paper);border:1px solid var(--gray-200);border-radius:var(--r-md);padding:10px 12px}
 .hv-stat b{display:block;font-family:var(--font-display);font-size:17px;font-weight:700;color:var(--coral-deep)}
 .hv-stat span{display:block;font-size:10.5px;color:var(--gray-500);text-transform:uppercase;letter-spacing:.03em;margin-top:2px}
+.hv-human-note{display:flex;align-items:center;gap:7px;margin-top:11px;font-size:11.5px;color:var(--gray-500);
+  opacity:0;animation:hvFade .5s ease 2.15s forwards}
+.hv-human-note span{font-size:14px}
 .hv-float{position:absolute;font-size:12.5px;font-weight:700;background:#fff;border:1px solid var(--gray-200);
   padding:8px 14px;border-radius:var(--r-pill);box-shadow:0 14px 26px -14px rgba(0,0,0,.25);opacity:0;white-space:nowrap}
 .hv-float-1{top:-14px;left:-18px;animation:hvFloatIn .6s var(--ease) 2.3s forwards,hvBob 4.5s ease-in-out 2.9s infinite}
@@ -148,13 +157,15 @@ button{font-family:inherit;cursor:pointer}
 @keyframes hvPulse{0%{r:5;stroke-opacity:.9}100%{r:16;stroke-opacity:0}}
 @keyframes hvFloatIn{from{opacity:0;transform:translateY(8px) scale(.94)}to{opacity:1;transform:translateY(0) scale(1)}}
 @keyframes hvBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes hvHumanIn{0%{opacity:0;transform:translate(-50%,-50%) scale(.3)}60%{opacity:1;transform:translate(-50%,-50%) scale(1.2)}100%{opacity:1;transform:translate(-50%,-50%) scale(1)}}
 @media (prefers-reduced-motion:reduce){
-  .hv-card,.hv-area,.hv-dot-end,.hv-stats,.hv-float{animation-duration:.01ms!important;animation-delay:0s!important;opacity:1!important;transform:none!important}
+  .hv-card,.hv-area,.hv-dot-end,.hv-stats,.hv-float,.hv-human-note{animation-duration:.01ms!important;animation-delay:0s!important;opacity:1!important;transform:none!important}
+  .hv-human{animation-duration:.01ms!important;animation-delay:0s!important;opacity:1!important;transform:translate(-50%,-50%) scale(1)!important}
   .hv-line{animation:none;stroke-dashoffset:0}
   .hv-dot,.hv-dot-pulse{animation:none;opacity:0}
 }
 @media (max-width:900px){.hero-grid{grid-template-columns:1fr;gap:36px}.hero-visual{max-width:420px;margin:0 auto}}
-@media (max-width:480px){.hero-visual{max-width:100%}.hv-float{font-size:11px;padding:6px 11px}.hv-float-1{left:-8px}.hv-float-2{right:-8px}}
+@media (max-width:480px){.hero-visual{max-width:100%}.hv-float{font-size:11px;padding:6px 11px}.hv-float-1{left:-8px}.hv-float-2{right:-8px}.hv-human{width:18px;height:18px;font-size:10px}}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:var(--r-pill);font-weight:600;font-size:14.5px;
   transition:transform .3s var(--ease),box-shadow .3s var(--ease);border:1px solid transparent}
 .btn-primary{background:var(--ink);color:#fff}
@@ -248,14 +259,15 @@ button{font-family:inherit;cursor:pointer}
 
 /* ===================== PROCESS (gamified path) ===================== */
 .process-game{display:flex;flex-direction:column;gap:22px}
-.process-track{position:relative;display:flex;align-items:flex-start;gap:2px;overflow-x:auto;padding:22px 8px 10px;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
-.process-track::before{content:"";position:absolute;left:34px;right:34px;top:48px;height:3px;background:var(--gray-200);border-radius:2px}
-.process-fill{position:absolute;left:34px;top:48px;height:3px;background:var(--coral-deep);border-radius:2px;width:0%;transition:width .6s var(--ease);z-index:1}
-.process-node{position:relative;z-index:2;flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:8px;background:none;border:none;cursor:pointer;padding:0 10px;min-width:66px}
-.process-node .node-ico{width:52px;height:52px;border-radius:50%;background:var(--paper);border:2px solid var(--gray-200);
-  display:flex;align-items:center;justify-content:center;font-size:22px;transition:.35s var(--ease);box-shadow:0 4px 10px -6px rgba(0,0,0,.15)}
-.process-node .node-no{font-family:var(--font-mono);font-size:10px;color:var(--gray-500);font-weight:700}
-.process-node .node-label{font-size:11.5px;font-weight:700;color:var(--gray-500);white-space:nowrap;transition:color .3s}
+.process-track{position:relative;display:flex;align-items:flex-start;gap:4px;overflow-x:auto;padding:24px 8px 10px;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+.process-track::before{content:"";position:absolute;left:34px;right:34px;top:52px;height:3px;background:var(--gray-200);border-radius:2px}
+.process-fill{position:absolute;left:34px;right:34px;top:52px;height:3px;background:var(--coral-deep);border-radius:2px;
+  transform:scaleX(0);transform-origin:left center;transition:transform .6s var(--ease);z-index:1}
+.process-node{position:relative;z-index:2;flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:9px;background:none;border:none;cursor:pointer;padding:6px 12px;min-width:76px}
+.process-node .node-ico{width:60px;height:60px;border-radius:50%;background:var(--paper);border:2px solid var(--gray-200);
+  display:flex;align-items:center;justify-content:center;font-size:25px;transition:.35s var(--ease);box-shadow:0 4px 10px -6px rgba(0,0,0,.15)}
+.process-node .node-no{font-family:var(--font-mono);font-size:10.5px;color:var(--gray-500);font-weight:700}
+.process-node .node-label{font-size:12.5px;font-weight:700;color:var(--gray-500);white-space:nowrap;transition:color .3s}
 .process-node.done .node-ico{border-color:var(--coral-deep);background:#fff5f2}
 .process-node.on .node-ico{border-color:var(--coral-deep);background:var(--coral-deep);transform:scale(1.16);box-shadow:0 10px 22px -8px rgba(239,107,69,.55)}
 .process-node.on .node-label{color:var(--ink)}
@@ -266,8 +278,8 @@ button{font-family:inherit;cursor:pointer}
 @media (max-width:700px){
   .process-track{overflow-x:visible;flex-wrap:wrap;justify-content:center;row-gap:16px;padding:6px 0 4px}
   .process-track::before,.process-fill{display:none}
-  .process-node{min-width:58px;padding:0 6px}
-  .process-node .node-ico{width:44px;height:44px;font-size:18px}
+  .process-node{min-width:64px;padding:4px 6px}
+  .process-node .node-ico{width:52px;height:52px;font-size:21px}
 }
 
 /* ===================== ABOUT ===================== */
@@ -513,7 +525,7 @@ button{font-family:inherit;cursor:pointer}
 <!-- ===================== HEADER ===================== -->
 <header class="h-head">
   <div class="h-left">
-    <div class="h-logo">Gabriela <span>Baia</span></div>
+    <button class="h-logo" onclick="showView('home')" aria-label="Go to home">Gabriela <span>Baia</span></button>
     <span class="h-clock" id="clock"><span class="dot"></span><span id="clockText">--:--</span> · Brazil</span>
   </div>
   <nav class="h-nav">
@@ -551,22 +563,27 @@ button{font-family:inherit;cursor:pointer}
             <span class="hv-live"><span class="hv-dot"></span>Live experiment</span>
             <span class="hv-badge">A/B Test · Winning</span>
           </div>
-          <svg class="hv-chart" viewBox="0 0 320 150" preserveAspectRatio="none">
-            <defs>
-              <linearGradient id="hvGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#ef6b45" stop-opacity="0.32"/>
-                <stop offset="100%" stop-color="#ef6b45" stop-opacity="0"/>
-              </linearGradient>
-            </defs>
-            <path class="hv-area" d="M0,128 C36,120 58,104 88,98 C124,91 148,66 186,54 C222,43 248,30 320,8 L320,150 L0,150 Z"/>
-            <path class="hv-line" d="M0,128 C36,120 58,104 88,98 C124,91 148,66 186,54 C222,43 248,30 320,8"/>
-            <circle class="hv-dot-pulse" cx="320" cy="8" r="9"/>
-            <circle class="hv-dot-end" cx="320" cy="8" r="4.5"/>
-          </svg>
+          <div class="hv-chart-wrap">
+            <svg class="hv-chart" viewBox="0 0 320 150" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="hvGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#ef6b45" stop-opacity="0.32"/>
+                  <stop offset="100%" stop-color="#ef6b45" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <path class="hv-area" d="M0,128 C36,120 58,104 88,98 C124,91 148,66 186,54 C222,43 248,30 320,8 L320,150 L0,150 Z"/>
+              <path class="hv-line" d="M0,128 C36,120 58,104 88,98 C124,91 148,66 186,54 C222,43 248,30 320,8"/>
+              <circle class="hv-dot-pulse" cx="320" cy="8" r="9"/>
+              <circle class="hv-dot-end" cx="320" cy="8" r="4.5"/>
+            </svg>
+            <span class="hv-human hv-human-1" title="Real person behind this data point">🙂</span>
+            <span class="hv-human hv-human-2" title="Real person behind this data point">🙂</span>
+          </div>
           <div class="hv-stats">
             <div class="hv-stat"><b>+157%</b><span>WhatsApp CVR</span></div>
             <div class="hv-stat"><b>+40.6%</b><span>Form CVR</span></div>
           </div>
+          <div class="hv-human-note"><span>🙂</span>Real people behind every data point.</div>
         </div>
         <div class="hv-float hv-float-1">🎯 +57.2% uplift</div>
         <div class="hv-float hv-float-2">🔥 +109.3% Dec</div>
@@ -625,20 +642,20 @@ button{font-family:inherit;cursor:pointer}
         <div><span class="case-stat">+157.0%</span><span>Peak WhatsApp CVR Uplift</span></div>
         <span class="case-link">View case <span class="arrow">→</span></span>
       </div>
-      <div class="case-card" onclick="showView('case2')" style="position:relative">
-        <img class="case-card-img" src="assets/case-blackfriday-dashboard.png" alt="Screenshot of the real A/B testing dashboard for the Black Friday homepage offer test" loading="lazy">
-        <span class="case-tag c1">CRO & Website Strategy</span>
-        <h3>Black Friday Website Strategy & Cross-Functional CRO Ownership</h3>
-        <p>Led end-to-end website execution for Black Friday, uniting Content, Design and Media across 10 key pages — including the "Esquenta" A/B tests.</p>
-        <div><span class="case-stat">+40.6%</span><span>Form CVR (All-Time Record)</span></div>
-        <span class="case-link">View case <span class="arrow">→</span></span>
-      </div>
       <div class="case-card" onclick="showView('case3')" style="position:relative">
         <img class="case-card-img" src="assets/case3-historical-chart.png" alt="Chart: historical Form and WhatsApp conversion rate performance across the ownership period" loading="lazy">
         <span class="case-tag c2">Website Ownership</span>
         <h3>Website Owner & Lead CRO Specialist (Sep–Dec 2025)</h3>
         <p>Full website ownership directing CRO across forms and WhatsApp CTAs — sustained through Black Friday's peak traffic of 14.9k+ leads/mo.</p>
         <div><span class="case-stat">+109.3%</span><span>WhatsApp Conversion Uplift (Record)</span></div>
+        <span class="case-link">View case <span class="arrow">→</span></span>
+      </div>
+      <div class="case-card" onclick="showView('case2')" style="position:relative">
+        <img class="case-card-img" src="assets/case-blackfriday-dashboard.png" alt="Screenshot of the real A/B testing dashboard for the Black Friday homepage offer test" loading="lazy">
+        <span class="case-tag c1">CRO & Website Strategy</span>
+        <h3>Black Friday Website Strategy & Cross-Functional CRO Ownership</h3>
+        <p>Led end-to-end website execution for Black Friday, uniting Content, Design and Media across 10 key pages — including the "Esquenta" A/B tests.</p>
+        <div><span class="case-stat">+40.6%</span><span>Form CVR (All-Time Record)</span></div>
         <span class="case-link">View case <span class="arrow">→</span></span>
       </div>
       <div class="case-card" onclick="showView('case4')" style="position:relative">
@@ -1191,7 +1208,7 @@ tickClock(); setInterval(tickClock, 30000);
       n.classList.toggle('on', i === idx);
       n.classList.toggle('done', i < idx);
     });
-    fill.style.width = (idx/(nodes.length-1))*100 + '%';
+    fill.style.transform = 'scaleX(' + (idx/(nodes.length-1)) + ')';
     var n = nodes[idx];
     noEl.textContent = n.dataset.step + ' · ' + n.dataset.title;
     titleEl.textContent = n.dataset.title;
@@ -1369,11 +1386,16 @@ function downloadResume(){
     { test: /\bdp\b|departamento pessoal|manual vs|automat/, reply: "Another logged experiment rewrote HR (DP) headlines to contrast the manual process against automation, lifting form conversion by +83%." },
     { test: /demo|chatbot/, reply: "One of Gabi's logged experiments replaced a static 'request a demo' form with a chatbot-guided self-serve demo, lifting SALs by +11%." },
     { test: /library|log\b|full list|all tests|how many (test|experiment)/, reply: "The 'Experiment library' section lists every test: the 7 that anchor the 4 featured case studies, plus 4 more from the same testing program. Rows tagged with a case number open the full write-up." },
+    { test: /biggest (achievement|result|win)|proudest|best result|standout|most impressive/, reply: "If she had to pick one: the +109.3% WhatsApp CVR record from Case #3, achieved while owning the full website through Black Friday's peak traffic (14.9k+ leads/mo). It's her favorite because it combined scale, a 4-month sustained ownership window, and a new all-time record — not just a one-off test spike." },
+    { test: /why (hire|you|should we|choose)|what makes (her|you) different|good fit|value.*(bring|add)/, reply: "She pairs a Graphic Design background with hands-on CRO — she can sketch and prototype a test concept herself, not just brief it out. She runs the full loop end-to-end (Observe → Research → Analyze → Prioritize → Experiment → Measure → Learn → Scale), and her featured cases show durable, repeatable lifts across multiple funnel stages, not isolated wins." },
     { test: /case|study|studies|experiment|project/, reply: "Gabi has 4 featured, Upwork-verified case studies: (1) WhatsApp widget redesign, +157% peak CVR. (2) Black Friday website strategy, +40.6% Form CVR record. (3) Full website ownership (Sep–Dec), +109.3% WhatsApp uplift. (4) Ongoing A/B testing program, +57.2% peak single-test uplift. There's also a broader experiment log in the 'Experiment library' section. Ask me about any one by name!" },
     { test: /process|method|how.*work|approach|framework/, reply: "Her process is Observe → Research → Analyze → Prioritize → Experiment → Measure → Learn → Scale — an iterative loop she reuses across every case study on this site. Check the 'How I work' section for the full breakdown." },
     { test: /bring|strength|pillar|behavior analysis|product analytics|prototyp|stakeholder/, reply: "The 'What I bring' section lists six strengths: Behavior Analysis, Experimentation, Product Analytics, Sketches & Prototyping, Growth Thinking, and Stakeholder Alignment." },
     { test: /learn(ed|ing)?\b|takeaway|note[s]?\b/, reply: "From 'What I've learned': good UX is measurable and continuously tested; behavior explains what metrics alone can't; small experiments compound over time; and the best optimization is the one that creates lasting learning." },
+    { test: /team\b|collaborat|work with (design|engineer)/, reply: "She works cross-functionally by default — Case #2 was run alongside Content, Design and Media across 10 pages, and her day-to-day at Sólides pairs her with designers and engineers from hypothesis to launch. 'Stakeholder Alignment' is one of her core pillars in the 'What I bring' section." },
+    { test: /industry|saas|what (kind|type) of (compan|client)|domain/, reply: "Her featured work is on Sólides' platform (HR/people-management SaaS), covering forms, WhatsApp CTAs and landing pages across the funnel. As her tagline puts it: she helps SaaS teams make better product decisions by connecting behavior, data and experimentation." },
     { test: /about|who (are|is)|hobby|hobbies|interest|climb|dance|travel|design background|jack of all trades/, reply: "Gabi is a designer turned CRO & Growth professional — background in Graphic Design, now working where design, data and psychology meet. Outside work: climbing, dance, travel and learning languages. See the 'About me' section for more." },
+    { test: /years? of experience|seniority|\bsenior\b|\bjunior\b|how long.*(experience|working)|experience level/, reply: "Gabi has been in a dedicated CRO Analyst role at Sólides since Sep 2024, running the full A/B testing loop end-to-end. Before that, she built a marketing and design foundation through internships in B2B marketing (AugeApp, 2022–2024) and visual communication (UEMG, 2024), alongside her Graphic Design degree." },
     { test: /experience|role|job|solides|s[oó]lides|work history|background|career/, reply: "Gabi is a CRO Analyst at Sólides (Sep 2024–present), running A/B tests end-to-end across funnel analysis, GA4 analytics and UX optimization. Before that, she worked in B2B marketing (AugeApp) and visual communication (UEMG), and holds a degree in Graphic Design." },
     { test: /skill|tool|ga4|figma|stack/, reply: "Core skills: A/B Testing, Conversion Rate Optimization, Funnel Testing, Data Analysis, GA4, Copywriting, UX & UI Design, Website Optimization and Cross-functional Collaboration. She also runs experiments in Convert." },
     { test: /certif/, reply: "Certifications on her resume: Conversion Optimization Certification, UX Research Bootcamp, Digital Marketing, Content Marketing, and Intro to Artificial Intelligence." },
@@ -1382,7 +1404,7 @@ function downloadResume(){
     { test: /location|based|brazil|time ?zone|remote/, reply: "Gabi is based in Brazil (Brazil time zone, shown live in the header) and open to remote work." },
     { test: /sessions|scale|traffic|volume|leads|funnel|mql|sal\b|show rate/, reply: "Across her featured work, Gabi sustained CVR through 14.9k+ leads/month at Black Friday peak traffic, with measurable lifts at every funnel stage — MQL (copy/messaging), SAL (channel/UX), SHOW (qualification) and CR (trust/proof)." },
     { test: /resume|cv\b|pdf|download/, reply: "You can view or download her full resume from the 'Resume' tab at the top, or click the 'Download Resume' button — it exports straight to PDF." },
-    { test: /hire|freelance|available|rate|price|pricing|budget|salary/, reply: "For availability, rates or scoping a project, that's best answered by Gabi directly — email her at gteixeirab3@gmail.com or connect on LinkedIn (linkedin.com/in/gabriela-baia)." },
+    { test: /hire|freelance|available|rate|price|pricing|budget|salary|notice period|start date|when.*(start|available)|relocat|visa|sponsor|work permit|work authorization/, reply: "For availability, notice period, rates or scoping a project, that's best answered by Gabi directly — email her at gteixeirab3@gmail.com or connect on LinkedIn (linkedin.com/in/gabriela-baia)." },
     { test: /contact|email|reach|linkedin|connect/, reply: "You can reach Gabi directly at gteixeirab3@gmail.com or on LinkedIn at linkedin.com/in/gabriela-baia — the footer below has a one-click Email button too." },
     { test: /hi|hello|hey|ol[aá]/, reply: "Hi there! Ask me about Gabi's case studies, her process, her background, or how to get in touch." },
     { test: /thank/, reply: "You're welcome! Feel free to ask about any other part of Gabi's work, or reach her directly at gteixeirab3@gmail.com." }
