@@ -317,48 +317,94 @@ button{font-family:inherit;cursor:pointer}
 @media (max-width:820px){.learned{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.learned{grid-template-columns:1fr}}
 
-/* ===================== TESTIMONIALS ===================== */
-.testimonials{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.testi-card{margin:0;min-width:0;background:var(--paper);border:1px solid var(--gray-200);border-radius:var(--r-lg);padding:24px;
-  display:flex;flex-direction:column;gap:14px;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+/* ===================== TESTIMONIALS (mobile-first) ===================== */
+/* Base: swipeable, snap-scrolling carousel — one card at a time on small screens. */
+.testimonials{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+  padding:2px 2px 6px;margin:0 -2px;scrollbar-width:none}
+.testimonials::-webkit-scrollbar{display:none}
+.testi-card{margin:0;flex:0 0 88%;scroll-snap-align:center;min-width:0;background:var(--paper);border:1px solid var(--gray-200);
+  border-radius:var(--r-lg);padding:20px;display:flex;flex-direction:column;gap:14px;
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
 .testi-card:hover{transform:translateY(-4px);box-shadow:0 20px 30px -22px rgba(0,0,0,.2)}
 .testi-mark{font-family:var(--font-display);font-size:32px;line-height:1;color:var(--coral-deep);opacity:.4}
 .testi-card blockquote{margin:0;flex:1;font-size:13.6px;line-height:1.65;color:var(--gray-700)}
-.testi-foot{display:flex;align-items:center;gap:11px;padding-top:14px;border-top:1px solid var(--gray-200)}
+.testi-foot{display:flex;align-items:flex-start;gap:11px;padding-top:14px;border-top:1px solid var(--gray-200)}
 .testi-avatar{width:38px;height:38px;border-radius:50%;flex:0 0 auto;display:flex;align-items:center;justify-content:center;
   font-family:var(--font-display);font-weight:700;font-size:14.5px}
 .testi-who{flex:1 1 auto;min-width:0}
 .testi-who b{display:block;font-size:13.6px;font-weight:700;color:var(--ink);line-height:1.3}
 .testi-who span{display:block;font-size:11.5px;color:var(--gray-500);line-height:1.3}
 .testi-context{display:block;font-size:11px;color:var(--gray-500);font-style:italic;margin-top:6px}
-.testi-badge{align-self:flex-start;font-size:10.5px;font-weight:700;padding:4px 10px;border-radius:var(--r-pill);white-space:nowrap}
-.testi-badge.upwork{background:var(--butter);color:var(--butter-ink)}
-.testi-badge.linkedin{background:var(--sky);color:var(--sky-ink)}
 .testi-card:nth-child(5n+1) .testi-avatar{background:var(--pink);color:var(--pink-ink)}
 .testi-card:nth-child(5n+2) .testi-avatar{background:var(--lavender);color:var(--lavender-ink)}
 .testi-card:nth-child(5n+3) .testi-avatar{background:var(--butter);color:var(--butter-ink)}
 .testi-card:nth-child(5n+4) .testi-avatar{background:var(--sage);color:var(--sage-ink)}
 .testi-card:nth-child(5n+5) .testi-avatar{background:var(--sky);color:var(--sky-ink)}
-@media (max-width:820px){.testimonials{grid-template-columns:1fr 1fr}}
-@media (max-width:560px){.testimonials{grid-template-columns:1fr}}
+.testi-dots{display:flex;justify-content:center;gap:6px;margin-top:16px}
+.testi-dots .dot{width:6px;height:6px;border-radius:50%;background:var(--gray-300);transition:.25s var(--ease);cursor:pointer}
+.testi-dots .dot.on{background:var(--coral-deep);width:18px;border-radius:4px}
+/* Tablet+: grid replaces the carousel, no more snap-scroll or dots needed. */
+@media (min-width:700px){
+  .testimonials{display:grid;grid-template-columns:1fr 1fr;overflow-x:visible;padding:0;margin:0}
+  .testi-card{flex:unset;scroll-snap-align:none;padding:22px}
+  .testi-dots{display:none}
+}
+@media (min-width:1000px){.testimonials{grid-template-columns:repeat(3,1fr)}}
 
-/* ===================== EXPERIMENT LIBRARY ===================== */
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
-.filter-chip{font-size:12.5px;font-weight:600;padding:7px 15px;border-radius:var(--r-pill);border:1px solid var(--gray-300);background:var(--paper);color:var(--gray-700);transition:.25s}
+/* ===================== EXPERIMENT LIBRARY — interactive dashboard (mobile-first) ===================== */
+.exp-kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
+.exp-kpi{background:var(--paper);border:1px solid var(--gray-200);border-radius:var(--r-md);padding:14px 16px}
+.exp-kpi b{display:block;font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--coral-deep);line-height:1.1}
+.exp-kpi span{display:block;font-size:11px;color:var(--gray-500);text-transform:uppercase;letter-spacing:.03em;margin-top:4px}
+.exp-toolbar{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px}
+.filters::-webkit-scrollbar{display:none}
+.filter-chip{flex:0 0 auto;font-size:12.5px;font-weight:600;padding:7px 15px;border-radius:var(--r-pill);border:1px solid var(--gray-300);background:var(--paper);color:var(--gray-700);transition:.25s;white-space:nowrap}
 .filter-chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
-.exp-table{width:100%;border-collapse:collapse;background:var(--paper);border:1px solid var(--gray-200);border-radius:var(--r-lg);overflow:hidden}
-.exp-table th{text-align:left;font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--gray-500);padding:12px 16px;border-bottom:1px solid var(--gray-200)}
-.exp-table td{padding:13px 16px;font-size:13.5px;border-bottom:1px solid var(--gray-100)}
-.exp-table tr:last-child td{border-bottom:none}
-.exp-table tr{transition:background .2s}
-.exp-table tr:hover td{background:var(--gray-100)}
-.pill-status{font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:var(--r-pill)}
+.exp-count{font-size:12px;color:var(--gray-500);font-weight:600}
+.exp-dash{display:flex;flex-direction:column;gap:10px}
+.exp-row-head{display:none}
+.exp-row{background:var(--paper);border:1px solid var(--gray-200);border-radius:var(--r-lg);padding:16px;
+  display:flex;flex-direction:column;gap:10px;transition:transform .25s var(--ease),box-shadow .25s var(--ease),border-color .25s}
+.exp-row[onclick]{cursor:pointer}
+.exp-row[onclick]:hover{transform:translateY(-2px);box-shadow:0 16px 28px -20px rgba(0,0,0,.2);border-color:var(--gray-300)}
+.exp-cat{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;padding:4px 10px;border-radius:var(--r-pill)}
+.exp-row[data-cat="Copy"] .exp-cat{background:var(--butter);color:var(--butter-ink)}
+.exp-row[data-cat="Wpp"] .exp-cat{background:var(--sage);color:var(--sage-ink)}
+.exp-row[data-cat="UX"] .exp-cat{background:var(--lavender);color:var(--lavender-ink)}
+.exp-row[data-cat="Forms"] .exp-cat{background:var(--sky);color:var(--sky-ink)}
+.exp-row[data-cat="Trust"] .exp-cat{background:var(--pink);color:var(--pink-ink)}
+.exp-name{font-size:13.8px;font-weight:700;color:var(--ink);line-height:1.35}
+.exp-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px}
+.exp-method{font-size:11px;font-weight:600;color:var(--gray-500);background:var(--gray-100);padding:3px 9px;border-radius:var(--r-pill)}
+.pill-status{font-size:11px;font-weight:700;padding:3px 9px;border-radius:var(--r-pill)}
 .pill-status.winner{background:var(--sage);color:var(--sage-ink)}
 .pill-status.learning{background:var(--butter);color:var(--butter-ink)}
 .pill-status.progress{background:var(--sky);color:var(--sky-ink)}
+.exp-conf{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--gray-500);font-weight:600}
+.exp-conf.none{color:var(--gray-400);font-style:italic;font-weight:500}
+.exp-conf-bar{flex:1;max-width:140px;height:6px;border-radius:4px;background:var(--gray-100);overflow:hidden}
+.exp-conf-fill{height:100%;border-radius:4px;background:var(--coral-deep);transition:width .8s var(--ease)}
+.exp-conf-label{white-space:nowrap;color:var(--coral-deep);font-weight:700}
+.exp-impact{font-family:var(--font-display)}
+.exp-impact b{font-size:20px;font-weight:700;color:var(--coral-deep)}
+.exp-impact span{display:block;font-size:11px;font-weight:500;color:var(--gray-500);text-transform:uppercase;letter-spacing:.02em;margin-top:1px}
 .exp-case-tag{font-size:11.5px;font-weight:700;color:var(--coral-deep)}
 .exp-log-only{font-size:11.5px;font-weight:600;color:var(--gray-500)}
-@media (max-width:700px){.exp-table thead{display:none}.exp-table td{display:block;border-bottom:none;padding:3px 16px}.exp-table tr{display:block;padding:10px 0;border-bottom:1px solid var(--gray-200)}.exp-table td::before{content:attr(data-label);display:block;font-size:10px;text-transform:uppercase;letter-spacing:.04em;color:var(--gray-500);margin-bottom:1px}.exp-table td[data-label="Category"],.exp-table td[data-label="Method"]{display:none}}
+/* Tablet+: rows become dashboard-style grid lines with an aligned header. */
+@media (min-width:760px){
+  .exp-kpis{grid-template-columns:repeat(4,1fr)}
+  .exp-toolbar{flex-direction:row;align-items:center;justify-content:space-between}
+  .exp-dash{gap:0;background:var(--paper);border:1px solid var(--gray-200);border-radius:var(--r-lg);overflow:hidden}
+  .exp-row{border:none;border-radius:0;border-bottom:1px solid var(--gray-100);
+    display:grid;grid-template-columns:100px 1.7fr 150px 130px 90px;align-items:center;gap:16px;padding:14px 18px}
+  .exp-row:last-child{border-bottom:none}
+  .exp-row[onclick]:hover{transform:none;box-shadow:none;background:var(--gray-100)}
+  .exp-row-head{display:grid;background:var(--gray-100);font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--gray-500);font-weight:700;padding:12px 18px}
+  .exp-cat{align-self:center}
+  .exp-meta{margin-top:4px}
+  .exp-case{justify-self:end}
+}
 
 /* ===================== FOOTER ===================== */
 .footer{background:var(--ink);color:#fff;padding:70px max(20px,calc((100% - var(--maxw)) / 2));text-align:center;position:relative;overflow:hidden}
@@ -531,7 +577,6 @@ button{font-family:inherit;cursor:pointer}
   .pillars,.learned{gap:10px}
   .funnel{gap:10px}
   .pillar,.funnel-step{padding:16px}
-  .testi-card{padding:18px}
   .learn-card{padding:15px}
   .cases{gap:14px}
   .case-card{padding:18px}
@@ -761,32 +806,107 @@ button{font-family:inherit;cursor:pointer}
   <section class="section alt" id="library" data-appear>
     <div class="section-head">
       <h2>Experiment library</h2>
-      <p>Every test behind the numbers above — the 7 that anchor the 4 featured case studies, plus 4 more from the same testing program. Rows with a case tag open the full write-up.</p>
+      <p>Every test behind the numbers above — the 7 that anchor the 4 featured case studies, plus 4 more from the same testing program. Tap a row with a case tag to open the full write-up.</p>
     </div>
-    <div class="filters" id="filters">
-      <button class="filter-chip on" data-cat="all" onclick="filterExp(this)">All</button>
-      <button class="filter-chip" data-cat="Copy" onclick="filterExp(this)">Copy</button>
-      <button class="filter-chip" data-cat="Wpp" onclick="filterExp(this)">Wpp</button>
-      <button class="filter-chip" data-cat="UX" onclick="filterExp(this)">UX</button>
-      <button class="filter-chip" data-cat="Forms" onclick="filterExp(this)">Forms</button>
-      <button class="filter-chip" data-cat="Trust" onclick="filterExp(this)">Trust</button>
+    <div class="exp-kpis">
+      <div class="exp-kpi"><b id="expKpiTotal">0</b><span>Experiments logged</span></div>
+      <div class="exp-kpi"><b id="expKpiWin">0%</b><span>Win rate</span></div>
+      <div class="exp-kpi"><b id="expKpiCats">0</b><span>Categories tested</span></div>
+      <div class="exp-kpi"><b id="expKpiCases">0</b><span>Tied to featured cases</span></div>
     </div>
-    <table class="exp-table" id="expTable">
-      <thead><tr><th>Experiment</th><th>Category</th><th>Method</th><th>Status</th><th>Impact</th><th>Case</th></tr></thead>
-      <tbody>
-        <tr data-cat="Wpp" onclick="showView('case1')" style="cursor:pointer"><td data-label="Experiment">WhatsApp CTA widget redesign</td><td data-label="Category">Wpp</td><td data-label="Method">Direct ship</td><td data-label="Status"><span class="pill-status winner">Winner</span></td><td data-label="Impact">+157.0% peak CVR</td><td data-label="Case"><span class="exp-case-tag">Case #1 →</span></td></tr>
-        <tr data-cat="Copy" onclick="showView('case2')" style="cursor:pointer"><td data-label="Experiment">"Esquenta" Black Friday homepage test</td><td data-label="Category">Copy</td><td data-label="Method">A/B test</td><td data-label="Status"><span class="pill-status winner">Winner</span></td><td data-label="Impact">+40.6% Form CVR (record)</td><td data-label="Case"><span class="exp-case-tag">Case #2 →</span></td></tr>
-        <tr data-cat="Wpp" onclick="showView('case3')" style="cursor:pointer"><td data-label="Experiment">December WhatsApp trigger optimization</td><td data-label="Category">Wpp</td><td data-label="Method">A/B test</td><td data-label="Status"><span class="pill-status winner">Winner</span></td><td data-label="Impact">+109.3% CVR (record)</td><td data-label="Case"><span class="exp-case-tag">Case #3 →</span></td></tr>
-        <tr data-cat="UX" onclick="showView('case4')" style="cursor:pointer"><td data-label="Experiment">Product Cards UI optimization</td><td data-label="Category">UX</td><td data-label="Method">A/B test</td><td data-label="Status"><span class="pill-status winner">Winner</span></td><td data-label="Impact">+57.2% (93% conf.)</td><td data-label="Case"><span class="exp-case-tag">Case #4 →</span></td></tr>
-        <tr data-cat="Forms" onclick="showView('case4')" style="cursor:pointer"><td data-label="Experiment">SPAM microcopy adjustments</td><td data-label="Category">Forms</td><td data-label="Method">A/B test</td><td data-label="Status"><span class="pill-status winner">Winner</span></td><td data-label="Impact">+56.6% (95% conf.)</td><td data-label="Case"><span class="exp-case-tag">Case #4 →</span></td></tr>
-        <tr data-cat="Copy" onclick="showView('case4')" style="cursor:pointer"><td data-label="Experiment">Recruitment & Selection H1 copy</td><td data-label="Category">Copy</td><td data-label="Method">A/B test</td><td data-label="Status"><span class="pill-status winner">Winner</span></td><td data-label="Impact">+35.6% (91% conf.)</td><td data-label="Case"><span class="exp-case-tag">Case #4 →</span></td></tr>
-        <tr data-cat="Trust" onclick="showView('case4')" style="cursor:pointer"><td data-label="Experiment">High-traffic blog tagging strategy</td><td data-label="Category">Trust</td><td data-label="Method">A/B test</td><td data-label="Status"><span class="pill-status winner">Winner</span></td><td data-label="Impact">+15.6% (99% conf.)</td><td data-label="Case"><span class="exp-case-tag">Case #4 →</span></td></tr>
-        <tr data-cat="Copy"><td data-label="Experiment">Payroll copy — pain & legal risk H2s</td><td data-label="Category">Copy</td><td data-label="Method">A/B test</td><td data-label="Status"><span class="pill-status winner">Winner</span></td><td data-label="Impact">+94% form submissions</td><td data-label="Case"><span class="exp-log-only">Log only</span></td></tr>
-        <tr data-cat="Copy"><td data-label="Experiment">DP argumentation — manual vs. automated</td><td data-label="Category">Copy</td><td data-label="Method">A/B test</td><td data-label="Status"><span class="pill-status winner">Winner</span></td><td data-label="Impact">+83% form conversion</td><td data-label="Case"><span class="exp-log-only">Log only</span></td></tr>
-        <tr data-cat="UX"><td data-label="Experiment">Get Demo — chatbot-guided flow</td><td data-label="Category">UX</td><td data-label="Method">Split URL</td><td data-label="Status"><span class="pill-status winner">Winner</span></td><td data-label="Impact">+11% SALs</td><td data-label="Case"><span class="exp-log-only">Log only</span></td></tr>
-        <tr data-cat="Forms"><td data-label="Experiment">Mandatory CNPJ, -10 columns</td><td data-label="Category">Forms</td><td data-label="Method">Split URL</td><td data-label="Status"><span class="pill-status winner">Winner</span></td><td data-label="Impact">+12.5% SHOW rate</td><td data-label="Case"><span class="exp-log-only">Log only</span></td></tr>
-      </tbody>
-    </table>
+    <div class="exp-toolbar">
+      <div class="filters" id="filters">
+        <button class="filter-chip on" data-cat="all" onclick="filterExp(this)">All</button>
+        <button class="filter-chip" data-cat="Copy" onclick="filterExp(this)">✍️ Copy</button>
+        <button class="filter-chip" data-cat="Wpp" onclick="filterExp(this)">💬 Wpp</button>
+        <button class="filter-chip" data-cat="UX" onclick="filterExp(this)">🎨 UX</button>
+        <button class="filter-chip" data-cat="Forms" onclick="filterExp(this)">📋 Forms</button>
+        <button class="filter-chip" data-cat="Trust" onclick="filterExp(this)">🛡️ Trust</button>
+      </div>
+      <span class="exp-count" id="expCount"></span>
+    </div>
+    <div class="exp-dash" id="expTable" role="table">
+      <div class="exp-row exp-row-head" role="row" aria-hidden="true">
+        <span role="columnheader">Category</span><span role="columnheader">Experiment</span><span role="columnheader">Confidence</span><span role="columnheader">Impact</span><span role="columnheader">Case</span>
+      </div>
+      <div class="exp-row" data-cat="Wpp" role="row" onclick="showView('case1')" tabindex="0">
+        <div class="exp-cat"><span class="exp-cat-ico">💬</span>Wpp</div>
+        <div class="exp-main"><div class="exp-name">WhatsApp CTA widget redesign</div><div class="exp-meta"><span class="exp-method">Direct ship</span><span class="pill-status winner">Winner</span></div></div>
+        <div class="exp-conf none">Direct rollout</div>
+        <div class="exp-impact"><b>+157.0%</b><span>peak CVR</span></div>
+        <div class="exp-case"><span class="exp-case-tag">Case #1 →</span></div>
+      </div>
+      <div class="exp-row" data-cat="Copy" role="row" onclick="showView('case2')" tabindex="0">
+        <div class="exp-cat"><span class="exp-cat-ico">✍️</span>Copy</div>
+        <div class="exp-main"><div class="exp-name">"Esquenta" Black Friday homepage test</div><div class="exp-meta"><span class="exp-method">A/B test</span><span class="pill-status winner">Winner</span></div></div>
+        <div class="exp-conf none">A/B test</div>
+        <div class="exp-impact"><b>+40.6%</b><span>Form CVR (record)</span></div>
+        <div class="exp-case"><span class="exp-case-tag">Case #2 →</span></div>
+      </div>
+      <div class="exp-row" data-cat="Wpp" role="row" onclick="showView('case3')" tabindex="0">
+        <div class="exp-cat"><span class="exp-cat-ico">💬</span>Wpp</div>
+        <div class="exp-main"><div class="exp-name">December WhatsApp trigger optimization</div><div class="exp-meta"><span class="exp-method">A/B test</span><span class="pill-status winner">Winner</span></div></div>
+        <div class="exp-conf none">A/B test</div>
+        <div class="exp-impact"><b>+109.3%</b><span>CVR (record)</span></div>
+        <div class="exp-case"><span class="exp-case-tag">Case #3 →</span></div>
+      </div>
+      <div class="exp-row" data-cat="UX" role="row" onclick="showView('case4')" tabindex="0">
+        <div class="exp-cat"><span class="exp-cat-ico">🎨</span>UX</div>
+        <div class="exp-main"><div class="exp-name">Product Cards UI optimization</div><div class="exp-meta"><span class="exp-method">A/B test</span><span class="pill-status winner">Winner</span></div></div>
+        <div class="exp-conf"><div class="exp-conf-bar"><div class="exp-conf-fill" style="width:93%"></div></div><span class="exp-conf-label">93%</span></div>
+        <div class="exp-impact"><b>+57.2%</b><span>peak uplift</span></div>
+        <div class="exp-case"><span class="exp-case-tag">Case #4 →</span></div>
+      </div>
+      <div class="exp-row" data-cat="Forms" role="row" onclick="showView('case4')" tabindex="0">
+        <div class="exp-cat"><span class="exp-cat-ico">📋</span>Forms</div>
+        <div class="exp-main"><div class="exp-name">SPAM microcopy adjustments</div><div class="exp-meta"><span class="exp-method">A/B test</span><span class="pill-status winner">Winner</span></div></div>
+        <div class="exp-conf"><div class="exp-conf-bar"><div class="exp-conf-fill" style="width:95%"></div></div><span class="exp-conf-label">95%</span></div>
+        <div class="exp-impact"><b>+56.6%</b><span>uplift</span></div>
+        <div class="exp-case"><span class="exp-case-tag">Case #4 →</span></div>
+      </div>
+      <div class="exp-row" data-cat="Copy" role="row" onclick="showView('case4')" tabindex="0">
+        <div class="exp-cat"><span class="exp-cat-ico">✍️</span>Copy</div>
+        <div class="exp-main"><div class="exp-name">Recruitment & Selection H1 copy</div><div class="exp-meta"><span class="exp-method">A/B test</span><span class="pill-status winner">Winner</span></div></div>
+        <div class="exp-conf"><div class="exp-conf-bar"><div class="exp-conf-fill" style="width:91%"></div></div><span class="exp-conf-label">91%</span></div>
+        <div class="exp-impact"><b>+35.6%</b><span>uplift</span></div>
+        <div class="exp-case"><span class="exp-case-tag">Case #4 →</span></div>
+      </div>
+      <div class="exp-row" data-cat="Trust" role="row" onclick="showView('case4')" tabindex="0">
+        <div class="exp-cat"><span class="exp-cat-ico">🛡️</span>Trust</div>
+        <div class="exp-main"><div class="exp-name">High-traffic blog tagging strategy</div><div class="exp-meta"><span class="exp-method">A/B test</span><span class="pill-status winner">Winner</span></div></div>
+        <div class="exp-conf"><div class="exp-conf-bar"><div class="exp-conf-fill" style="width:99%"></div></div><span class="exp-conf-label">99%</span></div>
+        <div class="exp-impact"><b>+15.6%</b><span>uplift</span></div>
+        <div class="exp-case"><span class="exp-case-tag">Case #4 →</span></div>
+      </div>
+      <div class="exp-row" data-cat="Copy" role="row">
+        <div class="exp-cat"><span class="exp-cat-ico">✍️</span>Copy</div>
+        <div class="exp-main"><div class="exp-name">Payroll copy — pain & legal risk H2s</div><div class="exp-meta"><span class="exp-method">A/B test</span><span class="pill-status winner">Winner</span></div></div>
+        <div class="exp-conf none">A/B test</div>
+        <div class="exp-impact"><b>+94%</b><span>form submissions</span></div>
+        <div class="exp-case"><span class="exp-log-only">Log only</span></div>
+      </div>
+      <div class="exp-row" data-cat="Copy" role="row">
+        <div class="exp-cat"><span class="exp-cat-ico">✍️</span>Copy</div>
+        <div class="exp-main"><div class="exp-name">DP argumentation — manual vs. automated</div><div class="exp-meta"><span class="exp-method">A/B test</span><span class="pill-status winner">Winner</span></div></div>
+        <div class="exp-conf none">A/B test</div>
+        <div class="exp-impact"><b>+83%</b><span>form conversion</span></div>
+        <div class="exp-case"><span class="exp-log-only">Log only</span></div>
+      </div>
+      <div class="exp-row" data-cat="UX" role="row">
+        <div class="exp-cat"><span class="exp-cat-ico">🎨</span>UX</div>
+        <div class="exp-main"><div class="exp-name">Get Demo — chatbot-guided flow</div><div class="exp-meta"><span class="exp-method">Split URL</span><span class="pill-status winner">Winner</span></div></div>
+        <div class="exp-conf none">Split URL</div>
+        <div class="exp-impact"><b>+11%</b><span>SALs</span></div>
+        <div class="exp-case"><span class="exp-log-only">Log only</span></div>
+      </div>
+      <div class="exp-row" data-cat="Forms" role="row">
+        <div class="exp-cat"><span class="exp-cat-ico">📋</span>Forms</div>
+        <div class="exp-main"><div class="exp-name">Mandatory CNPJ, -10 columns</div><div class="exp-meta"><span class="exp-method">Split URL</span><span class="pill-status winner">Winner</span></div></div>
+        <div class="exp-conf none">Split URL</div>
+        <div class="exp-impact"><b>+12.5%</b><span>SHOW rate</span></div>
+        <div class="exp-case"><span class="exp-log-only">Log only</span></div>
+      </div>
+    </div>
   </section>
 
   <section class="section alt" id="learned" data-appear>
@@ -805,16 +925,15 @@ button{font-family:inherit;cursor:pointer}
   <section class="section alt" id="testimonials" data-appear>
     <div class="section-head">
       <h2>What people say</h2>
-      <p>Verified Upwork reviews and LinkedIn recommendations from people Gabi has actually worked with.</p>
+      <p>Real feedback from clients, colleagues and managers Gabi has actually worked with.</p>
     </div>
-    <div class="testimonials">
+    <div class="testimonials" id="testiTrack">
       <figure class="testi-card">
         <span class="testi-mark">"</span>
         <blockquote>I had the pleasure of working with Gabriela on the Growth team, and she is one of the most outstanding professionals I've collaborated with. Her attention to detail is exceptional and directly translates into better results. She is proactive, organized, and brings creative ideas to every project. From a CRO perspective, she has a sharp analytical mindset and a genuine ability to connect data with user behavior, understanding how small funnel and landing page changes significantly impact conversion rates, always testing and optimizing. Her communication is clear, her attitude collaborative, and she makes every team better. I wholeheartedly recommend Gabi to anyone looking for a CRO specialist.</blockquote>
         <figcaption class="testi-foot">
           <span class="testi-avatar">L</span>
-          <span class="testi-who"><b>Luiza T.</b><span>CRM Specialist</span></span>
-          <span class="testi-badge upwork">✓ Upwork · Aug 2026</span>
+          <span class="testi-who"><b>Luiza T.</b><span>CRM Specialist</span><span class="testi-context">Worked together on the Growth team</span></span>
         </figcaption>
       </figure>
       <figure class="testi-card">
@@ -823,7 +942,6 @@ button{font-family:inherit;cursor:pointer}
         <figcaption class="testi-foot">
           <span class="testi-avatar">J</span>
           <span class="testi-who"><b>João Couto</b><span>Marketing Analyst, Content Strategy</span><span class="testi-context">Managed Gabriela directly at AugeApp</span></span>
-          <span class="testi-badge linkedin">✓ LinkedIn · Apr 2024</span>
         </figcaption>
       </figure>
       <figure class="testi-card">
@@ -832,7 +950,6 @@ button{font-family:inherit;cursor:pointer}
         <figcaption class="testi-foot">
           <span class="testi-avatar">A</span>
           <span class="testi-who"><b>Ana Beatriz Prado Araújo</b><span>Product / UX / UI Designer</span><span class="testi-context">Worked with Gabriela on different teams</span></span>
-          <span class="testi-badge linkedin">✓ LinkedIn · Aug 2025</span>
         </figcaption>
       </figure>
       <figure class="testi-card">
@@ -840,8 +957,7 @@ button{font-family:inherit;cursor:pointer}
         <blockquote>I've had the opportunity to work with Gabi on several projects during college, and I've always been impressed by her dedication and the quality of her work. She is very communicative, creative, and always finds thoughtful and effective ways to solve problems. She has a strong knowledge of her field, is reliable, and puts a lot of care into everything she does. Today I consider her a reference in her field — a talented, committed professional I would definitely recommend.</blockquote>
         <figcaption class="testi-foot">
           <span class="testi-avatar">V</span>
-          <span class="testi-who"><b>Vitória F.</b><span>Product Designer</span></span>
-          <span class="testi-badge upwork">✓ Upwork · Aug 2026</span>
+          <span class="testi-who"><b>Vitória F.</b><span>Product Designer</span><span class="testi-context">Collaborated on projects during college</span></span>
         </figcaption>
       </figure>
       <figure class="testi-card">
@@ -849,10 +965,12 @@ button{font-family:inherit;cursor:pointer}
         <blockquote>Gabriela worked with me for 2 years on the marketing team at AugeApp. Throughout that time she was always helpful and open to feedback in her creative process — in team planning meetings, her creative personality shone through, offering suggestions that added real value to our campaigns. On every occasion she was proactive in finding solutions, even without full command of the subject or tool. She's a deeply empathetic person and a pleasure to work alongside.</blockquote>
         <figcaption class="testi-foot">
           <span class="testi-avatar">C</span>
-          <span class="testi-who"><b>Carolina Lima</b><span>Graphic Design & Illustration</span><span class="testi-context">Worked with Gabriela on the same team</span></span>
-          <span class="testi-badge linkedin">✓ LinkedIn · Mar 2024</span>
+          <span class="testi-who"><b>Carolina Lima</b><span>Graphic Design & Illustration</span><span class="testi-context">Worked together for 2 years at AugeApp</span></span>
         </figcaption>
       </figure>
+    </div>
+    <div class="testi-dots" id="testiDots" aria-hidden="true">
+      <span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
     </div>
   </section>
 
@@ -1311,15 +1429,70 @@ tickClock(); setInterval(tickClock, 30000);
   startAuto();
 })();
 
-/* ===================== EXPERIMENT FILTER ===================== */
-function filterExp(btn){
-  document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('on'));
-  btn.classList.add('on');
-  var cat = btn.dataset.cat;
-  document.querySelectorAll('#expTable tbody tr').forEach(function(row){
-    row.style.display = (cat === 'all' || row.dataset.cat === cat) ? '' : 'none';
+/* ===================== TESTIMONIALS CAROUSEL (mobile dots) ===================== */
+(function(){
+  var track = document.getElementById('testiTrack');
+  var dots = document.querySelectorAll('#testiDots .dot');
+  if(!track || !dots.length) return;
+  var cards = Array.prototype.slice.call(track.querySelectorAll('.testi-card'));
+  function update(){
+    var center = track.scrollLeft + track.clientWidth / 2;
+    var closest = 0, min = Infinity;
+    cards.forEach(function(c, i){
+      var mid = c.offsetLeft + c.offsetWidth / 2;
+      var d = Math.abs(mid - center);
+      if(d < min){ min = d; closest = i; }
+    });
+    dots.forEach(function(d, i){ d.classList.toggle('on', i === closest); });
+  }
+  track.addEventListener('scroll', update, {passive:true});
+  dots.forEach(function(d, i){
+    d.addEventListener('click', function(){
+      cards[i].scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
+    });
   });
-}
+  window.addEventListener('resize', update);
+  update();
+})();
+
+/* ===================== EXPERIMENT DASHBOARD (live KPIs + filters) ===================== */
+(function(){
+  var dash = document.getElementById('expTable');
+  if(!dash) return;
+  var rows = Array.prototype.slice.call(dash.querySelectorAll('.exp-row:not(.exp-row-head)'));
+  var total = rows.length;
+  var winners = rows.filter(function(r){ return r.querySelector('.pill-status.winner'); }).length;
+  var cats = {};
+  rows.forEach(function(r){ cats[r.dataset.cat] = true; });
+  var linked = rows.filter(function(r){ return r.querySelector('.exp-case-tag'); }).length;
+
+  var elTotal = document.getElementById('expKpiTotal');
+  var elWin = document.getElementById('expKpiWin');
+  var elCats = document.getElementById('expKpiCats');
+  var elCases = document.getElementById('expKpiCases');
+  if(elTotal) elTotal.textContent = total;
+  if(elWin) elWin.textContent = (total ? Math.round(winners / total * 100) : 0) + '%';
+  if(elCats) elCats.textContent = Object.keys(cats).length;
+  if(elCases) elCases.textContent = linked;
+
+  var countEl = document.getElementById('expCount');
+  function updateCount(cat){
+    if(!countEl) return;
+    var visible = cat === 'all' ? total : rows.filter(function(r){ return r.dataset.cat === cat; }).length;
+    countEl.textContent = 'Showing ' + visible + ' of ' + total;
+  }
+  updateCount('all');
+
+  window.filterExp = function(btn){
+    document.querySelectorAll('.filter-chip').forEach(function(c){ c.classList.remove('on'); });
+    btn.classList.add('on');
+    var cat = btn.dataset.cat;
+    rows.forEach(function(row){
+      row.style.display = (cat === 'all' || row.dataset.cat === cat) ? '' : 'none';
+    });
+    updateCount(cat);
+  };
+})();
 
 /* ===================== SCROLL REVEAL ===================== */
 (function(){
