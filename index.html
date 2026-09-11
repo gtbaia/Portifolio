@@ -14,8 +14,8 @@
 <style>
 /* ===================== DESIGN TOKENS ===================== */
 :root{
-  --paper:#fffdf9;
-  --bg:#fbfaf6;
+  --paper:#fffdf6;
+  --bg:#faf7ea;
   --ink:#1a1a1a;
   --gray-700:#4a4640;
   --gray-500:#7a756c;
@@ -23,12 +23,12 @@
   --gray-200:#eae5da;
   --gray-100:#f4f1e9;
 
-  --coral:#c5d2f8;
-  --coral-rgb:196,209,247;
-  --coral-deep:#4f0c28;
-  --coral-deep-rgb:79,12,40;
+  --coral:#c5d9e2;
+  --coral-rgb:197,217,226;
+  --coral-deep:#852936;
+  --coral-deep-rgb:133,41,54;
 
-  --pink:#f7dcd2;      --pink-ink:#a8543a;
+  --pink:#e1aebc;      --pink-ink:#852936;
   --lavender:#e6dcf0;  --lavender-ink:#71588f;
   --butter:#fbe8bf;    --butter-ink:#93650f;
   --sage:#dcebd9;      --sage-ink:#3f7d4f;
@@ -269,7 +269,7 @@ button{font-family:inherit;cursor:pointer}
   display:flex;align-items:center;justify-content:center;font-size:25px;transition:.35s var(--ease);box-shadow:0 4px 10px -6px rgba(0,0,0,.15)}
 .process-node .node-no{font-family:var(--font-mono);font-size:10.5px;color:var(--gray-500);font-weight:700}
 .process-node .node-label{font-size:12.5px;font-weight:700;color:var(--gray-500);white-space:nowrap;transition:color .3s}
-.process-node.done .node-ico{border-color:var(--coral-deep);background:#f1eef6}
+.process-node.done .node-ico{border-color:var(--coral-deep);background:#fbeef0}
 .process-node.on .node-ico{border-color:var(--coral-deep);background:var(--coral-deep);transform:scale(1.16);box-shadow:0 10px 22px -8px rgba(var(--coral-deep-rgb),.55)}
 .process-node.on .node-label{color:var(--ink)}
 .process-detail{background:var(--paper);border:1px solid var(--gray-200);border-radius:var(--r-lg);padding:24px 26px;transition:opacity .25s}
@@ -598,8 +598,8 @@ button{font-family:inherit;cursor:pointer}
             <svg class="hv-chart" viewBox="0 0 320 150" preserveAspectRatio="none">
               <defs>
                 <linearGradient id="hvGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#4f0c28" stop-opacity="0.32"/>
-                  <stop offset="100%" stop-color="#4f0c28" stop-opacity="0"/>
+                  <stop offset="0%" stop-color="#852936" stop-opacity="0.32"/>
+                  <stop offset="100%" stop-color="#852936" stop-opacity="0"/>
                 </linearGradient>
               </defs>
               <path class="hv-area" d="M0,128 C36,120 58,104 88,98 C124,91 148,66 186,54 C222,43 248,30 320,8 L320,150 L0,150 Z"/>
@@ -1407,7 +1407,7 @@ function downloadResume(){
 
     function heading(text){
       if(y > 270){ doc.addPage(); y = 20; }
-      doc.setFont('helvetica','bold'); doc.setFontSize(11); doc.setTextColor(79,12,40);
+      doc.setFont('helvetica','bold'); doc.setFontSize(11); doc.setTextColor(133,41,54);
       doc.text(text.toUpperCase(), margin, y); y += 6;
       doc.setDrawColor(230,225,218); doc.line(margin, y-3, pageW-margin, y-3);
     }
