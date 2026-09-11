@@ -326,19 +326,14 @@ button{font-family:inherit;cursor:pointer}
   padding:2px 2px 10px;margin:0 -2px;scrollbar-width:none;flex:1;min-width:0;cursor:grab;align-items:flex-start}
 .testimonials.dragging{cursor:grabbing;scroll-snap-type:none}
 .testimonials::-webkit-scrollbar{display:none}
-.testi-card{margin:0;flex:0 0 86%;scroll-snap-align:center;min-width:0;background:#fffefb;border:1px solid var(--gray-300);
-  border-radius:var(--r-lg);padding:20px;display:flex;flex-direction:column;gap:12px;
+.testi-card{margin:0;flex:0 0 94%;scroll-snap-align:center;min-width:0;background:#fffefb;border:1px solid var(--gray-300);
+  border-radius:var(--r-lg);padding:22px;display:flex;flex-direction:column;gap:12px;
   box-shadow:0 10px 26px -20px rgba(26,20,10,.3);transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
 .testi-card[hidden]{display:none}
 .testi-card:hover{transform:translateY(-4px);box-shadow:0 18px 34px -20px rgba(26,20,10,.35)}
-.testi-mark{font-family:var(--font-display);font-size:32px;line-height:1;color:var(--coral-deep);opacity:.5}
-.testi-quote-wrap{overflow:hidden}
-.testi-quote-wrap blockquote{margin:0;font-size:13.6px;line-height:1.65;color:var(--ink);
-  display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden}
-.testi-card.expanded .testi-quote-wrap blockquote{-webkit-line-clamp:unset;overflow:visible}
-.testi-quote-wrap blockquote .hl{color:var(--coral-deep);font-weight:700}
-.testi-more{align-self:flex-start;background:none;border:none;padding:0;font-size:12px;font-weight:700;color:var(--coral-deep);cursor:pointer;display:none}
-.testi-more.show{display:inline-block}
+.testi-mark{font-family:var(--font-display);font-size:32px;line-height:1;color:var(--coral-deep);opacity:.5;margin-bottom:-8px}
+.testi-headline{font-family:var(--font-display);font-size:17px;font-weight:700;line-height:1.35;color:var(--ink)}
+.testi-quote-wrap blockquote{margin:0;font-size:13.6px;line-height:1.65;color:var(--ink)}
 .testi-foot{display:flex;align-items:flex-start;gap:11px;padding-top:12px;border-top:1px solid var(--gray-200);margin-top:auto}
 .testi-avatar{width:44px;height:44px;border-radius:50%;flex:0 0 auto;display:flex;align-items:center;justify-content:center;
   font-family:var(--font-display);font-weight:700;font-size:16px}
@@ -365,10 +360,10 @@ button{font-family:inherit;cursor:pointer}
 .testi-cta strong{color:var(--ink)}
 .testi-cta .btn-primary{flex:0 0 auto}
 @media (min-width:700px){
-  .testi-card{flex:0 0 47%;padding:22px}
+  .testi-card{flex:0 0 72%;padding:26px}
 }
 @media (min-width:1000px){
-  .testi-card{flex:0 0 31.5%}
+  .testi-card{flex:0 0 48%}
 }
 @media (max-width:480px){.testi-arrow{display:none}}
 
@@ -960,8 +955,8 @@ button{font-family:inherit;cursor:pointer}
       <div class="testimonials" id="testiTrack">
         <figure class="testi-card" data-rel="teammate">
           <span class="testi-mark">"</span>
-          <div class="testi-quote-wrap"><blockquote>I had the pleasure of working with Gabriela on the Growth team, and she is one of the most outstanding professionals I've collaborated with. Her attention to detail is exceptional and directly translates into better results. She is proactive, organized, and brings creative ideas to every project. From a CRO perspective, <strong class="hl">she has a sharp analytical mindset and a genuine ability to connect data with user behavior</strong>, understanding how small funnel and landing page changes significantly impact conversion rates, always testing and optimizing. Her communication is clear, her attitude collaborative, and she makes every team better. I wholeheartedly recommend Gabi to anyone looking for a CRO specialist.</blockquote></div>
-          <button class="testi-more" type="button" onclick="toggleTesti(this)">Read more</button>
+          <h3 class="testi-headline">"A sharp analytical mindset and a genuine ability to connect data with user behavior."</h3>
+          <div class="testi-quote-wrap"><blockquote>I had the pleasure of working with Gabriela on the Growth team, and she is one of the most outstanding professionals I've collaborated with. Her attention to detail is exceptional and directly translates into better results. She is proactive, organized, and brings creative ideas to every project. From a CRO perspective, she has a sharp analytical mindset and a genuine ability to connect data with user behavior, understanding how small funnel and landing page changes significantly impact conversion rates, always testing and optimizing. Her communication is clear, her attitude collaborative, and she makes every team better. I wholeheartedly recommend Gabi to anyone looking for a CRO specialist.</blockquote></div>
           <figcaption class="testi-foot">
             <span class="testi-avatar">L</span>
             <span class="testi-who"><b>Luiza T.</b><span>CRM Specialist</span><span class="testi-context">Worked together on the Growth team</span><span class="testi-org">Sólides · 2024–present</span></span>
@@ -969,8 +964,8 @@ button{font-family:inherit;cursor:pointer}
         </figure>
         <figure class="testi-card" data-rel="manager">
           <span class="testi-mark">"</span>
-          <div class="testi-quote-wrap"><blockquote>Gabriela is an excellent professional. During her time with us in AugeApp's internship program, she showed professionalism, commitment and <strong class="hl">exceptional skills for the marketing team's work</strong>. A creative person who always contributed great ideas and solutions to the challenges of creative and planning work. Her dedication to contributing, learning and working as part of a team stands out — I'm certain she'll add value to every project she's involved in.</blockquote></div>
-          <button class="testi-more" type="button" onclick="toggleTesti(this)">Read more</button>
+          <h3 class="testi-headline">"Exceptional skills for the marketing team's work."</h3>
+          <div class="testi-quote-wrap"><blockquote>Gabriela is an excellent professional. During her time with us in AugeApp's internship program, she showed professionalism, commitment and exceptional skills for the marketing team's work. A creative person who always contributed great ideas and solutions to the challenges of creative and planning work. Her dedication to contributing, learning and working as part of a team stands out — I'm certain she'll add value to every project she's involved in.</blockquote></div>
           <figcaption class="testi-foot">
             <span class="testi-avatar">J</span>
             <span class="testi-who"><b>João Couto</b><span>Marketing Analyst, Content Strategy</span><span class="testi-context">Managed Gabriela directly at AugeApp</span><span class="testi-org">AugeApp · 2022–2024</span></span>
@@ -978,8 +973,8 @@ button{font-family:inherit;cursor:pointer}
         </figure>
         <figure class="testi-card" data-rel="colleague">
           <span class="testi-mark">"</span>
-          <div class="testi-quote-wrap"><blockquote>Gabriela is an exceptional professional! Extremely quick at solving problems, understanding context, and coming up with great ideas. Nothing she does is random — <strong class="hl">every design decision is grounded in data and prior test results</strong>. Always willing to learn and share knowledge, great at teamwork, and she knows how to mediate discussions and help everyone reach common ground. Gabi is wonderful to work with — she lifts the whole team's energy and is constantly bringing new insights.</blockquote></div>
-          <button class="testi-more" type="button" onclick="toggleTesti(this)">Read more</button>
+          <h3 class="testi-headline">"Every design decision is grounded in data and prior test results."</h3>
+          <div class="testi-quote-wrap"><blockquote>Gabriela is an exceptional professional! Extremely quick at solving problems, understanding context, and coming up with great ideas. Nothing she does is random — every design decision is grounded in data and prior test results. Always willing to learn and share knowledge, great at teamwork, and she knows how to mediate discussions and help everyone reach common ground. Gabi is wonderful to work with — she lifts the whole team's energy and is constantly bringing new insights.</blockquote></div>
           <figcaption class="testi-foot">
             <span class="testi-avatar">A</span>
             <span class="testi-who"><b>Ana Beatriz Prado Araújo</b><span>Product / UX / UI Designer</span><span class="testi-context">Worked with Gabriela on different teams</span></span>
@@ -987,8 +982,8 @@ button{font-family:inherit;cursor:pointer}
         </figure>
         <figure class="testi-card" data-rel="college">
           <span class="testi-mark">"</span>
-          <div class="testi-quote-wrap"><blockquote>I've had the opportunity to work with Gabi on several projects during college, and I've always been impressed by her dedication and the quality of her work. She is very communicative, creative, and always finds thoughtful and effective ways to solve problems. She has a strong knowledge of her field, is reliable, and puts a lot of care into everything she does. <strong class="hl">Today I consider her a reference in her field</strong> — a talented, committed professional I would definitely recommend.</blockquote></div>
-          <button class="testi-more" type="button" onclick="toggleTesti(this)">Read more</button>
+          <h3 class="testi-headline">"Today, I consider her a reference in her field."</h3>
+          <div class="testi-quote-wrap"><blockquote>I've had the opportunity to work with Gabi on several projects during college, and I've always been impressed by her dedication and the quality of her work. She is very communicative, creative, and always finds thoughtful and effective ways to solve problems. She has a strong knowledge of her field, is reliable, and puts a lot of care into everything she does. Today I consider her a reference in her field — a talented, committed professional I would definitely recommend.</blockquote></div>
           <figcaption class="testi-foot">
             <span class="testi-avatar">V</span>
             <span class="testi-who"><b>Vitória F.</b><span>Product Designer</span><span class="testi-context">Collaborated on projects during college</span><span class="testi-org">College · 2020–2024</span></span>
@@ -996,8 +991,8 @@ button{font-family:inherit;cursor:pointer}
         </figure>
         <figure class="testi-card" data-rel="teammate">
           <span class="testi-mark">"</span>
-          <div class="testi-quote-wrap"><blockquote>Gabriela worked with me for 2 years on the marketing team at AugeApp. Throughout that time she was always helpful and open to feedback in her creative process — in team planning meetings, her creative personality shone through, <strong class="hl">offering suggestions that added real value to our campaigns</strong>. On every occasion she was proactive in finding solutions, even without full command of the subject or tool. She's a deeply empathetic person and a pleasure to work alongside.</blockquote></div>
-          <button class="testi-more" type="button" onclick="toggleTesti(this)">Read more</button>
+          <h3 class="testi-headline">"Offering suggestions that added real value to our campaigns."</h3>
+          <div class="testi-quote-wrap"><blockquote>Gabriela worked with me for 2 years on the marketing team at AugeApp. Throughout that time she was always helpful and open to feedback in her creative process — in team planning meetings, her creative personality shone through, offering suggestions that added real value to our campaigns. On every occasion she was proactive in finding solutions, even without full command of the subject or tool. She's a deeply empathetic person and a pleasure to work alongside.</blockquote></div>
           <figcaption class="testi-foot">
             <span class="testi-avatar">C</span>
             <span class="testi-who"><b>Carolina Lima</b><span>Graphic Design & Illustration</span><span class="testi-context">Worked together for 2 years at AugeApp</span><span class="testi-org">AugeApp · 2022–2024</span></span>
@@ -1507,17 +1502,8 @@ tickClock(); setInterval(tickClock, 30000);
     if(nextBtn) nextBtn.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 4;
   }
 
-  function refreshReadMore(){
-    allCards.forEach(function(c){
-      var bq = c.querySelector('.testi-quote-wrap blockquote');
-      var btn = c.querySelector('.testi-more');
-      if(!bq || !btn || c.classList.contains('expanded')) return;
-      btn.classList.toggle('show', bq.scrollHeight > bq.clientHeight + 2);
-    });
-  }
-
   track.addEventListener('scroll', updateDots, {passive:true});
-  window.addEventListener('resize', function(){ updateDots(); refreshReadMore(); });
+  window.addEventListener('resize', updateDots);
 
   function scrollByCard(dir){
     var cards = visibleCards();
@@ -1552,18 +1538,10 @@ tickClock(); setInterval(tickClock, 30000);
     track.scrollTo({left:0});
     buildDots();
     updateDots();
-    refreshReadMore();
-  };
-
-  window.toggleTesti = function(btn){
-    var card = btn.closest('.testi-card');
-    card.classList.toggle('expanded');
-    btn.textContent = card.classList.contains('expanded') ? 'Read less' : 'Read more';
   };
 
   buildDots();
   updateDots();
-  setTimeout(refreshReadMore, 50);
 })();
 
 /* ===================== EXPERIMENT DASHBOARD (live KPIs + filters) ===================== */
