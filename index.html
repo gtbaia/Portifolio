@@ -23,9 +23,10 @@
   --gray-200:#eae5da;
   --gray-100:#f4f1e9;
 
-  --coral:#ff9d83;
-  --coral-rgb:255,157,131;
-  --coral-deep:#ef6b45;
+  --coral:#c5d2f8;
+  --coral-rgb:196,209,247;
+  --coral-deep:#4f0c28;
+  --coral-deep-rgb:79,12,40;
 
   --pink:#f7dcd2;      --pink-ink:#a8543a;
   --lavender:#e6dcf0;  --lavender-ink:#71588f;
@@ -231,7 +232,7 @@ button{font-family:inherit;cursor:pointer}
 .case-tag.c3{background:var(--pink);color:var(--pink-ink)}
 .case-tag.c4{background:var(--sage);color:var(--sage-ink)}
 .case-tag.c5{background:var(--lavender);color:var(--lavender-ink)}
-.case-tag.c6{background:var(--coral);color:#7a2e14}
+.case-tag.c6{background:var(--coral);color:var(--coral-deep)}
 .case-card h3{font-family:var(--font-display);font-size:18px;font-weight:600;line-height:1.3}
 .case-card p{font-size:13.5px;color:var(--gray-500);line-height:1.5;flex:1}
 .case-stat{font-family:var(--font-display);font-size:26px;font-weight:700;color:var(--coral-deep)}
@@ -268,8 +269,8 @@ button{font-family:inherit;cursor:pointer}
   display:flex;align-items:center;justify-content:center;font-size:25px;transition:.35s var(--ease);box-shadow:0 4px 10px -6px rgba(0,0,0,.15)}
 .process-node .node-no{font-family:var(--font-mono);font-size:10.5px;color:var(--gray-500);font-weight:700}
 .process-node .node-label{font-size:12.5px;font-weight:700;color:var(--gray-500);white-space:nowrap;transition:color .3s}
-.process-node.done .node-ico{border-color:var(--coral-deep);background:#fff5f2}
-.process-node.on .node-ico{border-color:var(--coral-deep);background:var(--coral-deep);transform:scale(1.16);box-shadow:0 10px 22px -8px rgba(239,107,69,.55)}
+.process-node.done .node-ico{border-color:var(--coral-deep);background:#f1eef6}
+.process-node.on .node-ico{border-color:var(--coral-deep);background:var(--coral-deep);transform:scale(1.16);box-shadow:0 10px 22px -8px rgba(var(--coral-deep-rgb),.55)}
 .process-node.on .node-label{color:var(--ink)}
 .process-detail{background:var(--paper);border:1px solid var(--gray-200);border-radius:var(--r-lg);padding:24px 26px;transition:opacity .25s}
 .process-detail-no{font-family:var(--font-mono);font-size:11px;color:var(--coral-deep);text-transform:uppercase;letter-spacing:.08em}
@@ -353,7 +354,7 @@ button{font-family:inherit;cursor:pointer}
 .testi-dots .dot.on{background:var(--coral-deep);width:18px;border-radius:4px}
 .testi-cta{margin-top:28px;padding:22px 26px;border-radius:var(--r-lg);background:var(--coral);display:flex;align-items:center;
   justify-content:space-between;gap:16px;flex-wrap:wrap}
-.testi-cta p{font-family:var(--font-display);font-size:16px;font-weight:600;color:#5a2410}
+.testi-cta p{font-family:var(--font-display);font-size:16px;font-weight:600;color:var(--coral-deep)}
 .testi-cta strong{color:var(--ink)}
 .testi-cta .btn-primary{flex:0 0 auto}
 @media (min-width:700px){
@@ -364,60 +365,6 @@ button{font-family:inherit;cursor:pointer}
 }
 @media (max-width:480px){.testi-arrow{display:none}}
 
-/* ===================== EXPERIMENT LIBRARY — interactive dashboard (mobile-first) ===================== */
-.exp-kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
-.exp-kpi{background:var(--paper);border:1px solid var(--gray-200);border-radius:var(--r-md);padding:14px 16px}
-.exp-kpi b{display:block;font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--coral-deep);line-height:1.1}
-.exp-kpi span{display:block;font-size:11px;color:var(--gray-500);text-transform:uppercase;letter-spacing:.03em;margin-top:4px}
-.exp-toolbar{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
-.filters{display:flex;gap:8px;flex-wrap:wrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px}
-.filters::-webkit-scrollbar{display:none}
-.filter-chip{flex:0 0 auto;font-size:12.5px;font-weight:600;padding:7px 15px;border-radius:var(--r-pill);border:1px solid var(--gray-300);background:var(--paper);color:var(--gray-700);transition:.25s;white-space:nowrap}
-.filter-chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
-.exp-count{font-size:12px;color:var(--gray-500);font-weight:600}
-.exp-dash{display:flex;flex-direction:column;gap:10px}
-.exp-row-head{display:none}
-.exp-row{background:var(--paper);border:1px solid var(--gray-200);border-radius:var(--r-lg);padding:16px;
-  display:flex;flex-direction:column;gap:10px;transition:transform .25s var(--ease),box-shadow .25s var(--ease),border-color .25s}
-.exp-row[onclick]{cursor:pointer}
-.exp-row[onclick]:hover{transform:translateY(-2px);box-shadow:0 16px 28px -20px rgba(0,0,0,.2);border-color:var(--gray-300)}
-.exp-cat{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;padding:4px 10px;border-radius:var(--r-pill)}
-.exp-row[data-cat="Copy"] .exp-cat{background:var(--butter);color:var(--butter-ink)}
-.exp-row[data-cat="Wpp"] .exp-cat{background:var(--sage);color:var(--sage-ink)}
-.exp-row[data-cat="UX"] .exp-cat{background:var(--lavender);color:var(--lavender-ink)}
-.exp-row[data-cat="Forms"] .exp-cat{background:var(--sky);color:var(--sky-ink)}
-.exp-row[data-cat="Trust"] .exp-cat{background:var(--pink);color:var(--pink-ink)}
-.exp-name{font-size:13.8px;font-weight:700;color:var(--ink);line-height:1.35}
-.exp-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px}
-.exp-method{font-size:11px;font-weight:600;color:var(--gray-500);background:var(--gray-100);padding:3px 9px;border-radius:var(--r-pill)}
-.pill-status{font-size:11px;font-weight:700;padding:3px 9px;border-radius:var(--r-pill)}
-.pill-status.winner{background:var(--sage);color:var(--sage-ink)}
-.pill-status.learning{background:var(--butter);color:var(--butter-ink)}
-.pill-status.progress{background:var(--sky);color:var(--sky-ink)}
-.exp-conf{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--gray-500);font-weight:600}
-.exp-conf.none{color:var(--gray-400);font-style:italic;font-weight:500}
-.exp-conf-bar{flex:1;max-width:140px;height:6px;border-radius:4px;background:var(--gray-100);overflow:hidden}
-.exp-conf-fill{height:100%;border-radius:4px;background:var(--coral-deep);transition:width .8s var(--ease)}
-.exp-conf-label{white-space:nowrap;color:var(--coral-deep);font-weight:700}
-.exp-impact{font-family:var(--font-display)}
-.exp-impact b{font-size:20px;font-weight:700;color:var(--coral-deep)}
-.exp-impact span{display:block;font-size:11px;font-weight:500;color:var(--gray-500);text-transform:uppercase;letter-spacing:.02em;margin-top:1px}
-.exp-case-tag{font-size:11.5px;font-weight:700;color:var(--coral-deep)}
-.exp-log-only{font-size:11.5px;font-weight:600;color:var(--gray-500)}
-/* Tablet+: rows become dashboard-style grid lines with an aligned header. */
-@media (min-width:760px){
-  .exp-kpis{grid-template-columns:repeat(4,1fr)}
-  .exp-toolbar{flex-direction:row;align-items:center;justify-content:space-between}
-  .exp-dash{gap:0;background:var(--paper);border:1px solid var(--gray-200);border-radius:var(--r-lg);overflow:hidden}
-  .exp-row{border:none;border-radius:0;border-bottom:1px solid var(--gray-100);
-    display:grid;grid-template-columns:100px 1.7fr 150px 130px 90px;align-items:center;gap:16px;padding:14px 18px}
-  .exp-row:last-child{border-bottom:none}
-  .exp-row[onclick]:hover{transform:none;box-shadow:none;background:var(--gray-100)}
-  .exp-row-head{display:grid;background:var(--gray-100);font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--gray-500);font-weight:700;padding:12px 18px}
-  .exp-cat{align-self:center}
-  .exp-meta{margin-top:4px}
-  .exp-case{justify-self:end}
-}
 
 /* ===================== FOOTER ===================== */
 .footer{background:var(--ink);color:#fff;padding:70px max(20px,calc((100% - var(--maxw)) / 2));text-align:center;position:relative;overflow:hidden}
@@ -651,8 +598,8 @@ button{font-family:inherit;cursor:pointer}
             <svg class="hv-chart" viewBox="0 0 320 150" preserveAspectRatio="none">
               <defs>
                 <linearGradient id="hvGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#ef6b45" stop-opacity="0.32"/>
-                  <stop offset="100%" stop-color="#ef6b45" stop-opacity="0"/>
+                  <stop offset="0%" stop-color="#4f0c28" stop-opacity="0.32"/>
+                  <stop offset="100%" stop-color="#4f0c28" stop-opacity="0"/>
                 </linearGradient>
               </defs>
               <path class="hv-area" d="M0,128 C36,120 58,104 88,98 C124,91 148,66 186,54 C222,43 248,30 320,8 L320,150 L0,150 Z"/>
@@ -813,112 +760,6 @@ button{font-family:inherit;cursor:pointer}
         </div>
       </div>
       <div class="about-photo"><img src="assets/gabi-photo.jpg" alt="Portrait of Gabriela Baia" loading="lazy"></div>
-    </div>
-  </section>
-
-  <section class="section alt" id="library" data-appear>
-    <div class="section-head">
-      <h2>Experiment library</h2>
-      <p>Every test behind the numbers above — the 7 that anchor the 4 featured case studies, plus 4 more from the same testing program. Tap a row with a case tag to open the full write-up.</p>
-    </div>
-    <div class="exp-kpis">
-      <div class="exp-kpi"><b id="expKpiTotal">0</b><span>Experiments logged</span></div>
-      <div class="exp-kpi"><b id="expKpiWin">0%</b><span>Win rate</span></div>
-      <div class="exp-kpi"><b id="expKpiCats">0</b><span>Categories tested</span></div>
-      <div class="exp-kpi"><b id="expKpiCases">0</b><span>Tied to featured cases</span></div>
-    </div>
-    <div class="exp-toolbar">
-      <div class="filters" id="filters">
-        <button class="filter-chip on" data-cat="all" onclick="filterExp(this)">All</button>
-        <button class="filter-chip" data-cat="Copy" onclick="filterExp(this)">✍️ Copy</button>
-        <button class="filter-chip" data-cat="Wpp" onclick="filterExp(this)">💬 Wpp</button>
-        <button class="filter-chip" data-cat="UX" onclick="filterExp(this)">🎨 UX</button>
-        <button class="filter-chip" data-cat="Forms" onclick="filterExp(this)">📋 Forms</button>
-        <button class="filter-chip" data-cat="Trust" onclick="filterExp(this)">🛡️ Trust</button>
-      </div>
-      <span class="exp-count" id="expCount"></span>
-    </div>
-    <div class="exp-dash" id="expTable" role="table">
-      <div class="exp-row exp-row-head" role="row" aria-hidden="true">
-        <span role="columnheader">Category</span><span role="columnheader">Experiment</span><span role="columnheader">Confidence</span><span role="columnheader">Impact</span><span role="columnheader">Case</span>
-      </div>
-      <div class="exp-row" data-cat="Wpp" role="row" onclick="showView('case1')" tabindex="0">
-        <div class="exp-cat"><span class="exp-cat-ico">💬</span>Wpp</div>
-        <div class="exp-main"><div class="exp-name">WhatsApp CTA widget redesign</div><div class="exp-meta"><span class="exp-method">Direct ship</span><span class="pill-status winner">Winner</span></div></div>
-        <div class="exp-conf none">Direct rollout</div>
-        <div class="exp-impact"><b>+157.0%</b><span>peak CVR</span></div>
-        <div class="exp-case"><span class="exp-case-tag">Case #1 →</span></div>
-      </div>
-      <div class="exp-row" data-cat="Copy" role="row" onclick="showView('case2')" tabindex="0">
-        <div class="exp-cat"><span class="exp-cat-ico">✍️</span>Copy</div>
-        <div class="exp-main"><div class="exp-name">"Esquenta" Black Friday homepage test</div><div class="exp-meta"><span class="exp-method">A/B test</span><span class="pill-status winner">Winner</span></div></div>
-        <div class="exp-conf none">A/B test</div>
-        <div class="exp-impact"><b>+40.6%</b><span>Form CVR (record)</span></div>
-        <div class="exp-case"><span class="exp-case-tag">Case #2 →</span></div>
-      </div>
-      <div class="exp-row" data-cat="Wpp" role="row" onclick="showView('case3')" tabindex="0">
-        <div class="exp-cat"><span class="exp-cat-ico">💬</span>Wpp</div>
-        <div class="exp-main"><div class="exp-name">December WhatsApp trigger optimization</div><div class="exp-meta"><span class="exp-method">A/B test</span><span class="pill-status winner">Winner</span></div></div>
-        <div class="exp-conf none">A/B test</div>
-        <div class="exp-impact"><b>+109.3%</b><span>CVR (record)</span></div>
-        <div class="exp-case"><span class="exp-case-tag">Case #3 →</span></div>
-      </div>
-      <div class="exp-row" data-cat="UX" role="row" onclick="showView('case4')" tabindex="0">
-        <div class="exp-cat"><span class="exp-cat-ico">🎨</span>UX</div>
-        <div class="exp-main"><div class="exp-name">Product Cards UI optimization</div><div class="exp-meta"><span class="exp-method">A/B test</span><span class="pill-status winner">Winner</span></div></div>
-        <div class="exp-conf"><div class="exp-conf-bar"><div class="exp-conf-fill" style="width:93%"></div></div><span class="exp-conf-label">93%</span></div>
-        <div class="exp-impact"><b>+57.2%</b><span>peak uplift</span></div>
-        <div class="exp-case"><span class="exp-case-tag">Case #4 →</span></div>
-      </div>
-      <div class="exp-row" data-cat="Forms" role="row" onclick="showView('case4')" tabindex="0">
-        <div class="exp-cat"><span class="exp-cat-ico">📋</span>Forms</div>
-        <div class="exp-main"><div class="exp-name">SPAM microcopy adjustments</div><div class="exp-meta"><span class="exp-method">A/B test</span><span class="pill-status winner">Winner</span></div></div>
-        <div class="exp-conf"><div class="exp-conf-bar"><div class="exp-conf-fill" style="width:95%"></div></div><span class="exp-conf-label">95%</span></div>
-        <div class="exp-impact"><b>+56.6%</b><span>uplift</span></div>
-        <div class="exp-case"><span class="exp-case-tag">Case #4 →</span></div>
-      </div>
-      <div class="exp-row" data-cat="Copy" role="row" onclick="showView('case4')" tabindex="0">
-        <div class="exp-cat"><span class="exp-cat-ico">✍️</span>Copy</div>
-        <div class="exp-main"><div class="exp-name">Recruitment & Selection H1 copy</div><div class="exp-meta"><span class="exp-method">A/B test</span><span class="pill-status winner">Winner</span></div></div>
-        <div class="exp-conf"><div class="exp-conf-bar"><div class="exp-conf-fill" style="width:91%"></div></div><span class="exp-conf-label">91%</span></div>
-        <div class="exp-impact"><b>+35.6%</b><span>uplift</span></div>
-        <div class="exp-case"><span class="exp-case-tag">Case #4 →</span></div>
-      </div>
-      <div class="exp-row" data-cat="Trust" role="row" onclick="showView('case4')" tabindex="0">
-        <div class="exp-cat"><span class="exp-cat-ico">🛡️</span>Trust</div>
-        <div class="exp-main"><div class="exp-name">High-traffic blog tagging strategy</div><div class="exp-meta"><span class="exp-method">A/B test</span><span class="pill-status winner">Winner</span></div></div>
-        <div class="exp-conf"><div class="exp-conf-bar"><div class="exp-conf-fill" style="width:99%"></div></div><span class="exp-conf-label">99%</span></div>
-        <div class="exp-impact"><b>+15.6%</b><span>uplift</span></div>
-        <div class="exp-case"><span class="exp-case-tag">Case #4 →</span></div>
-      </div>
-      <div class="exp-row" data-cat="Copy" role="row">
-        <div class="exp-cat"><span class="exp-cat-ico">✍️</span>Copy</div>
-        <div class="exp-main"><div class="exp-name">Payroll copy — pain & legal risk H2s</div><div class="exp-meta"><span class="exp-method">A/B test</span><span class="pill-status winner">Winner</span></div></div>
-        <div class="exp-conf none">A/B test</div>
-        <div class="exp-impact"><b>+94%</b><span>form submissions</span></div>
-        <div class="exp-case"><span class="exp-log-only">Log only</span></div>
-      </div>
-      <div class="exp-row" data-cat="Copy" role="row">
-        <div class="exp-cat"><span class="exp-cat-ico">✍️</span>Copy</div>
-        <div class="exp-main"><div class="exp-name">DP argumentation — manual vs. automated</div><div class="exp-meta"><span class="exp-method">A/B test</span><span class="pill-status winner">Winner</span></div></div>
-        <div class="exp-conf none">A/B test</div>
-        <div class="exp-impact"><b>+83%</b><span>form conversion</span></div>
-        <div class="exp-case"><span class="exp-log-only">Log only</span></div>
-      </div>
-      <div class="exp-row" data-cat="UX" role="row">
-        <div class="exp-cat"><span class="exp-cat-ico">🎨</span>UX</div>
-        <div class="exp-main"><div class="exp-name">Get Demo — chatbot-guided flow</div><div class="exp-meta"><span class="exp-method">Split URL</span><span class="pill-status winner">Winner</span></div></div>
-        <div class="exp-conf none">Split URL</div>
-        <div class="exp-impact"><b>+11%</b><span>SALs</span></div>
-        <div class="exp-case"><span class="exp-log-only">Log only</span></div>
-      </div>
-      <div class="exp-row" data-cat="Forms" role="row">
-        <div class="exp-cat"><span class="exp-cat-ico">📋</span>Forms</div>
-        <div class="exp-main"><div class="exp-name">Mandatory CNPJ, -10 columns</div><div class="exp-meta"><span class="exp-method">Split URL</span><span class="pill-status winner">Winner</span></div></div>
-        <div class="exp-conf none">Split URL</div>
-        <div class="exp-impact"><b>+12.5%</b><span>SHOW rate</span></div>
-        <div class="exp-case"><span class="exp-log-only">Log only</span></div>
-      </div>
     </div>
   </section>
 
@@ -1519,45 +1360,6 @@ tickClock(); setInterval(tickClock, 30000);
   updateDots();
 })();
 
-/* ===================== EXPERIMENT DASHBOARD (live KPIs + filters) ===================== */
-(function(){
-  var dash = document.getElementById('expTable');
-  if(!dash) return;
-  var rows = Array.prototype.slice.call(dash.querySelectorAll('.exp-row:not(.exp-row-head)'));
-  var total = rows.length;
-  var winners = rows.filter(function(r){ return r.querySelector('.pill-status.winner'); }).length;
-  var cats = {};
-  rows.forEach(function(r){ cats[r.dataset.cat] = true; });
-  var linked = rows.filter(function(r){ return r.querySelector('.exp-case-tag'); }).length;
-
-  var elTotal = document.getElementById('expKpiTotal');
-  var elWin = document.getElementById('expKpiWin');
-  var elCats = document.getElementById('expKpiCats');
-  var elCases = document.getElementById('expKpiCases');
-  if(elTotal) elTotal.textContent = total;
-  if(elWin) elWin.textContent = (total ? Math.round(winners / total * 100) : 0) + '%';
-  if(elCats) elCats.textContent = Object.keys(cats).length;
-  if(elCases) elCases.textContent = linked;
-
-  var countEl = document.getElementById('expCount');
-  function updateCount(cat){
-    if(!countEl) return;
-    var visible = cat === 'all' ? total : rows.filter(function(r){ return r.dataset.cat === cat; }).length;
-    countEl.textContent = 'Showing ' + visible + ' of ' + total;
-  }
-  updateCount('all');
-
-  window.filterExp = function(btn){
-    document.querySelectorAll('.filter-chip').forEach(function(c){ c.classList.remove('on'); });
-    btn.classList.add('on');
-    var cat = btn.dataset.cat;
-    rows.forEach(function(row){
-      row.style.display = (cat === 'all' || row.dataset.cat === cat) ? '' : 'none';
-    });
-    updateCount(cat);
-  };
-})();
-
 /* ===================== SCROLL REVEAL ===================== */
 (function(){
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
@@ -1605,7 +1407,7 @@ function downloadResume(){
 
     function heading(text){
       if(y > 270){ doc.addPage(); y = 20; }
-      doc.setFont('helvetica','bold'); doc.setFontSize(11); doc.setTextColor(239,107,69);
+      doc.setFont('helvetica','bold'); doc.setFontSize(11); doc.setTextColor(79,12,40);
       doc.text(text.toUpperCase(), margin, y); y += 6;
       doc.setDrawColor(230,225,218); doc.line(margin, y-3, pageW-margin, y-3);
     }
@@ -1698,14 +1500,9 @@ function downloadResume(){
     { test: /black ?friday|esquenta|cross.?functional/, reply: "Case #2 was end-to-end Black Friday website ownership — uniting Content, Design and Media across 10 pages, including the real 'Esquenta' A/B tests. It hit an all-time Form CVR record of +40.6%." },
     { test: /website owner|full ownership|sep.*dec|q4/, reply: "Case #3 covers 4 months (Sep–Dec 2025) of full website ownership — forms and WhatsApp CTAs together — sustaining CVR through 14.9k+ leads/mo at Black Friday peak, then hitting a record +109.3% WhatsApp uplift in December." },
     { test: /a\/b test|multivariate|convert|tofu|mofu|bofu|product card|spam|recruitment|blog tag/, reply: "Case #4 is Gabi's ongoing A/B/multivariate testing program on Convert — spanning blog, LPs and forms. Standout results: +57.2% (Product Cards UI, 93% conf.), +56.6% (SPAM microcopy, 95% conf.), +35.6% (Recruitment H1 copy, 91% conf.) and +15.6% (blog tagging, 99% conf.)." },
-    { test: /cnpj|qualif/, reply: "Beyond the 4 featured cases, Gabi's experiment log also includes making CNPJ mandatory on a qualification form (trimming ~10 low-signal fields), which lifted SHOW rate by +12.5%." },
-    { test: /payroll|folha/, reply: "One of Gabi's logged experiments rewrote payroll page H2s to lead with legal/compliance risk instead of generic features — form submissions grew +94% (3.43% → 7.43% conversion)." },
-    { test: /\bdp\b|departamento pessoal|manual vs|automat/, reply: "Another logged experiment rewrote HR (DP) headlines to contrast the manual process against automation, lifting form conversion by +83%." },
-    { test: /demo|chatbot/, reply: "One of Gabi's logged experiments replaced a static 'request a demo' form with a chatbot-guided self-serve demo, lifting SALs by +11%." },
-    { test: /library|log\b|full list|all tests|how many (test|experiment)/, reply: "The 'Experiment library' section lists every test: the 7 that anchor the 4 featured case studies, plus 4 more from the same testing program. Rows tagged with a case number open the full write-up." },
     { test: /biggest (achievement|result|win)|proudest|best result|standout|most impressive/, reply: "If she had to pick one: the +109.3% WhatsApp CVR record from Case #3, achieved while owning the full website through Black Friday's peak traffic (14.9k+ leads/mo). It's her favorite because it combined scale, a 4-month sustained ownership window, and a new all-time record — not just a one-off test spike." },
     { test: /why (hire|you|should we|choose)|what makes (her|you) different|good fit|value.*(bring|add)/, reply: "She pairs a Graphic Design background with hands-on CRO — she can sketch and prototype a test concept herself, not just brief it out. She runs the full loop end-to-end (Observe → Research → Analyze → Prioritize → Experiment → Measure → Learn → Scale), and her featured cases show durable, repeatable lifts across multiple funnel stages, not isolated wins." },
-    { test: /case|study|studies|experiment|project/, reply: "Gabi has 4 featured, Upwork-verified case studies: (1) WhatsApp widget redesign, +157% peak CVR. (2) Black Friday website strategy, +40.6% Form CVR record. (3) Full website ownership (Sep–Dec), +109.3% WhatsApp uplift. (4) Ongoing A/B testing program, +57.2% peak single-test uplift. There's also a broader experiment log in the 'Experiment library' section. Ask me about any one by name!" },
+    { test: /case|study|studies|experiment|project/, reply: "Gabi has 4 featured, Upwork-verified case studies: (1) WhatsApp widget redesign, +157% peak CVR. (2) Black Friday website strategy, +40.6% Form CVR record. (3) Full website ownership (Sep–Dec), +109.3% WhatsApp uplift. (4) Ongoing A/B testing program, +57.2% peak single-test uplift. Ask me about any one by name!" },
     { test: /process|method|how.*work|approach|framework/, reply: "Her process is Observe → Research → Analyze → Prioritize → Experiment → Measure → Learn → Scale — an iterative loop she reuses across every case study on this site. Check the 'How I work' section for the full breakdown." },
     { test: /bring|strength|pillar|behavior analysis|product analytics|prototyp|stakeholder/, reply: "The 'What I bring' section lists six strengths: Behavior Analysis, Experimentation, Product Analytics, Sketches & Prototyping, Growth Thinking, and Stakeholder Alignment." },
     { test: /learn(ed|ing)?\b|takeaway|note[s]?\b/, reply: "From 'What I've learned': good UX is measurable and continuously tested; behavior explains what metrics alone can't; small experiments compound over time; and the best optimization is the one that creates lasting learning." },
